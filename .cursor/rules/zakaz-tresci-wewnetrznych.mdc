@@ -1,0 +1,28 @@
+---
+description: ZAKAZ: zero informacji o treningu AI i pracy wewnętrznej – strona Kodnika
+globs: "**/index.html"
+alwaysApply: false
+---
+
+# ZAKAZ: ZERO INFORMACJI O TYM, JAK TRENUJEMY SWOJE AI
+
+**Na stronie publicznej Kodnika (index.html i ewentualne podstrony) obowiązuje całkowity zakaz:**
+
+## 0 (ZERO) INFO O TRENINGU AI
+
+Nie umieszczaj **żadnych** informacji o:
+- tym, jak trenujemy swoje AI
+- pipeline treningu (przemiał, psucie, pary zadań, neuronowa run 1/2, fine-tuning, LoRA, Dzień Treningowy, eksport danych, skrypty CLI)
+- modelach treningowych (Ollama 32B, 14B, 4B, 7B, phase 1/2, RAM 32 GB itd.)
+- wewnętrznych procesach, narzędziach ani metodach pracy studia
+
+## 0 (ZERO) INFO O NASZEJ PRACY WEWNĘTRZNEJ
+
+Nie umieszczaj **żadnych** informacji o:
+- Kodnik BETA ani wersji studia
+- stacku wewnętrznym (Python, tkinter, ZAP.NAUK jako plik/struktura, „plik wiedzy na personę”, „cztery zwierzaki z promptami i rolami”)
+- lekcjach, kartach, gotowych lekcjach/kartach – to wewnętrzne określenia
+
+Strona opisuje **wyłącznie produkt dla klienta**. Żadnych szczegółów o tym, jak powstaje ani jak trenujemy AI.
+
+**Jeśli cokolwiek dotyczy treningu AI lub wewnętrznej pracy – NIE WSTAWIAJ.**

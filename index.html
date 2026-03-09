@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kodnik – Edytor z AI (BETA). Zwierzaki AI: Mamut & Małpa.</title>
+  <meta name="description" content="Kodnik – edytor z AI, wersja BETA. Zwierzaki AI: Mamut i Małpa. Lokalnie, prywatnie, bez limitów. Kolejne persony w drodze." />
+  <!-- Ikona = sam symbol (łódka), bez napisu -->
+  <link rel="icon" type="image/png" href="./assets/kodnik-ikona-lodka.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="./assets/kodnik-ikona-lodka.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- Tło: warstwy ognia – wyraźny, animowany ogień -->
+  <div class="bg-wrap" aria-hidden="true">
+    <div class="bg-base"></div>
+    <div class="bg-fire bg-fire--1"></div>
+    <div class="bg-fire bg-fire--2"></div>
+    <div class="bg-fire bg-fire--3"></div>
+    <div class="bg-fire bg-fire--4"></div>
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-vignette"></div>
+    <div class="bg-noise"></div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <span class="beta-badge" aria-label="Wersja wczesnego dostępu">BETA · wczesny dostęp</span>
+      <nav class="nav">
+        <a href="#zwierzaki">Zwierzaki AI</a>
+        <a href="#zalety-vs">Zalety</a>
+        <a href="#czym-jest">Czym jest</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#regulamin">Regulamin</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <!-- Dekoracyjne „żary” – subtelne kule światła -->
+      <span class="hero-ember hero-ember--1" aria-hidden="true"></span>
+      <span class="hero-ember hero-ember--2" aria-hidden="true"></span>
+      <span class="hero-ember hero-ember--3" aria-hidden="true"></span>
+      <div class="container">
+        <p class="hero-label">Edytor z AI · persony z własną wiedzą</p>
+        <div class="hero-title-row">
+          <img src="./assets/kodnik-logo.png" alt="Kodnik" class="hero-logo-img" width="280" height="80" />
+        </div>
+        <p class="hero-beta">Wersja BETA · wczesny dostęp</p>
+        <p class="hero-tagline">Kod i FiveM. Lokalnie u Ciebie – prywatnie, bez limitów. Na start: <strong>Mamut</strong> i <strong>Małpa</strong>. Kolejne persony w drodze.</p>
+
+        <div class="hero-zwierzaki">
+          <h2 class="hero-zwierzaki-title">Zwierzaki AI na pierwszy strzał</h2>
+          <div class="hero-cards">
+            <article class="hero-card hero-card--mamut">
+              <span class="hero-card-icon hero-card-icon--code" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 14L8 24l8 10M32 14l8 10-8 10M28 8l-8 32"/></svg>
+              </span>
+              <span class="hero-card-badge hero-card-badge--live">Już dostępny</span>
+              <h3>Mamut</h3>
+              <p class="hero-card-rola">Kodowanie · Orkiestrator</p>
+              <p class="hero-card-opis">Główny mózg do programowania. Diagnoza, plan naprawy, przykładowy kod, testy. Python, Lua, JavaScript, API – wszystko po polsku. Refaktoring i diagnostyka na wysokim poziomie.</p>
+              <ul class="hero-card-list">
+                <li>Pełna diagnoza i plan naprawy</li>
+                <li>Przykładowy kod i testy</li>
+                <li>Odpowiedzi po polsku, bez limitów</li>
+              </ul>
+            </article>
+            <article class="hero-card hero-card--malpa">
+              <span class="hero-card-icon hero-card-icon--server" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5"><rect x="6" y="8" width="36" height="10" rx="1.5"/><rect x="6" y="22" width="36" height="10" rx="1.5"/><rect x="6" y="36" width="36" height="6" rx="1"/><path d="M14 13h2M14 27h2M14 39h2"/></svg>
+              </span>
+              <span class="hero-card-badge hero-card-badge--soon">Niedługo</span>
+              <h3>Małpa</h3>
+              <p class="hero-card-rola">FiveM / QBCore · serwery GTA V</p>
+              <p class="hero-card-opis">Specjalista od QBCore i FiveM. Eventy, server.cfg, resource'y, bazy (oxmysql), logi, txAdmin. Wskazuje braki w dependency i walidacji server-side. Twój drugi dev przy serwerze.</p>
+              <ul class="hero-card-list">
+                <li>Eventy, server.cfg, resource'y</li>
+                <li>oxmysql, logi, txAdmin</li>
+                <li>Dependency i walidacja server-side</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="plusy-strip">
+          <span class="plus-item"><span class="plus-icon plus-icon--lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span> Prywatność</span>
+          <span class="plus-item"><span class="plus-icon plus-icon--screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span> Lokalnie</span>
+          <span class="plus-item"><span class="plus-icon plus-icon--infinity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 00-10 4 6 6 0 0010 4 6 6 0 00-10-4 6 6 0 0010-4"/></svg></span> Bez limitu</span>
+          <span class="plus-item"><span class="plus-icon plus-icon--zap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Wiedza person</span>
+        </div>
+        <div class="hero-cta">
+          <span class="hero-price">16 zł <em>/ miesiąc</em></span>
+          <a href="#oferta" class="btn-cta btn-cta--hero">Kup subskrypcję</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Falisty separator – ogień przechodzi w treść -->
+    <div class="wave-wrap" aria-hidden="true">
+      <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path class="wave-path wave-path--fire" d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"/>
+        <path class="wave-path wave-path--dark" d="M0,70 C250,20 950,100 1200,70 L1200,120 L0,120 Z"/>
+      </svg>
+    </div>
+
+    <section id="zalety-vs" class="section section--fire">
+      <div class="container">
+        <h2 class="vs-title">Nasze zalety – czego nie ma u innych</h2>
+        <p class="section-lead vs-lead">Lokalnie. Bez limitów. Zwierzaki AI. Po polsku. Jedna cena.</p>
+        <div class="vs-grid">
+          <div class="vs-card vs-card--us">
+            <h3>Kodnik</h3>
+            <ul>
+              <li><strong>Lokalnie</strong> – AI na Twoim PC (Ollama), zero chmury</li>
+              <li><strong>Bez limitu</strong> zapytań – używasz ile chcesz</li>
+              <li><strong>Zwierzaki AI</strong> – Mamut, Małpa – persony z własną wiedzą, których inni nie mają</li>
+              <li><strong>Po polsku</strong> – odpowiedzi w języku polskim</li>
+              <li><strong>16 zł / miesiąc</strong> – jedna cena, bez ukrytych limitów</li>
+              <li><strong>Prywatność</strong> – kod i projekty nie opuszczają dysku</li>
+            </ul>
+          </div>
+          <div class="vs-card vs-card--them">
+            <h3>Inni (Cursor, Windsurf…)</h3>
+            <ul>
+              <li>Chmura, subskrypcje, limity requestów</li>
+              <li>Plany Pro / Business, dopłaty za „premium”</li>
+              <li>Jedna asystent – bez person z własną wiedzą</li>
+              <li>Głównie angielski</li>
+              <li>Wyższe ceny, limity zapytań</li>
+              <li>Dane mogą iść do zewnętrznych modeli</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plusy-section">
+      <div class="container">
+        <h2 class="plusy-title">Duże plusy Kodnika</h2>
+        <div class="plusy-grid">
+          <div class="plusy-card">
+            <span class="plusy-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+            <h3>Prywatność</h3>
+            <p>Kod i projekty nie opuszczają Twojego komputera. AI działa lokalnie (Ollama). Twoje dane zostają u Ciebie.</p>
+          </div>
+          <div class="plusy-card">
+            <span class="plusy-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <h3>Lokalnie</h3>
+            <p>Cała magia na Twoim PC. Brak zależności od chmury – pełna kontrola po instalacji modeli.</p>
+          </div>
+          <div class="plusy-card">
+            <span class="plusy-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 00-10 4 6 6 0 0010 4 6 6 0 00-10-4 6 6 0 0010-4"/></svg></span>
+            <h3>Bez limitu</h3>
+            <p>Żadnych limitów zapytań. Używasz Kodnika tyle, ile potrzebujesz – bez ukrytych pułapów.</p>
+          </div>
+          <div class="plusy-card">
+            <span class="plusy-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+            <h3>Unikalne AI</h3>
+            <p>Persony z własną wiedzą. <strong>Mamut</strong> (kod) i <strong>Małpa</strong> (FiveM/QBCore) – każda wie, co robi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="czym-jest" class="section section--alt">
+      <div class="container">
+        <h2>Czym jest Kodnik</h2>
+        <div class="intro-grid">
+          <div class="card card--wide">
+            <p><strong>Kodnik</strong> to edytor z AI: kod i diagnostyka na wysokim poziomie (m.in. FiveM, QBCore). Aplikacja desktopowa działająca lokalnie z <strong>Ollamą</strong> – Twoje dane zostają u Ciebie.</p>
+          </div>
+          <div class="card card--wide">
+            <p><strong>Zwierzaki AI</strong> to persony z własną wiedzą. <strong>Mamut</strong> (kodowanie) i <strong>Małpa</strong> (FiveM/QBCore) na start – odpowiedzi po polsku, bez limitów, lokalnie na Twoim PC.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="zwierzaki" class="section">
+      <div class="container">
+        <h2>Wszystkie Zwierzaki AI</h2>
+        <p class="section-lead">Na start w ofercie: <strong>Mamut</strong> (już dostępny) i <strong>Małpa</strong> (niedługo). Kolejne persony w drodze.</p>
+        <div class="zwierzaki-grid">
+          <article class="zwierzak-card zwierzak-card--mamut">
+            <span class="zwierzak-badge zwierzak-badge--live">Już dostępny</span>
+            <span class="zwierzak-icon zwierzak-icon--code" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 14L8 24l8 10M32 14l8 10-8 10M28 8l-8 32"/></svg></span>
+            <h3>Mamut – Kodowanie</h3>
+            <p class="zwierzak-rola">Orkiestrator · kod, refaktoring, diagnostyka</p>
+            <p class="zwierzak-opis">Główny mózg do programowania. Pełna diagnoza, plan naprawy, przykładowy kod, testy. Python, Lua, JavaScript, API – po polsku.</p>
+          </article>
+          <article class="zwierzak-card zwierzak-card--malpa">
+            <span class="zwierzak-badge zwierzak-badge--soon">Niedługo</span>
+            <span class="zwierzak-icon zwierzak-icon--server" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="8" width="36" height="10" rx="1.5"/><rect x="6" y="22" width="36" height="10" rx="1.5"/><rect x="6" y="36" width="36" height="6" rx="1"/><path d="M14 13h2M14 27h2M14 39h2"/></svg></span>
+            <h3>Małpa – FiveM / QBCore</h3>
+            <p class="zwierzak-rola">QBCore, FiveM, serwery GTA V</p>
+            <p class="zwierzak-opis">Specjalista od QBCore i FiveM. Eventy, server.cfg, resource'y, bazy (oxmysql), logi, txAdmin. Wskazuje braki w dependency i walidacji server-side.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="oferta" class="section section--alt">
+      <div class="container">
+        <h2>Kup subskrypcję</h2>
+        <p class="section-lead">Dostęp do Kodnika (link do pobrania) otrzymujesz <strong>po opłaceniu</strong> abonamentu. Zapłać → dostaniesz maila z linkiem i instrukcją.</p>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <span class="flow-num">1</span>
+            <p><strong>Kup subskrypcję</strong> – wybierz płatność (16 zł/mies.). Przekierujemy Cię do bezpiecznej płatności.</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-num">2</span>
+            <p><strong>Po opłaceniu</strong> na maila dostaniesz link do pobrania Kodnika oraz krótką instrukcję instalacji (Ollama + Kodnik).</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-num">3</span>
+            <p><strong>Pobierz i używaj</strong> – instalacja na swoim PC, bez limitów zapytań. Abonament odnawiasz co miesiąc.</p>
+          </div>
+        </div>
+        <h3 class="offer-heading">Dlaczego Kodnik</h3>
+        <p class="section-lead">Lokalnie, bez limitów, za stałą stawkę.</p>
+        <div class="benefits">
+          <div class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <h3>Działa lokalnie</h3>
+            <p>AI na Twoim komputerze (Ollama). Kod i projekty nie opuszczają dysku – pełna prywatność.</p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 00-10 4 6 6 0 0010 4 6 6 0 00-10-4 6 6 0 0010-4"/></svg></span>
+            <h3>Bez limitu</h3>
+            <p>Bez limitów zapytań. Używasz Kodnika tyle, ile potrzebujesz.</p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+            <h3>16 zł / miesiąc</h3>
+            <p>Abonament miesięczny – przewidywalny koszt. Bez dopłat za „premium”.</p>
+          </div>
+        </div>
+        <div class="offer-box">
+          <p class="offer-price"><strong>16 zł</strong> <em>/ miesiąc</em></p>
+          <p class="offer-desc">Edytor z AI i persony. Pobranie po opłaceniu – link mailem.</p>
+          <a href="mailto:ujot@interia.pl?subject=Kupno subskrypcji Kodnika" class="btn-cta">Kup subskrypcję</a>
+          <p class="offer-note">Napisz – wyślemy link do płatności. Po opłaceniu od razu dostaniesz link do pobrania.</p>
+          <a href="#kontakt" class="link-cta link-cta--small">Masz pytania? Napisz do nas</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="dla-klienta" class="section">
+      <div class="container">
+        <h2>Co dostajesz</h2>
+        <p class="section-lead">Edytor z AI i persony – lokalnie, bez limitów.</p>
+        <ul class="tech-list">
+          <li>Edytor kodu z integracją AI (chat, kontekst projektu)</li>
+          <li><strong>Mamut</strong> (już dostępny) i <strong>Małpa</strong> (niedługo) – przełączanie person</li>
+          <li>Persony z własną wiedzą</li>
+          <li><strong>Prywatność i lokalnie</strong> – Ollama na Twoim PC</li>
+          <li><strong>Bez limitu</strong> zapytań</li>
+          <li>Aplikacja desktopowa</li>
+        </ul>
+      </div>
+    </section>
+
+    </main>
+
+  <section id="regulamin" class="section section--alt">
+    <div class="container">
+      <h2>Regulamin i płatności</h2>
+      <p class="section-lead">Wersja BETA – wczesny dostęp. Poniżej najważniejsze informacje o usłudze, płatnościach i odpowiedzialności.</p>
+
+      <div class="regulamin-grid">
+        <div class="regulamin-block">
+          <h3>1. Usługa i BETA</h3>
+          <p>Kodnik jest w fazie <strong>wczesnego dostępu (BETA)</strong>. Oznacza to, że aplikacja może zawierać błędy, a funkcje (w tym nowe Zwierzaki AI) są rozwijane. Usługa dostarczana jest w stanie „<strong>jak jest</strong>” (as is). Kupując subskrypcję, akceptujesz ten stan i wspierasz rozwój projektu.</p>
+        </div>
+        <div class="regulamin-block regulamin-block--highlight">
+          <h3>2. AI – ograniczenia i wyłączenie odpowiedzialności</h3>
+          <p>Wyniki i sugestie generowane przez AI (w tym Zwierzaki AI) <strong>mogą zawierać błędy, nieścisłości lub mylące informacje</strong>. Modele AI mają ograniczenia: mogą mylić się w złożonych zadaniach, w niuansach języka lub w kodzie. <strong>Jesteś odpowiedzialny za weryfikację</strong> każdej sugestii przed użyciem – w tym za sprawdzenie kodu, logiki i bezpieczeństwa. Nie ponosimy odpowiedzialności za jakiekolwiek szkody wynikłe z użycia Kodnika lub sugestii AI – w tym za uszkodzenie projektów, utratę danych, błędy w kodzie, straty biznesowe czy problemy na serwerze. Korzystasz z usługi <strong>na własną odpowiedzialność</strong>.</p>
+        </div>
+        <div class="regulamin-block">
+          <h3>3. Ollama i oprogramowanie zewnętrzne</h3>
+          <p>Kodnik korzysta z <strong>Ollama</strong> do uruchamiania modeli AI lokalnie na Twoim komputerze. Ollama to oddzielny projekt (<a href="https://ollama.com" target="_blank" rel="noopener noreferrer">ollama.com</a>), objęty własną licencją (m.in. MIT). Użytkownik zobowiązuje się do zapoznania się z warunkami użytkowania Ollama i używania jej zgodnie z nimi. Płatności za Kodnika dotyczą wyłącznie dostępu do aplikacji Kodnik; Ollama jest bezpłatna i instalowana oddzielnie.</p>
+        </div>
+        <div class="regulamin-block">
+          <h3>4. Subskrypcja i płatności</h3>
+          <p><strong>16 zł / miesiąc</strong> – abonament miesięczny. Płatność przelewem lub inną metodą podaną przy zakupie (np. przez operatora płatności). Link do pobrania Kodnika wysyłany jest <strong>po zaksięgowaniu płatności</strong> na adres e-mail podany przy zamówieniu. Regulamin operatora płatności obowiązuje dodatkowo w zakresie transakcji.</p>
+        </div>
+        <div class="regulamin-block">
+          <h3>5. Odstąpienie i zwroty</h3>
+          <p>Usługa cyfrowa (dostęp do aplikacji) – zgodnie z prawem konsumenckim możesz odstąpić od umowy w 14 dni bez podania przyczyny. W przypadku wcześniejszego użycia linku do pobrania – po ustaleniu z nami. Reklamacje: mail na adres kontaktowy.</p>
+        </div>
+        <div class="regulamin-block">
+          <h3>6. Dane i prywatność</h3>
+          <p>Kodnik działa <strong>lokalnie na Twoim komputerze</strong> – kod i projekty nie są wysyłane na nasze serwery. Przetwarzamy tylko dane niezbędne do obsługi płatności i kontaktu (e-mail, ewentualnie NIP przy fakturze). Nie udostępniamy danych osobowych podmiotom trzecim.</p>
+        </div>
+        <div class="regulamin-block">
+          <h3>7. Faktura</h3>
+          <p>Na życzenie wystawiamy fakturę VAT. Podaj dane (NIP, nazwa, adres) przy zamówieniu lub napisz do nas po opłaceniu.</p>
+        </div>
+      </div>
+      <p class="regulamin-note">Masz wątpliwości? <a href="#kontakt" class="link-cta">Skontaktuj się z nami</a> – chętnie wyjaśnimy.</p>
+    </div>
+  </section>
+
+  <section id="kontakt" class="section section--compact">
+    <div class="container">
+      <h2>Kontakt</h2>
+      <p class="section-lead">Pytania przed zakupem albo problem z dostępem? Napisz – odpowiemy i pomożemy.</p>
+      <p><a href="mailto:ujot@interia.pl" class="link-cta">ujot@interia.pl</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>Kodnik</strong> – edytor z AI (BETA). Lokalnie, prywatnie, bez limitów.</p>
+      <p class="footer-links">
+        <a href="#regulamin">Regulamin i płatności</a>
+        <span class="footer-sep">·</span>
+        <a href="#kontakt">Kontakt</a>
+      </p>
+      <p class="footer-copy">&copy; Kodnik. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+</body>
+</html>
