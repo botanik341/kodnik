@@ -3,649 +3,657 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kodnik BETA – lokalny edytor AI do kodu</title>
-  <meta name="description" content="Kodnik BETA to lokalny edytor AI do tworzenia, edycji i naprawy małych programów na Windows. Bez chmury, bez abonamentu, z modelem działającym na Twoim komputerze." />
+  <title>Kodnik BETA — lokalny edytor AI do kodu</title>
+  <meta name="description" content="Kodnik BETA — lokalny edytor AI do tworzenia, edycji i naprawy kodu na Windows. Bez abonamentu. Kod zostaje na Twoim komputerze." />
   <link rel="icon" type="image/png" href="./assets/kodnik-ikona-lodka.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="./assets/kodnik-ikona-lodka.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
   <style>
     :root {
-      --kodnik-accent: #ffb000;
-      --kodnik-accent-2: #ff6a00;
-      --kodnik-green: #28f28f;
-      --kodnik-card: rgba(9, 13, 24, 0.72);
-      --kodnik-card-border: rgba(255, 176, 0, 0.22);
-      --kodnik-text-soft: rgba(255, 255, 255, 0.74);
+      --bg: #080b12;
+      --panel: rgba(16, 22, 34, 0.82);
+      --panel-strong: rgba(20, 27, 42, 0.96);
+      --panel-soft: rgba(255, 255, 255, 0.055);
+      --text: #f4f7fb;
+      --muted: #9facbf;
+      --muted-2: #c8d2e3;
+      --line: rgba(255, 255, 255, 0.11);
+      --gold: #ffd15c;
+      --gold-2: #f5a623;
+      --green: #13c99a;
+      --blue: #74a5ff;
+      --red: #ff5a5f;
+      --shadow: 0 24px 90px rgba(0,0,0,.45);
+      --radius: 28px;
     }
 
-    .hero-kicker,
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.42rem 0.72rem;
-      border: 1px solid rgba(255, 176, 0, 0.28);
-      border-radius: 999px;
-      background: rgba(255, 176, 0, 0.08);
-      color: #ffd37a;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .hero-headline {
-      max-width: 980px;
-      margin: 1.2rem auto 0;
-      font-size: clamp(2.35rem, 7vw, 5.6rem);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-      text-align: center;
-      text-wrap: balance;
-    }
-
-    .hero-headline strong {
-      color: #fff;
-    }
-
-    .hero-subclaim {
-      max-width: 850px;
-      margin: 1.2rem auto 0;
-      color: var(--kodnik-text-soft);
-      font-size: clamp(1.08rem, 2.4vw, 1.55rem);
-      line-height: 1.5;
-      text-align: center;
-      text-wrap: balance;
-    }
-
-    .hero-subclaim strong {
-      color: #fff;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.9rem;
-      margin-top: 1.7rem;
-    }
-
-    .btn-cta--ghost {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      color: #fff;
-      box-shadow: none;
-    }
-
-    .hero-signals {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.7rem;
-      margin: 1.25rem auto 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .hero-signals li {
-      padding: 0.6rem 0.85rem;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 0.95rem;
-      font-weight: 650;
-    }
-
-    .product-preview {
-      max-width: 1020px;
-      margin: 2.25rem auto 0;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 1.45rem;
-      overflow: hidden;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Outfit, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(circle at 12% 0%, rgba(255, 176, 0, 0.18), transparent 34%),
-        linear-gradient(135deg, rgba(12, 16, 28, 0.95), rgba(7, 10, 18, 0.96));
-      box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
+        radial-gradient(circle at 18% 0%, rgba(255, 190, 75, 0.20), transparent 36%),
+        radial-gradient(circle at 82% 12%, rgba(116, 165, 255, 0.14), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(19, 201, 154, 0.12), transparent 34%),
+        linear-gradient(180deg, #080b12 0%, #0b111d 45%, #070a11 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .product-preview__bar {
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 72%);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.42));
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    strong { color: #fff; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 11, 18, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      padding: 0.85rem 1rem;
-      background: rgba(0, 0, 0, 0.32);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.84rem;
-      color: rgba(255, 255, 255, 0.72);
+      gap: 20px;
     }
 
-    .product-preview__dots {
-      display: inline-flex;
-      gap: 0.36rem;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand img { width: 34px; height: 34px; object-fit: contain; }
+    .brand-name { font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem; }
+    .brand-build { color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: .75rem; margin-left: 4px; }
 
-    .product-preview__dots span {
-      width: 0.62rem;
-      height: 0.62rem;
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted-2);
+      font-size: .94rem;
+    }
+    .nav a:hover { color: #fff; }
+
+    .nav-cta {
+      padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.28);
+      color: #14100a;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      font-weight: 800;
+      box-shadow: 0 12px 34px rgba(245, 166, 35, .25);
     }
 
-    .product-preview__body {
+    .hero { padding: 72px 0 34px; }
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 0.88fr;
-      min-height: 360px;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+      gap: 42px;
+      align-items: center;
     }
 
-    .product-preview__chat {
-      padding: clamp(1rem, 3vw, 1.65rem);
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .product-preview__title {
-      margin: 0 0 1rem;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: 0.95rem;
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 209, 92, .26);
+      background: rgba(255, 209, 92, .08);
+      border-radius: 999px;
+      color: #ffe5a5;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .78rem;
       font-weight: 700;
     }
 
-    .chat-bubble {
-      max-width: 92%;
-      margin: 0.72rem 0;
-      padding: 0.9rem 1rem;
-      border-radius: 1rem;
-      line-height: 1.46;
-      font-size: clamp(0.95rem, 1.8vw, 1.04rem);
+    h1 {
+      margin: 20px 0 18px;
+      font-size: clamp(2.7rem, 7vw, 6.2rem);
+      line-height: .93;
+      letter-spacing: -0.07em;
+      max-width: 850px;
     }
 
-    .chat-bubble--user {
-      margin-left: auto;
-      background: linear-gradient(135deg, rgba(255, 176, 0, 0.95), rgba(255, 106, 0, 0.92));
-      color: #16100a;
-      font-weight: 750;
+    .hero-lead {
+      max-width: 720px;
+      color: var(--muted-2);
+      font-size: clamp(1.15rem, 2vw, 1.42rem);
+      line-height: 1.52;
     }
 
-    .chat-bubble--mamut {
-      margin-right: auto;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.07);
-      color: rgba(255, 255, 255, 0.84);
-    }
+    .hero-lead .accent { color: #fff; font-weight: 800; }
 
-    .product-preview__code {
-      padding: clamp(1rem, 3vw, 1.65rem);
-      background: rgba(0, 0, 0, 0.22);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.86rem;
-      color: rgba(255, 205, 128, 0.9);
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 18px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 15px 22px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: #171006;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 18px 44px rgba(245,166,35,.26);
+      border: 0;
+    }
+    .btn-secondary { background: rgba(255,255,255,.06); color: #fff; }
+
+    .micro-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .micro {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      color: var(--muted-2);
+      border-radius: 999px;
+      font-size: .92rem;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--green); box-shadow: 0 0 20px rgba(19,201,154,.65); }
+
+    .app-card {
+      border: 1px solid rgba(255,255,255,.13);
+      background: linear-gradient(180deg, rgba(22,29,45,.94), rgba(9,14,24,.94));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow: hidden;
+      transform: rotate(1deg);
     }
-
-    .code-line {
-      display: block;
-      margin: 0.42rem 0;
-      white-space: nowrap;
+    .app-top {
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: .75rem;
+      background: rgba(0,0,0,.20);
     }
-
-    .code-line--dim {
-      color: rgba(255, 255, 255, 0.36);
+    .app-dot-row { display:flex; gap:6px; }
+    .app-dot { width: 9px; height: 9px; border-radius: 99px; background: rgba(255,255,255,.25); }
+    .app-body { display: grid; grid-template-columns: 1fr 108px; min-height: 405px; }
+    .chat-area { padding: 20px; border-right: 1px solid var(--line); display:flex; flex-direction:column; gap: 13px; }
+    .side-area { background: rgba(255,255,255,.035); padding: 18px 12px; color: var(--muted); font-size: .8rem; }
+    .side-pill { height: 28px; border-radius: 8px; background: rgba(116,165,255,.12); margin-top: 14px; }
+    .chat-title { font-weight: 800; font-size: 1.05rem; }
+    .bubble {
+      max-width: 92%;
+      border-radius: 18px;
+      padding: 14px 15px;
+      line-height: 1.42;
+      border: 1px solid var(--line);
     }
+    .bubble-user { align-self: flex-end; background: rgba(255,209,92,.12); border-color: rgba(255,209,92,.28); }
+    .bubble-ai { align-self: flex-start; background: rgba(255,255,255,.055); }
+    .code-window {
+      margin-top: auto;
+      border: 1px solid rgba(116,165,255,.20);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0b111c;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .72rem;
+      color: #d9e6ff;
+    }
+    .code-head { padding: 9px 12px; background: rgba(116,165,255,.12); color: var(--muted-2); display:flex; justify-content:space-between; }
+    .code-body { padding: 12px; color: #ffd27b; min-height: 82px; white-space: pre-line; }
+    .status-bar {
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      padding: 12px 20px;
+      border-top: 1px solid var(--line);
+      background: rgba(0,0,0,.2);
+      color: var(--muted);
+      font-size: .84rem;
+    }
+    .status { padding: 6px 10px; border-radius: 8px; font-weight: 800; color:#06120f; background: var(--green); }
+    .status.online { color:#d9e6ff; background: rgba(116,165,255,.18); border:1px solid rgba(116,165,255,.22); }
+    .status.cpu { margin-left:auto; color:#110a03; background: var(--gold-2); }
 
-    .command-wall {
+    section { padding: 70px 0; }
+    .section-kicker { color: var(--gold); font-family:"JetBrains Mono", monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .11em; font-weight: 800; }
+    h2 { margin: 10px 0 16px; font-size: clamp(2rem, 4.2vw, 3.65rem); line-height: 1; letter-spacing: -0.045em; }
+    .section-lead { max-width: 820px; color: var(--muted-2); line-height: 1.62; font-size: 1.12rem; }
+
+    .prompt-wall {
+      margin-top: 32px;
       display: grid;
-      gap: 0.9rem;
-      max-width: 900px;
-      margin: 2rem auto 0;
+      grid-template-columns: minmax(0, .95fr) minmax(340px, 1.05fr);
+      gap: 22px;
+      align-items: stretch;
     }
-
-    .command-bubble {
-      padding: 1rem 1.1rem;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-      border-radius: 1.05rem;
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff;
-      font-size: clamp(1rem, 2.2vw, 1.18rem);
-      line-height: 1.45;
-      box-shadow: 0 14px 50px rgba(0, 0, 0, 0.18);
+    .prompt-panel, .info-panel, .pricing-panel, .faq-item {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
     }
-
-    .command-bubble:nth-child(even) {
-      margin-left: min(3vw, 2rem);
+    .prompt-panel { padding: 24px; }
+    .prompt-bubble {
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.055);
+      border-radius: 18px;
+      margin-bottom: 12px;
+      color: #f8fbff;
+      font-weight: 650;
     }
+    .prompt-bubble:nth-child(2) { border-color: rgba(255,209,92,.23); background: rgba(255,209,92,.08); }
+    .prompt-bubble:nth-child(4) { border-color: rgba(116,165,255,.24); background: rgba(116,165,255,.08); }
+    .prompt-note { color: var(--muted); line-height: 1.6; margin: 18px 0 0; }
+    .product-panel { padding: 24px; background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035)); border-radius: var(--radius); border:1px solid var(--line); }
+    .product-list { margin: 0; padding: 0; list-style: none; display:grid; gap: 14px; }
+    .product-list li { display:flex; gap: 12px; align-items:flex-start; color: var(--muted-2); line-height:1.55; }
+    .check { flex:0 0 auto; width: 22px; height:22px; display:grid; place-items:center; border-radius:999px; background: rgba(19,201,154,.14); color: var(--green); font-weight:900; margin-top:2px; }
 
-    .privacy-box,
-    .price-box,
-    .beta-box {
-      max-width: 980px;
-      margin: 2rem auto 0;
-      padding: clamp(1.2rem, 3vw, 2rem);
-      border: 1px solid var(--kodnik-card-border);
-      border-radius: 1.35rem;
-      background:
-        radial-gradient(circle at top left, rgba(255, 176, 0, 0.16), transparent 36%),
-        rgba(255, 255, 255, 0.06);
-      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22);
+    .split { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; margin-top: 28px; }
+    .info-panel { padding: 26px; }
+    .info-panel h3, .pricing-panel h3, .faq-item h3 { margin: 0 0 10px; font-size: 1.35rem; }
+    .info-panel p, .pricing-panel p, .faq-item p { margin: 0; color: var(--muted-2); line-height: 1.65; }
+    .mode-label { display:inline-flex; align-items:center; gap:8px; margin-bottom:14px; color:#fff; font-weight:800; }
+    .mode-label.offline::before, .mode-label.online::before { content:""; width:9px; height:9px; border-radius:999px; background:var(--green); box-shadow:0 0 20px rgba(19,201,154,.7); }
+    .mode-label.online::before { background: var(--blue); box-shadow:0 0 20px rgba(116,165,255,.7); }
+
+    .privacy-box {
+      margin-top: 28px;
+      border: 1px solid rgba(19,201,154,.28);
+      background: linear-gradient(135deg, rgba(19,201,154,.12), rgba(255,255,255,.045));
+      border-radius: var(--radius);
+      padding: 30px;
+      display:grid;
+      grid-template-columns: 86px 1fr;
+      gap: 22px;
+      align-items:center;
     }
+    .shield { width: 76px; height: 76px; border-radius: 22px; display:grid; place-items:center; background: rgba(19,201,154,.14); color:var(--green); font-size:2rem; }
 
-    .privacy-box p,
-    .price-box p,
-    .beta-box p {
-      color: var(--kodnik-text-soft);
-      font-size: 1.06rem;
-      line-height: 1.62;
-    }
+    .requirements { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 28px; }
+    .req-card { padding: 22px; border:1px solid var(--line); border-radius: 22px; background: rgba(255,255,255,.055); }
+    .req-card h3 { margin: 0 0 9px; font-size: 1.12rem; }
+    .req-card p { margin:0; color:var(--muted-2); line-height:1.55; }
 
-    .privacy-box strong,
-    .price-box strong,
-    .beta-box strong {
-      color: #fff;
-    }
+    .pricing-wrap { display:grid; grid-template-columns: minmax(0,.9fr) minmax(340px,.7fr); gap: 22px; align-items: stretch; margin-top: 28px; }
+    .pricing-panel { padding: 30px; background: linear-gradient(180deg, rgba(255,209,92,.14), rgba(255,255,255,.055)); }
+    .price { font-size: clamp(3rem, 7vw, 5.2rem); font-weight: 800; letter-spacing: -.06em; margin: 0 0 4px; color:#fff; }
+    .price small { font-size: 1.1rem; color: var(--muted); letter-spacing: 0; }
+    .pricing-list { margin: 18px 0 26px; padding:0; list-style:none; display:grid; gap: 10px; color: var(--muted-2); }
+    .pricing-list li::before { content:"✓"; color:var(--green); font-weight:900; margin-right:8px; }
 
-    .requirements-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .requirement-card {
-      padding: 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 1.15rem;
-      background: rgba(255, 255, 255, 0.065);
-    }
-
-    .requirement-card h3 {
-      margin-top: 0;
-    }
-
-    .requirement-card ul {
-      margin: 0.8rem 0 0;
-      padding-left: 1.15rem;
-      color: var(--kodnik-text-soft);
+    .beta-note {
+      margin-top: 28px;
+      border: 1px solid rgba(255,209,92,.24);
+      border-radius: var(--radius);
+      background: rgba(255,209,92,.08);
+      padding: 26px;
+      color: var(--muted-2);
       line-height: 1.65;
     }
 
-    .price-line {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0.8rem;
-      margin-bottom: 0.85rem;
+    .roadmap-line { margin-top: 24px; display:flex; flex-wrap:wrap; gap:10px; }
+    .roadmap-pill { padding: 10px 13px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.055); color:var(--muted-2); }
+
+    .faq-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin-top:28px; }
+    .faq-item { padding: 22px; }
+
+    .footer { padding: 38px 0; color: var(--muted); border-top:1px solid var(--line); }
+    .footer-inner { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    .footer a { color:#fff; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .prompt-wall, .split, .privacy-box, .pricing-wrap { grid-template-columns: 1fr; }
+      .requirements, .faq-grid { grid-template-columns: 1fr; }
+      .app-card { transform:none; }
+      .nav { display:none; }
     }
-
-    .price-line strong {
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
-    }
-
-    .price-line span {
-      color: rgba(255, 255, 255, 0.72);
-      font-weight: 700;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 1rem;
-      max-width: 980px;
-      margin: 2rem auto 0;
-    }
-
-    .faq-item {
-      padding: 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 1rem;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .faq-item h3 {
-      margin: 0 0 0.55rem;
-    }
-
-    .faq-item p {
-      margin: 0;
-      color: var(--kodnik-text-soft);
-      line-height: 1.6;
-    }
-
-    .small-note {
-      color: rgba(255, 255, 255, 0.58);
-      font-size: 0.92rem;
-      line-height: 1.55;
-    }
-
-    @media (max-width: 820px) {
-      .product-preview__body,
-      .requirements-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .product-preview__chat {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .btn-cta {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
+    @media (max-width: 620px) {
+      .container { width:min(100% - 26px, 1160px); }
+      .hero { padding-top: 44px; }
+      .app-body { grid-template-columns: 1fr; }
+      .side-area { display:none; }
+      .status-bar { flex-wrap:wrap; }
+      .status.cpu { margin-left:0; }
+      .cta-row .btn { width: 100%; }
+      .privacy-box { padding:22px; }
+      .shield { display:none; }
+      h1 { font-size: clamp(2.7rem, 16vw, 4.5rem); }
     }
   </style>
 </head>
 <body>
-  <div class="bg-wrap" aria-hidden="true">
-    <div class="bg-base"></div>
-    <div class="bg-fire bg-fire--1"></div>
-    <div class="bg-fire bg-fire--2"></div>
-    <div class="bg-fire bg-fire--3"></div>
-    <div class="bg-fire bg-fire--4"></div>
-    <div class="bg-mesh"></div>
-    <div class="bg-grid"></div>
-    <div class="bg-vignette"></div>
-    <div class="bg-noise"></div>
-  </div>
-
-  <header class="header">
-    <div class="container">
-      <span class="beta-badge" aria-label="Aktualny build Kodnika">BETA-2026.05.27 · dostępny</span>
-      <nav class="nav">
-        <a href="#co-potrafi">Co potrafi</a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="Kodnik">
+        <img src="./assets/kodnik-ikona-lodka.png" alt="" onerror="this.style.display='none'" />
+        <span class="brand-name">Kodnik</span>
+        <span class="brand-build">BETA-2026.05.27</span>
+      </a>
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a href="#powiedz">Możliwości</a>
         <a href="#prywatnosc">Prywatność</a>
         <a href="#wymagania">Wymagania</a>
-        <a href="#kup">Kup</a>
+        <a href="#cena">Cena</a>
         <a href="#faq">FAQ</a>
-        <a href="#kontakt">Kontakt</a>
+        <a class="nav-cta" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup — 49 zł</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
-      <span class="hero-ember hero-ember--1" aria-hidden="true"></span>
-      <span class="hero-ember hero-ember--2" aria-hidden="true"></span>
-      <span class="hero-ember hero-ember--3" aria-hidden="true"></span>
-
-      <div class="container">
-        <p class="hero-kicker">Kodnik BETA · build 2026.05.27</p>
-
-        <div class="hero-title-row">
-          <img src="./assets/kodnik-logo.png" alt="Kodnik" class="hero-logo-img" width="280" height="80" />
-        </div>
-
-        <h1 class="hero-headline">
-          <strong>Lokalny edytor AI do kodu.</strong><br />
-          Małe modele udowadniają, że chmura nie jest do tego potrzebna.
-        </h1>
-
-        <p class="hero-subclaim">
-          Kodnik pomaga tworzyć, zmieniać i naprawiać małe programy na Windows.
-          Mamut to lokalne AI w Kodniku — piszesz do niego po polsku, a on pomaga przejść od pomysłu do działającego projektu.
-        </p>
-
-        <div class="hero-actions">
-          <a href="https://1ct.eu/5DkWv" class="btn-cta btn-cta--hero" target="_blank" rel="noopener">Kup ten build — 49 zł</a>
-          <a href="#co-potrafi" class="btn-cta btn-cta--ghost">Zobacz, co potrafi</a>
-        </div>
-
-        <ul class="hero-signals" aria-label="Najważniejsze informacje">
-          <li>Windows 10/11</li>
-          <li>Bez abonamentu</li>
-          <li>Twój kod zostaje u Ciebie</li>
-        </ul>
-
-        <div class="product-preview" aria-label="Podgląd pracy w Kodniku">
-          <div class="product-preview__bar">
-            <span class="product-preview__dots" aria-hidden="true"><span></span><span></span><span></span></span>
-            <span>Kodnik · Mamut · lokalnie</span>
-            <span>BETA</span>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">KODNIK BETA · DOSTĘPNY BUILD</span>
+          <h1>Lokalny edytor AI do kodu.</h1>
+          <p class="hero-lead">
+            <span class="accent">Kodnik</span> pomaga tworzyć programy, zmieniać istniejący kod, naprawiać błędy i rozmawiać z Mamutem — lokalnie na Windows, bez abonamentu i bez wysyłania projektu do chmury.
+          </p>
+          <p class="hero-lead">
+            Pisz naturalnie, <span class="accent">po polsku albo po angielsku</span>. W trybie OFFLINE Mamut odpowiada lokalnie. W trybie ONLINE może szukać aktualnych informacji w internecie.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup ten build — 49 zł</a>
+            <a class="btn btn-secondary" href="#powiedz">Zobacz, co możesz napisać</a>
           </div>
+          <div class="micro-row" aria-label="Najważniejsze informacje">
+            <span class="micro"><span class="dot"></span> Windows 10/11 x64</span>
+            <span class="micro"><span class="dot"></span> Bez abonamentu</span>
+            <span class="micro"><span class="dot"></span> Kod zostaje u Ciebie</span>
+            <span class="micro"><span class="dot"></span> OFFLINE / ONLINE</span>
+          </div>
+        </div>
 
-          <div class="product-preview__body">
-            <div class="product-preview__chat">
-              <p class="product-preview__title">Pisz normalnie. Kodnik pracuje w projekcie.</p>
-              <div class="chat-bubble chat-bubble--user">Stwórz prostą aplikację do notatek.</div>
-              <div class="chat-bubble chat-bubble--mamut">Przygotowuję projekt i zapisuję pliki.</div>
-              <div class="chat-bubble chat-bubble--user">Zmień kolor przycisku Zapisz na zielony.</div>
-              <div class="chat-bubble chat-bubble--mamut">Gotowe. Zmiana jest w pliku projektu.</div>
+        <div class="app-card" aria-label="Podgląd aplikacji Kodnik">
+          <div class="app-top">
+            <span>Kodnik — Nowy projekt</span>
+            <span class="app-dot-row"><span class="app-dot"></span><span class="app-dot"></span><span class="app-dot"></span></span>
+          </div>
+          <div class="app-body">
+            <div class="chat-area">
+              <div class="chat-title">Nowy czat z Mamutem</div>
+              <div class="bubble bubble-user">Stwórz generator CV</div>
+              <div class="bubble bubble-ai">Przygotowuję aplikację i zapisuję pliki projektu.</div>
+              <div class="code-window">
+                <div class="code-head"><span>HTML</span><span>Projekt gotowy</span></div>
+                <div class="code-body">function renderPreview() {\n  updateCV();\n  autosave();\n}\n\nbutton.addEventListener("click", save);</div>
+              </div>
             </div>
-
-            <div class="product-preview__code" aria-hidden="true">
-              <span class="code-line code-line--dim">&lt;main class="app"&gt;</span>
-              <span class="code-line">&nbsp;&nbsp;&lt;button class="save"&gt;Zapisz&lt;/button&gt;</span>
-              <span class="code-line code-line--dim">&nbsp;&nbsp;&lt;section class="notes"&gt;...&lt;/section&gt;</span>
-              <span class="code-line code-line--dim">&lt;/main&gt;</span>
-              <span class="code-line">&nbsp;</span>
-              <span class="code-line">.save {</span>
-              <span class="code-line">&nbsp;&nbsp;background: #22c55e;</span>
-              <span class="code-line">&nbsp;&nbsp;color: #ffffff;</span>
-              <span class="code-line">}</span>
+            <div class="side-area">
+              Rozmowy
+              <div class="side-pill"></div>
+              <div class="side-pill"></div>
+              <div class="side-pill"></div>
             </div>
+          </div>
+          <div class="status-bar">
+            <span class="status">OFFLINE</span>
+            <span class="status online">ONLINE</span>
+            <span>Mamut odpowiada lokalnie. Internet jest opcjonalny.</span>
+            <span class="status cpu">GPU + CPU / CPU only</span>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="wave-wrap" aria-hidden="true">
-      <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path class="wave-path wave-path--fire" d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"/>
-        <path class="wave-path wave-path--dark" d="M0,70 C250,20 950,100 1200,70 L1200,120 L0,120 Z"/>
-      </svg>
-    </div>
-
-    <section id="co-potrafi" class="section section--fire">
+    <section id="powiedz">
       <div class="container">
-        <p class="section-kicker">Powiedz, co chcesz zrobić</p>
-        <h2>Nie wybierasz trybów. Piszesz do Mamuta.</h2>
-
+        <span class="section-kicker">Możliwości bez bebechów</span>
+        <h2>Powiedz, co chcesz zrobić. Mamut rusza do pracy.</h2>
         <p class="section-lead">
-          Kodnik działa jak lokalny asystent w edytorze. Opisz zadanie po polsku: program, poprawkę, błąd albo pytanie.
+          Nie musisz znać nazw trybów ani mechaniki pod spodem. Wpisujesz polecenie tak, jak do asystenta. Kodnik może odpowiedzieć w czacie, przygotować program, wejść w pliki projektu, zmienić kod albo pomóc znaleźć aktualne informacje w internecie.
         </p>
 
-        <div class="command-wall" aria-label="Przykładowe wiadomości do Kodnika">
-          <div class="command-bubble">Stwórz prostą aplikację do notatek.</div>
-          <div class="command-bubble">Zmień kolor przycisku Zapisz na zielony.</div>
-          <div class="command-bubble">Napraw błąd, przez który program się nie uruchamia.</div>
-          <div class="command-bubble">Znajdź w internecie informacje o Hondzie Civic.</div>
-        </div>
-      </div>
-    </section>
+        <div class="prompt-wall">
+          <div class="prompt-panel" aria-label="Przykładowe wiadomości do Mamuta">
+            <div class="prompt-bubble">Stwórz prostą aplikację do notatek.</div>
+            <div class="prompt-bubble">Zmień kolor przycisku Zapisz na zielony.</div>
+            <div class="prompt-bubble">Napraw błąd, przez który program się nie uruchamia.</div>
+            <div class="prompt-bubble">Znajdź w internecie aktualne informacje o Hondzie Civic.</div>
+            <div class="prompt-bubble">Create a small time tracker app with a clean interface.</div>
+            <p class="prompt-note">
+              Kodnik działa po polsku i po angielsku. Najlepsze efekty daje przy jasnych, konkretnych poleceniach: mały program, widoczna zmiana, jeden błąd, jeden cel.
+            </p>
+          </div>
 
-    <section id="prywatnosc" class="section section--alt">
-      <div class="container">
-        <p class="section-kicker">Twój kod zostaje u Ciebie</p>
-        <h2>Lokalność to nie dodatek. To sens Kodnika.</h2>
-
-        <div class="privacy-box">
-          <p>
-            <strong>Kodnik nie wysyła Twoich plików projektu na serwery AI.</strong>
-            W trybie offline praca modelu dzieje się lokalnie na Twoim komputerze.
-            W trybie online Kodnik wysyła do wyszukiwarki tylko zapytanie, na przykład
-            <strong>„Honda Civic opinie”</strong> — nie Twój kod, nie folder projektu i nie prywatne pliki.
-          </p>
-        </div>
-
-        <div class="privacy-box">
-          <p>
-            <strong>Wszystko dzieje się na Twoim komputerze.</strong>
-            Model AI pobiera się raz przy instalacji. Później możesz korzystać z Kodnika bez konta, bez abonamentu i bez stałej weryfikacji online.
-          </p>
-          <p class="small-note">Powered by Qwen3.5-9B (Apache 2.0).</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="wymagania" class="section">
-      <div class="container">
-        <p class="section-kicker">Wymagania</p>
-        <h2>Windows i lokalny model AI.</h2>
-
-        <p class="section-lead">
-          Kodnik jest aplikacją desktopową dla Windows. Może działać bez mocnej karty graficznej, ale na lepszym sprzęcie będzie wyraźnie szybszy.
-        </p>
-
-        <div class="requirements-grid">
-          <article class="requirement-card">
-            <h3>Minimum i zalecenia</h3>
-            <ul>
-              <li>Windows 10 / 11 x64</li>
-              <li>Procesor x86_64 z AVX2</li>
-              <li>16 GB RAM minimum</li>
-              <li>24 GB RAM zalecane dla trybu CPU only</li>
-              <li>około 6 GB miejsca na model i paczkę</li>
-              <li>internet jednorazowo do pobrania modelu AI</li>
+          <div class="product-panel">
+            <ul class="product-list">
+              <li><span class="check">✓</span><span><strong>Tworzenie programów:</strong> od prostych narzędzi po praktyczne aplikacje na jednym ekranie.</span></li>
+              <li><span class="check">✓</span><span><strong>Praca z istniejącym kodem:</strong> Kodnik może czytać pliki projektu i wprowadzać zmiany tam, gdzie trzeba.</span></li>
+              <li><span class="check">✓</span><span><strong>Naprawianie błędów:</strong> gdy program się nie uruchamia albo coś działa źle, Mamut może przejrzeć projekt i zaproponować poprawkę.</span></li>
+              <li><span class="check">✓</span><span><strong>Zwykły czat:</strong> możesz pytać o kod, pomysły, błędy, technologie albo decyzje projektowe.</span></li>
+              <li><span class="check">✓</span><span><strong>Tryb online:</strong> kiedy potrzebujesz świeżych danych, Mamut może poszukać informacji w internecie.</span></li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offline-online">
+      <div class="container">
+        <span class="section-kicker">OFFLINE / ONLINE</span>
+        <h2>Rozmowa z Mamutem działa lokalnie. Internet włączasz tylko wtedy, gdy go potrzebujesz.</h2>
+        <p class="section-lead">
+          Kodnik nie jest kolejną webapką SaaS. To aplikacja desktopowa na Windows. Ma lokalny tryb rozmowy i pracy z kodem, a tryb online służy do wyszukiwania aktualnych informacji, nie do wysyłania Twojego projektu na serwer.
+        </p>
+
+        <div class="split">
+          <article class="info-panel">
+            <span class="mode-label offline">OFFLINE</span>
+            <h3>Lokalny Mamut</h3>
+            <p>
+              Model AI działa na Twoim komputerze. Możesz rozmawiać, tworzyć programy, edytować pliki i naprawiać błędy bez konta, bez płatnego API i bez stałego połączenia z internetem.
+            </p>
           </article>
 
-          <article class="requirement-card">
-            <h3>Tryby pracy</h3>
-            <ul>
-              <li><strong>CPU only</strong> — działa bez karty NVIDIA, wolniej, ale szerzej kompatybilnie</li>
-              <li><strong>GPU + CPU</strong> — szybszy tryb dla NVIDIA RTX 30xx / 40xx</li>
-              <li>dla GPU + CPU zalecane minimum 4 GB VRAM</li>
-              <li>wymagane aktualne sterowniki NVIDIA / CUDA 12.x</li>
-            </ul>
+          <article class="info-panel">
+            <span class="mode-label online">ONLINE</span>
+            <h3>Aktualne informacje z internetu</h3>
+            <p>
+              Gdy przełączysz Kodnika w tryb ONLINE, Mamut może zbudować zapytanie, wyszukać informacje w sieci i odpowiedzieć z kontekstem. Do internetu idzie zapytanie, nie Twoje pliki projektu.
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="kup" class="section section--alt">
+    <section id="prywatnosc">
       <div class="container">
-        <p class="section-kicker">Kup ten build</p>
-        <h2>Kodnik BETA — 49 zł.</h2>
-
-        <div class="price-box">
-          <div class="price-line">
-            <strong>49 zł</strong>
-            <span>BETA-2026.05.27</span>
+        <span class="section-kicker">Prywatność</span>
+        <h2>Twój kod zostaje u Ciebie.</h2>
+        <div class="privacy-box">
+          <div class="shield" aria-hidden="true">▣</div>
+          <div>
+            <p class="section-lead">
+              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE praca AI dzieje się na Twoim komputerze. W trybie ONLINE Kodnik wysyła tylko zapytanie do wyszukiwarki, np. o dokumentację, poradę albo aktualną informację — nie wysyła Twoich plików projektu.
+            </p>
           </div>
-
-          <p>
-            Kupujesz konkretny build Kodnika. Bez abonamentu, bez konta i bez weryfikacji online.
-            Ten build działa bez ograniczeń czasowych. Nowsze buildy będą sprzedawane osobno — sam decydujesz, czy chcesz aktualizować.
-          </p>
-
-          <div class="hero-actions">
-            <a href="https://1ct.eu/5DkWv" class="btn-cta btn-cta--hero" target="_blank" rel="noopener">Kup dostęp — 49 zł</a>
-            <a href="#faq" class="btn-cta btn-cta--ghost">Pytania przed zakupem</a>
-          </div>
-
-          <p class="small-note">
-            Po zakupie otrzymasz link do pobrania instalatora Kodnika. Model AI pobiera się osobno przy pierwszej instalacji.
-          </p>
         </div>
       </div>
     </section>
 
-    <section id="beta" class="section">
+    <section id="lokalnie">
       <div class="container">
-        <p class="section-kicker">BETA</p>
-        <h2>Aktywnie rozwijane.</h2>
+        <span class="section-kicker">Lokalny model</span>
+        <h2>Wszystko dzieje się na Twoim komputerze.</h2>
+        <p class="section-lead">
+          Model AI pobiera się raz przy instalacji. Później Kodnik może działać lokalnie, bez abonamentu i bez naliczania kosztów za każde pytanie. Obecny build używa lokalnego modelu <strong>Qwen3.5-9B</strong> na licencji Apache 2.0.
+        </p>
+        <p class="section-lead">
+          To nie jest pełna wersja enterprise. To płatna beta lokalnego edytora AI, rozwijana build po buildzie — z naciskiem na praktyczną pracę z małymi programami, kodem i naprawami.
+        </p>
+      </div>
+    </section>
 
-        <div class="beta-box">
-          <p>
-            <strong>Kodnik BETA jest dostępny i rozwijany.</strong>
-            Każdy build to dojrzalsza wersja. Najlepsze efekty dziś daje przy małych programach:
-            1–5 plików, jeden ekran, jasna mechanika i konkretne polecenie.
-          </p>
-        </div>
+    <section id="wymagania">
+      <div class="container">
+        <span class="section-kicker">Wymagania</span>
+        <h2>Sprawdź sprzęt przed zakupem.</h2>
+        <p class="section-lead">
+          Kodnik działa na Windows 10/11 x64. Tryb CPU only uruchomi się na większości nowszych procesorów, ale będzie wolniejszy. Najlepsze wrażenie daje tryb GPU + CPU na karcie NVIDIA.
+        </p>
 
-        <div class="beta-box">
-          <p>
-            <strong>Dokąd idziemy:</strong>
-            czytanie tego, co widzisz na ekranie, większy model dla mocnego sprzętu, większe projekty i dalszy rozwój pracy lokalnej.
-            Kierunek zostaje ten sam: więcej możliwości, nadal lokalnie.
-          </p>
+        <div class="requirements">
+          <div class="req-card">
+            <h3>System</h3>
+            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Około 6 GB miejsca na dysku na model i pliki.</p>
+          </div>
+          <div class="req-card">
+            <h3>Pamięć RAM</h3>
+            <p>Minimum 16 GB RAM. Dla trybu CPU only zalecane 24 GB RAM, szczególnie przy dłuższej pracy.</p>
+          </div>
+          <div class="req-card">
+            <h3>GPU opcjonalnie</h3>
+            <p>NVIDIA RTX 30xx / 40xx z minimum 4 GB VRAM i sterownikami CUDA 12.x dla szybszego trybu GPU + CPU.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section section--alt">
+    <section id="cena">
       <div class="container">
-        <p class="section-kicker">FAQ</p>
-        <h2>Najczęstsze pytania.</h2>
+        <span class="section-kicker">Kupno</span>
+        <h2>Jeden build. Jedna cena. Bez abonamentu.</h2>
+        <div class="pricing-wrap">
+          <div class="pricing-panel">
+            <p class="price">49 zł <small>/ build</small></p>
+            <h3>Kodnik BETA — aktualny build</h3>
+            <p>
+              Kupujesz konkretny build Kodnika. Po zakupie dostajesz link do pobrania paczki instalacyjnej. Model AI pobiera się osobno przy pierwszej instalacji.
+            </p>
+            <ul class="pricing-list">
+              <li>brak abonamentu</li>
+              <li>brak konta w chmurze</li>
+              <li>brak weryfikacji online przy używaniu aplikacji</li>
+              <li>nowsze buildy mogą być sprzedawane osobno</li>
+            </ul>
+            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup dostęp przez 1koszyk — 49 zł</a>
+          </div>
 
-        <div class="faq-list">
-          <article class="faq-item">
+          <div class="info-panel">
+            <h3>Co dostajesz po zakupie?</h3>
+            <p>
+              Dostęp do aktualnej paczki instalacyjnej Kodnika BETA. To wczesny dostęp do lokalnego edytora AI, który możesz uruchomić na swoim komputerze i testować w realnej pracy z małymi projektami.
+            </p>
+            <br />
+            <p>
+              Sprzedaż obsługuje 1koszyk. Link po zakupie prowadzi do paczki instalacyjnej. W razie problemów pisz na <a href="mailto:ujot@interia.pl">ujot@interia.pl</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beta">
+      <div class="container">
+        <span class="section-kicker">Status</span>
+        <h2>BETA — aktywnie rozwijane.</h2>
+        <div class="beta-note">
+          Kodnik jest działającą wersją beta. Każdy build ma być dojrzalszy od poprzedniego. Najlepsze efekty daje dziś przy małych programach, prostych narzędziach, jednym ekranie, jasnej mechanice, małych edycjach i podstawowych naprawach. Większe projekty mogą wymagać cierpliwości, poprawek albo kolejnych podejść.
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="container">
+        <span class="section-kicker">Dokąd idziemy</span>
+        <h2>Większy model, czytanie ekranu, większe projekty — nadal lokalnie.</h2>
+        <p class="section-lead">
+          Kierunek Kodnika jest prosty: lokalny edytor AI ma coraz lepiej rozumieć projekt, ekran użytkownika i większe zadania, bez zamieniania się w chmurową usługę.
+        </p>
+        <div class="roadmap-line">
+          <span class="roadmap-pill">tryb 28B dla mocniejszego sprzętu</span>
+          <span class="roadmap-pill">czytanie screenów i analiza UI</span>
+          <span class="roadmap-pill">lepsza praca z większymi projektami</span>
+          <span class="roadmap-pill">rozwój trybu online</span>
+          <span class="roadmap-pill">bardziej stabilne naprawy i edycje</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <span class="section-kicker">FAQ</span>
+        <h2>Pytania przed zakupem.</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
             <h3>Czy potrzebuję internetu?</h3>
-            <p>Tak, jednorazowo do pobrania modelu AI przy instalacji. Później Kodnik może działać offline. Internet jest potrzebny tylko wtedy, gdy używasz trybu online do szukania aktualnych informacji.</p>
-          </article>
-
-          <article class="faq-item">
-            <h3>Czy mój kod jest wysyłany do chmury?</h3>
-            <p>Nie. Kodnik pracuje lokalnie na Twoim komputerze. W trybie online wysyłane jest tylko zapytanie do wyszukiwarki, nie pliki projektu.</p>
-          </article>
-
-          <article class="faq-item">
+            <p>Tak, do pobrania modelu przy pierwszej instalacji i do trybu ONLINE. Do zwykłej pracy lokalnej Kodnik może działać offline.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Czy Kodnik działa po angielsku?</h3>
+            <p>Tak. Możesz pisać do Mamuta po polsku albo po angielsku. Jakość wyniku zależy od jasności polecenia i trudności zadania.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Czy mój kod jest wysyłany do internetu?</h3>
+            <p>Nie w trybie OFFLINE. W trybie ONLINE wysyłane jest tylko zapytanie potrzebne do wyszukiwania informacji, nie cały projekt.</p>
+          </div>
+          <div class="faq-item">
             <h3>Czy działa bez karty graficznej?</h3>
-            <p>Tak. Tryb CPU only działa bez karty NVIDIA, ale jest wolniejszy. Tryb GPU + CPU jest szybszy i wymaga odpowiedniej karty NVIDIA.</p>
-          </article>
-
-          <article class="faq-item">
-            <h3>Czy nowsze buildy dostanę za darmo?</h3>
-            <p>Nie. Kodnik jest sprzedawany w modelu pay-per-build. Kupujesz konkretny build i możesz z niego korzystać bez ograniczeń czasowych. Nowe buildy są osobnymi produktami.</p>
-          </article>
-
-          <article class="faq-item">
+            <p>Tak, w trybie CPU only. Będzie wolniej, ale działa. Szybszy tryb GPU + CPU wymaga zgodnej karty NVIDIA.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Czy dostanę przyszłe buildy za darmo?</h3>
+            <p>Kupujesz konkretny build. Nowsze buildy mogą być sprzedawane osobno. Sam decydujesz, czy chcesz kolejną wersję.</p>
+          </div>
+          <div class="faq-item">
             <h3>Czy dostanę fakturę VAT?</h3>
-            <p>Nie. Kodnik jest sprzedawany w ramach działalności nierejestrowanej. Po zakupie 1koszyk wystawia potwierdzenie zakupu / rachunek. Jeśli potrzebujesz pełnej FV VAT, napisz przed zakupem.</p>
-          </article>
-
-          <article class="faq-item">
-            <h3>Co jeśli coś nie zadziała?</h3>
-            <p>Napisz na <a href="mailto:ujot@interia.pl" class="link-cta">ujot@interia.pl</a>. Beta jest aktywnie rozwijana, a zgłoszenia pomagają poprawiać kolejne buildy.</p>
-          </article>
+            <p>Nie. Kodnik jest sprzedawany w ramach działalności nierejestrowanej. Po zakupie otrzymujesz potwierdzenie zakupu / rachunek z obsługi 1koszyk.</p>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section id="kontakt" class="section section--compact">
-      <div class="container">
-        <h2>Kontakt</h2>
-
-        <p class="section-lead">
-          Masz pytanie o Kodnika, zakup, wymagania sprzętowe albo betę? Napisz.
-        </p>
-
-        <p>
-          <a href="mailto:ujot@interia.pl" class="link-cta">ujot@interia.pl</a>
-        </p>
-
-        <p class="small-note">
-          Strona: <a href="https://kodnik.pl" class="link-cta" target="_blank" rel="noopener">kodnik.pl</a>
-        </p>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p><strong>Kodnik</strong> — BETA-2026.05.27. Lokalny edytor AI do kodu na Windows.</p>
-
-      <p class="footer-links">
-        <a href="#kup">Kup</a>
-        <span class="footer-sep">·</span>
-        <a href="#wymagania">Wymagania</a>
-        <span class="footer-sep">·</span>
-        <a href="#faq">FAQ</a>
-        <span class="footer-sep">·</span>
-        <a href="#kontakt">Kontakt</a>
-      </p>
-
-      <p class="footer-copy">&copy; Kodnik. Wszelkie prawa zastrzeżone.</p>
+  <footer class="footer" id="kontakt">
+    <div class="container footer-inner">
+      <div>
+        <strong>Kodnik BETA</strong><br />
+        Lokalny edytor AI do kodu na Windows.
+      </div>
+      <div>
+        Kontakt: <a href="mailto:ujot@interia.pl">ujot@interia.pl</a><br />
+        Strona: <a href="https://kodnik.pl">kodnik.pl</a>
+      </div>
     </div>
   </footer>
 </body>
