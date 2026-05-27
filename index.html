@@ -3,14 +3,347 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kodnik – BETA. Premiera 26.05.2026.</title>
-  <meta name="description" content="Kodnik wchodzi w wersję BETA. Premiera 26.05.2026. Lokalny system AI do tworzenia programów i pracy z kodem." />
+  <title>Kodnik BETA – lokalny edytor AI do kodu</title>
+  <meta name="description" content="Kodnik BETA to lokalny edytor AI do tworzenia, edycji i naprawy małych programów na Windows. Bez chmury, bez abonamentu, z modelem działającym na Twoim komputerze." />
   <link rel="icon" type="image/png" href="./assets/kodnik-ikona-lodka.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="./assets/kodnik-ikona-lodka.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
+  <style>
+    :root {
+      --kodnik-accent: #ffb000;
+      --kodnik-accent-2: #ff6a00;
+      --kodnik-green: #28f28f;
+      --kodnik-card: rgba(9, 13, 24, 0.72);
+      --kodnik-card-border: rgba(255, 176, 0, 0.22);
+      --kodnik-text-soft: rgba(255, 255, 255, 0.74);
+    }
+
+    .hero-kicker,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.42rem 0.72rem;
+      border: 1px solid rgba(255, 176, 0, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 176, 0, 0.08);
+      color: #ffd37a;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .hero-headline {
+      max-width: 980px;
+      margin: 1.2rem auto 0;
+      font-size: clamp(2.35rem, 7vw, 5.6rem);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .hero-headline strong {
+      color: #fff;
+    }
+
+    .hero-subclaim {
+      max-width: 850px;
+      margin: 1.2rem auto 0;
+      color: var(--kodnik-text-soft);
+      font-size: clamp(1.08rem, 2.4vw, 1.55rem);
+      line-height: 1.5;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .hero-subclaim strong {
+      color: #fff;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-top: 1.7rem;
+    }
+
+    .btn-cta--ghost {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .hero-signals {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin: 1.25rem auto 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-signals li {
+      padding: 0.6rem 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.95rem;
+      font-weight: 650;
+    }
+
+    .product-preview {
+      max-width: 1020px;
+      margin: 2.25rem auto 0;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.45rem;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255, 176, 0, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(12, 16, 28, 0.95), rgba(7, 10, 18, 0.96));
+      box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
+    }
+
+    .product-preview__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      background: rgba(0, 0, 0, 0.32);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .product-preview__dots {
+      display: inline-flex;
+      gap: 0.36rem;
+    }
+
+    .product-preview__dots span {
+      width: 0.62rem;
+      height: 0.62rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .product-preview__body {
+      display: grid;
+      grid-template-columns: 1fr 0.88fr;
+      min-height: 360px;
+    }
+
+    .product-preview__chat {
+      padding: clamp(1rem, 3vw, 1.65rem);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .product-preview__title {
+      margin: 0 0 1rem;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .chat-bubble {
+      max-width: 92%;
+      margin: 0.72rem 0;
+      padding: 0.9rem 1rem;
+      border-radius: 1rem;
+      line-height: 1.46;
+      font-size: clamp(0.95rem, 1.8vw, 1.04rem);
+    }
+
+    .chat-bubble--user {
+      margin-left: auto;
+      background: linear-gradient(135deg, rgba(255, 176, 0, 0.95), rgba(255, 106, 0, 0.92));
+      color: #16100a;
+      font-weight: 750;
+    }
+
+    .chat-bubble--mamut {
+      margin-right: auto;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.07);
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .product-preview__code {
+      padding: clamp(1rem, 3vw, 1.65rem);
+      background: rgba(0, 0, 0, 0.22);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.86rem;
+      color: rgba(255, 205, 128, 0.9);
+      overflow: hidden;
+    }
+
+    .code-line {
+      display: block;
+      margin: 0.42rem 0;
+      white-space: nowrap;
+    }
+
+    .code-line--dim {
+      color: rgba(255, 255, 255, 0.36);
+    }
+
+    .command-wall {
+      display: grid;
+      gap: 0.9rem;
+      max-width: 900px;
+      margin: 2rem auto 0;
+    }
+
+    .command-bubble {
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 1.05rem;
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      line-height: 1.45;
+      box-shadow: 0 14px 50px rgba(0, 0, 0, 0.18);
+    }
+
+    .command-bubble:nth-child(even) {
+      margin-left: min(3vw, 2rem);
+    }
+
+    .privacy-box,
+    .price-box,
+    .beta-box {
+      max-width: 980px;
+      margin: 2rem auto 0;
+      padding: clamp(1.2rem, 3vw, 2rem);
+      border: 1px solid var(--kodnik-card-border);
+      border-radius: 1.35rem;
+      background:
+        radial-gradient(circle at top left, rgba(255, 176, 0, 0.16), transparent 36%),
+        rgba(255, 255, 255, 0.06);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22);
+    }
+
+    .privacy-box p,
+    .price-box p,
+    .beta-box p {
+      color: var(--kodnik-text-soft);
+      font-size: 1.06rem;
+      line-height: 1.62;
+    }
+
+    .privacy-box strong,
+    .price-box strong,
+    .beta-box strong {
+      color: #fff;
+    }
+
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .requirement-card {
+      padding: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.15rem;
+      background: rgba(255, 255, 255, 0.065);
+    }
+
+    .requirement-card h3 {
+      margin-top: 0;
+    }
+
+    .requirement-card ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.15rem;
+      color: var(--kodnik-text-soft);
+      line-height: 1.65;
+    }
+
+    .price-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.8rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .price-line strong {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .price-line span {
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 700;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 1rem;
+      max-width: 980px;
+      margin: 2rem auto 0;
+    }
+
+    .faq-item {
+      padding: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 0.55rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--kodnik-text-soft);
+      line-height: 1.6;
+    }
+
+    .small-note {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 820px) {
+      .product-preview__body,
+      .requirements-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-preview__chat {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn-cta {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="bg-wrap" aria-hidden="true">
@@ -27,13 +360,13 @@
 
   <header class="header">
     <div class="container">
-      <span class="beta-badge" aria-label="Aktualny status projektu">BETA · premiera 26.05.2026</span>
+      <span class="beta-badge" aria-label="Aktualny build Kodnika">BETA-2026.05.27 · dostępny</span>
       <nav class="nav">
-        <a href="#mamut">Mamut</a>
-        <a href="#zalety-vs">Kodnik</a>
-        <a href="#czym-jest">Czym jest</a>
-        <a href="#oferta">Beta</a>
-        <a href="#regulamin">Informacje</a>
+        <a href="#co-potrafi">Co potrafi</a>
+        <a href="#prywatnosc">Prywatność</a>
+        <a href="#wymagania">Wymagania</a>
+        <a href="#kup">Kup</a>
+        <a href="#faq">FAQ</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
@@ -46,124 +379,61 @@
       <span class="hero-ember hero-ember--3" aria-hidden="true"></span>
 
       <div class="container">
-        <p class="hero-label">BETA · premiera 26.05.2026</p>
+        <p class="hero-kicker">Kodnik BETA · build 2026.05.27</p>
 
         <div class="hero-title-row">
           <img src="./assets/kodnik-logo.png" alt="Kodnik" class="hero-logo-img" width="280" height="80" />
         </div>
 
-        <p class="hero-beta">Kodnik wchodzi w betę.</p>
+        <h1 class="hero-headline">
+          <strong>Lokalny edytor AI do kodu.</strong><br />
+          Małe modele udowadniają, że chmura nie jest do tego potrzebna.
+        </h1>
 
-        <p class="hero-tagline">
-          <strong>Kodnik</strong> to lokalny system AI do tworzenia programów i pracy z kodem.
-          W centrum działania stoi <strong>Mamut</strong> — system Kodnika, który zarządza modelami AI, prowadzi je przez zadanie i pomaga zamieniać opis użytkownika w realne pliki, programy oraz poprawki.
-          Beta startuje <strong>26.05.2026</strong>.
+        <p class="hero-subclaim">
+          Kodnik pomaga tworzyć, zmieniać i naprawiać małe programy na Windows.
+          Mamut to lokalne AI w Kodniku — piszesz do niego po polsku, a on pomaga przejść od pomysłu do działającego projektu.
         </p>
 
-        <div id="mamut" class="hero-zwierzaki">
-          <h2 class="hero-zwierzaki-title">MAMUT · SYSTEM AI KODNIKA</h2>
+        <div class="hero-actions">
+          <a href="https://1ct.eu/5DkWv" class="btn-cta btn-cta--hero" target="_blank" rel="noopener">Kup ten build — 49 zł</a>
+          <a href="#co-potrafi" class="btn-cta btn-cta--ghost">Zobacz, co potrafi</a>
+        </div>
 
-          <div class="hero-cards">
-            <article class="hero-card hero-card--mamut">
-              <span class="hero-card-icon hero-card-icon--code" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                  <path d="M16 14L8 24l8 10M32 14l8 10-8 10M28 8l-8 32"/>
-                </svg>
-              </span>
+        <ul class="hero-signals" aria-label="Najważniejsze informacje">
+          <li>Windows 10/11</li>
+          <li>Bez abonamentu</li>
+          <li>Twój kod zostaje u Ciebie</li>
+        </ul>
 
-              <span class="hero-card-badge hero-card-badge--soon">System AI</span>
-
-              <h3>Mamut</h3>
-
-              <p class="hero-card-rola">System zarządzający AI w Kodniku</p>
-
-              <p class="hero-card-opis">
-                Mamut nie jest osobnym dodatkiem ani maskotką. To system pracy Kodnika:
-                prowadzi AI przez zadanie, wybiera właściwą ścieżkę, przygotowuje kontekst,
-                uruchamia tworzenie lub naprawę i pilnuje, żeby efekt trafił do projektu.
-              </p>
-
-              <ul class="hero-card-list">
-                <li>Tworzenie programów z opisu</li>
-                <li>Naprawa i edycja plików projektu</li>
-                <li>Lokalna praca z kodem i modelem AI</li>
-              </ul>
-            </article>
-
-            <article class="hero-card hero-card--malpa">
-              <span class="hero-card-icon hero-card-icon--server" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5">
-                  <rect x="6" y="8" width="36" height="10" rx="1.5"/>
-                  <rect x="6" y="22" width="36" height="10" rx="1.5"/>
-                  <rect x="6" y="36" width="36" height="6" rx="1"/>
-                  <path d="M14 13h2M14 27h2M14 39h2"/>
-                </svg>
-              </span>
-
-              <span class="hero-card-badge hero-card-badge--soon">Beta 26.05.2026</span>
-
-              <h3>Kodnik</h3>
-
-              <p class="hero-card-rola">Lokalne środowisko pracy z AI</p>
-
-              <p class="hero-card-opis">
-                Kodnik działa jak lokalny asystent do programowania: pomaga tworzyć programy,
-                poprawiać błędy, edytować pliki i pracować nad projektem bez wysyłania całej pracy
-                do zewnętrznego edytora online.
-              </p>
-
-              <ul class="hero-card-list">
-                <li>Programy, pliki i poprawki w jednym miejscu</li>
-                <li>AI prowadzone przez system Mamuta</li>
-                <li>Beta dostępna od 26.05.2026</li>
-              </ul>
-            </article>
+        <div class="product-preview" aria-label="Podgląd pracy w Kodniku">
+          <div class="product-preview__bar">
+            <span class="product-preview__dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span>Kodnik · Mamut · lokalnie</span>
+            <span>BETA</span>
           </div>
-        </div>
 
-        <div class="plusy-strip">
-          <span class="plus-item">
-            <span class="plus-icon plus-icon--lock">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                <path d="M7 11V7a5 5 0 0110 0v4"/>
-              </svg>
-            </span>
-            Beta 26.05.2026
-          </span>
+          <div class="product-preview__body">
+            <div class="product-preview__chat">
+              <p class="product-preview__title">Pisz normalnie. Kodnik pracuje w projekcie.</p>
+              <div class="chat-bubble chat-bubble--user">Stwórz prostą aplikację do notatek.</div>
+              <div class="chat-bubble chat-bubble--mamut">Przygotowuję projekt i zapisuję pliki.</div>
+              <div class="chat-bubble chat-bubble--user">Zmień kolor przycisku Zapisz na zielony.</div>
+              <div class="chat-bubble chat-bubble--mamut">Gotowe. Zmiana jest w pliku projektu.</div>
+            </div>
 
-          <span class="plus-item">
-            <span class="plus-icon plus-icon--screen">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                <path d="M8 21h8M12 17v4"/>
-              </svg>
-            </span>
-            Mamut zarządza AI
-          </span>
-
-          <span class="plus-item">
-            <span class="plus-icon plus-icon--infinity">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M18 8a6 6 0 00-10 4 6 6 0 0010 4 6 6 0 00-10-4 6 6 0 0010-4"/>
-              </svg>
-            </span>
-            Lokalna praca z kodem
-          </span>
-
-          <span class="plus-item">
-            <span class="plus-icon plus-icon--zap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
-            </span>
-            Tworzenie programów
-          </span>
-        </div>
-
-        <div class="hero-cta">
-          <span class="hero-price">BETA <em>premiera 26.05.2026</em></span>
-          <a href="#oferta" class="btn-cta btn-cta--hero">Zobacz betę</a>
+            <div class="product-preview__code" aria-hidden="true">
+              <span class="code-line code-line--dim">&lt;main class="app"&gt;</span>
+              <span class="code-line">&nbsp;&nbsp;&lt;button class="save"&gt;Zapisz&lt;/button&gt;</span>
+              <span class="code-line code-line--dim">&nbsp;&nbsp;&lt;section class="notes"&gt;...&lt;/section&gt;</span>
+              <span class="code-line code-line--dim">&lt;/main&gt;</span>
+              <span class="code-line">&nbsp;</span>
+              <span class="code-line">.save {</span>
+              <span class="code-line">&nbsp;&nbsp;background: #22c55e;</span>
+              <span class="code-line">&nbsp;&nbsp;color: #ffffff;</span>
+              <span class="code-line">}</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -175,300 +445,202 @@
       </svg>
     </div>
 
-    <section id="zalety-vs" class="section section--fire">
+    <section id="co-potrafi" class="section section--fire">
       <div class="container">
-        <h2 class="vs-title">Kodnik jako lokalny system AI</h2>
-
-        <p class="section-lead vs-lead">
-          Kodnik łączy aplikację desktopową, lokalny model AI i system Mamuta, który prowadzi model przez tworzenie, edycję oraz naprawę kodu.
-        </p>
-
-        <div class="vs-grid">
-          <div class="vs-card vs-card--us">
-            <h3>Co robi Kodnik</h3>
-            <ul>
-              <li><strong>Tworzy programy z opisu</strong> – użytkownik opisuje, co chce dostać, a Kodnik buduje pliki projektu</li>
-              <li><strong>Pomaga edytować kod</strong> – zmiany trafiają bezpośrednio do wskazanych plików</li>
-              <li><strong>Naprawia błędy</strong> – może analizować problem, czytać pliki i wprowadzać poprawki</li>
-              <li><strong>Pracuje lokalnie</strong> – rdzeń działania opiera się na lokalnym środowisku</li>
-              <li><strong>Ma własny system prowadzenia AI</strong> – Mamut zarządza przepływem pracy modelu</li>
-              <li><strong>Jest budowany jako praktyczne narzędzie</strong> – do realnej pracy z programami, nie tylko do rozmowy</li>
-            </ul>
-          </div>
-
-          <div class="vs-card vs-card--them">
-            <h3>Co wyróżnia Mamuta</h3>
-            <ul>
-              <li><strong>Mamut prowadzi model krok po kroku</strong>, zamiast zostawiać mu całe zadanie naraz</li>
-              <li>Rozpoznaje, czy użytkownik chce rozmawiać, tworzyć program, edytować czy naprawiać</li>
-              <li>Przygotowuje kontekst wykonania dla właściwej ścieżki pracy</li>
-              <li>Łączy odpowiedź AI z działaniem na plikach projektu</li>
-              <li>Pomaga utrzymać prostszy, bardziej kontrolowany przepływ pracy</li>
-              <li>Jest rdzeniem działania Kodnika w wersji beta</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="plusy-section">
-      <div class="container">
-        <h2 class="plusy-title">Dlaczego Kodnik</h2>
-
-        <div class="plusy-grid">
-          <div class="plusy-card">
-            <span class="plusy-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                <path d="M7 11V7a5 5 0 0110 0v4"/>
-              </svg>
-            </span>
-            <h3>Lokalna praca</h3>
-            <p>Kodnik jest projektowany jako narzędzie działające lokalnie, z własnym przepływem pracy dla AI i plików projektu.</p>
-          </div>
-
-          <div class="plusy-card">
-            <span class="plusy-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                <path d="M8 21h8M12 17v4"/>
-              </svg>
-            </span>
-            <h3>Tworzenie programów</h3>
-            <p>Opisujesz, co chcesz zbudować, a Kodnik prowadzi AI przez przygotowanie i zapisanie programu.</p>
-          </div>
-
-          <div class="plusy-card">
-            <span class="plusy-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M18 8a6 6 0 00-10 4 6 6 0 0010 4 6 6 0 00-10-4 6 6 0 0010-4"/>
-              </svg>
-            </span>
-            <h3>System Mamuta</h3>
-            <p>Mamut zarządza zadaniem, kontekstem, modelem i wykonaniem, żeby AI pracowało w konkretnym kierunku.</p>
-          </div>
-
-          <div class="plusy-card">
-            <span class="plusy-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
-            </span>
-            <h3>Beta 26.05.2026</h3>
-            <p>Pierwsza wersja beta Kodnika startuje 26 maja 2026 roku.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="czym-jest" class="section section--alt">
-      <div class="container">
-        <h2>Czym jest Kodnik</h2>
-
-        <div class="intro-grid">
-          <div class="card card--wide">
-            <p>
-              <strong>Kodnik</strong> to aplikacja do pracy z kodem wspierana przez lokalne AI.
-              Jej celem jest tworzenie programów, edycja plików i naprawa błędów w jednym środowisku.
-            </p>
-          </div>
-
-          <div class="card card--wide">
-            <p>
-              <strong>Mamut</strong> to system Kodnika zarządzający AI.
-              Nie jest osobną funkcją ani dodatkowym zwierzakiem — to główny mechanizm prowadzenia modelu przez zadania programistyczne.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="oferta" class="section section--alt">
-      <div class="container">
-        <h2>Beta Kodnika</h2>
+        <p class="section-kicker">Powiedz, co chcesz zrobić</p>
+        <h2>Nie wybierasz trybów. Piszesz do Mamuta.</h2>
 
         <p class="section-lead">
-          Premiera wersji beta: <strong>26.05.2026</strong>. Kodnik otwiera dostęp do lokalnego systemu AI do tworzenia programów i pracy z kodem.
+          Kodnik działa jak lokalny asystent w edytorze. Opisz zadanie po polsku: program, poprawkę, błąd albo pytanie.
         </p>
 
-        <div class="flow-steps">
-          <div class="flow-step">
-            <span class="flow-num">1</span>
-            <p>
-              <strong>Uruchamiasz Kodnika</strong> – pracujesz w aplikacji desktopowej przygotowanej do tworzenia i edycji programów.
-            </p>
-          </div>
+        <div class="command-wall" aria-label="Przykładowe wiadomości do Kodnika">
+          <div class="command-bubble">Stwórz prostą aplikację do notatek.</div>
+          <div class="command-bubble">Zmień kolor przycisku Zapisz na zielony.</div>
+          <div class="command-bubble">Napraw błąd, przez który program się nie uruchamia.</div>
+          <div class="command-bubble">Znajdź w internecie informacje o Hondzie Civic.</div>
+        </div>
+      </div>
+    </section>
 
-          <div class="flow-step">
-            <span class="flow-num">2</span>
-            <p>
-              <strong>Opisujesz zadanie</strong> – możesz poprosić o stworzenie programu, zmianę w pliku albo naprawę błędu.
-            </p>
-          </div>
+    <section id="prywatnosc" class="section section--alt">
+      <div class="container">
+        <p class="section-kicker">Twój kod zostaje u Ciebie</p>
+        <h2>Lokalność to nie dodatek. To sens Kodnika.</h2>
 
-          <div class="flow-step">
-            <span class="flow-num">3</span>
-            <p>
-              <strong>Mamut prowadzi AI</strong> – system dobiera ścieżkę pracy, przygotowuje kontekst i wykonuje zmiany w projekcie.
-            </p>
-          </div>
+        <div class="privacy-box">
+          <p>
+            <strong>Kodnik nie wysyła Twoich plików projektu na serwery AI.</strong>
+            W trybie offline praca modelu dzieje się lokalnie na Twoim komputerze.
+            W trybie online Kodnik wysyła do wyszukiwarki tylko zapytanie, na przykład
+            <strong>„Honda Civic opinie”</strong> — nie Twój kod, nie folder projektu i nie prywatne pliki.
+          </p>
         </div>
 
-        <h3 class="offer-heading">Co zawiera beta</h3>
+        <div class="privacy-box">
+          <p>
+            <strong>Wszystko dzieje się na Twoim komputerze.</strong>
+            Model AI pobiera się raz przy instalacji. Później możesz korzystać z Kodnika bez konta, bez abonamentu i bez stałej weryfikacji online.
+          </p>
+          <p class="small-note">Powered by Qwen3.5-9B (Apache 2.0).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="wymagania" class="section">
+      <div class="container">
+        <p class="section-kicker">Wymagania</p>
+        <h2>Windows i lokalny model AI.</h2>
 
         <p class="section-lead">
-          Beta skupia się na praktycznej pracy z kodem: tworzeniu programów, prostych edycjach, naprawach oraz lokalnym przepływie AI.
+          Kodnik jest aplikacją desktopową dla Windows. Może działać bez mocnej karty graficznej, ale na lepszym sprzęcie będzie wyraźnie szybszy.
         </p>
 
-        <div class="benefits">
-          <div class="benefit-card">
-            <span class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                <path d="M8 21h8M12 17v4"/>
-              </svg>
-            </span>
-            <h3>Tworzenie programów</h3>
-            <p>Kodnik potrafi przygotowywać programy na podstawie opisu użytkownika i zapisywać potrzebne pliki.</p>
-          </div>
+        <div class="requirements-grid">
+          <article class="requirement-card">
+            <h3>Minimum i zalecenia</h3>
+            <ul>
+              <li>Windows 10 / 11 x64</li>
+              <li>Procesor x86_64 z AVX2</li>
+              <li>16 GB RAM minimum</li>
+              <li>24 GB RAM zalecane dla trybu CPU only</li>
+              <li>około 6 GB miejsca na model i paczkę</li>
+              <li>internet jednorazowo do pobrania modelu AI</li>
+            </ul>
+          </article>
 
-          <div class="benefit-card">
-            <span class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M18 8a6 6 0 00-10 4 6 6 0 0010 4 6 6 0 00-10-4 6 6 0 0010-4"/>
-              </svg>
-            </span>
-            <h3>Edycja i naprawa</h3>
-            <p>Możesz używać Kodnika do prostych zmian w projekcie oraz naprawiania błędów w istniejących plikach.</p>
-          </div>
-
-          <div class="benefit-card">
-            <span class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-              </svg>
-            </span>
-            <h3>Lokalny system AI</h3>
-            <p>Mamut zarządza pracą modelu AI lokalnie, w ramach przepływu przygotowanego specjalnie dla Kodnika.</p>
-          </div>
+          <article class="requirement-card">
+            <h3>Tryby pracy</h3>
+            <ul>
+              <li><strong>CPU only</strong> — działa bez karty NVIDIA, wolniej, ale szerzej kompatybilnie</li>
+              <li><strong>GPU + CPU</strong> — szybszy tryb dla NVIDIA RTX 30xx / 40xx</li>
+              <li>dla GPU + CPU zalecane minimum 4 GB VRAM</li>
+              <li>wymagane aktualne sterowniki NVIDIA / CUDA 12.x</li>
+            </ul>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <div class="offer-box">
-          <p class="offer-price"><strong>BETA</strong> <em>premiera 26.05.2026</em></p>
+    <section id="kup" class="section section--alt">
+      <div class="container">
+        <p class="section-kicker">Kup ten build</p>
+        <h2>Kodnik BETA — 49 zł.</h2>
 
-          <p class="offer-desc">
-            Kodnik startuje w wersji beta jako lokalne narzędzie AI do tworzenia programów i pracy z kodem.
+        <div class="price-box">
+          <div class="price-line">
+            <strong>49 zł</strong>
+            <span>BETA-2026.05.27</span>
+          </div>
+
+          <p>
+            Kupujesz konkretny build Kodnika. Bez abonamentu, bez konta i bez weryfikacji online.
+            Ten build działa bez ograniczeń czasowych. Nowsze buildy będą sprzedawane osobno — sam decydujesz, czy chcesz aktualizować.
           </p>
 
-          <a href="mailto:ujot@interia.pl?subject=Kodnik%20BETA%20%E2%80%93%20premiera%2026.05.2026" class="btn-cta">Kontakt w sprawie bety</a>
+          <div class="hero-actions">
+            <a href="https://1ct.eu/5DkWv" class="btn-cta btn-cta--hero" target="_blank" rel="noopener">Kup dostęp — 49 zł</a>
+            <a href="#faq" class="btn-cta btn-cta--ghost">Pytania przed zakupem</a>
+          </div>
 
-          <p class="offer-note">
-            Beta oznacza wczesną wersję produktu w aktywnym rozwoju. Funkcje będą rozwijane i dopracowywane wraz z kolejnymi wersjami.
+          <p class="small-note">
+            Po zakupie otrzymasz link do pobrania instalatora Kodnika. Model AI pobiera się osobno przy pierwszej instalacji.
           </p>
-
-          <a href="#kontakt" class="link-cta link-cta--small">Masz pytania? Napisz do nas</a>
         </div>
       </div>
     </section>
 
-    <section id="dla-klienta" class="section">
+    <section id="beta" class="section">
       <div class="container">
-        <h2>Kierunek rozwoju Kodnika</h2>
+        <p class="section-kicker">BETA</p>
+        <h2>Aktywnie rozwijane.</h2>
+
+        <div class="beta-box">
+          <p>
+            <strong>Kodnik BETA jest dostępny i rozwijany.</strong>
+            Każdy build to dojrzalsza wersja. Najlepsze efekty dziś daje przy małych programach:
+            1–5 plików, jeden ekran, jasna mechanika i konkretne polecenie.
+          </p>
+        </div>
+
+        <div class="beta-box">
+          <p>
+            <strong>Dokąd idziemy:</strong>
+            czytanie tego, co widzisz na ekranie, większy model dla mocnego sprzętu, większe projekty i dalszy rozwój pracy lokalnej.
+            Kierunek zostaje ten sam: więcej możliwości, nadal lokalnie.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section section--alt">
+      <div class="container">
+        <p class="section-kicker">FAQ</p>
+        <h2>Najczęstsze pytania.</h2>
+
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>Czy potrzebuję internetu?</h3>
+            <p>Tak, jednorazowo do pobrania modelu AI przy instalacji. Później Kodnik może działać offline. Internet jest potrzebny tylko wtedy, gdy używasz trybu online do szukania aktualnych informacji.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Czy mój kod jest wysyłany do chmury?</h3>
+            <p>Nie. Kodnik pracuje lokalnie na Twoim komputerze. W trybie online wysyłane jest tylko zapytanie do wyszukiwarki, nie pliki projektu.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Czy działa bez karty graficznej?</h3>
+            <p>Tak. Tryb CPU only działa bez karty NVIDIA, ale jest wolniejszy. Tryb GPU + CPU jest szybszy i wymaga odpowiedniej karty NVIDIA.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Czy nowsze buildy dostanę za darmo?</h3>
+            <p>Nie. Kodnik jest sprzedawany w modelu pay-per-build. Kupujesz konkretny build i możesz z niego korzystać bez ograniczeń czasowych. Nowe buildy są osobnymi produktami.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Czy dostanę fakturę VAT?</h3>
+            <p>Nie. Kodnik jest sprzedawany w ramach działalności nierejestrowanej. Po zakupie 1koszyk wystawia potwierdzenie zakupu / rachunek. Jeśli potrzebujesz pełnej FV VAT, napisz przed zakupem.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Co jeśli coś nie zadziała?</h3>
+            <p>Napisz na <a href="mailto:ujot@interia.pl" class="link-cta">ujot@interia.pl</a>. Beta jest aktywnie rozwijana, a zgłoszenia pomagają poprawiać kolejne buildy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section section--compact">
+      <div class="container">
+        <h2>Kontakt</h2>
 
         <p class="section-lead">
-          Kodnik rozwija się jako lokalny asystent programowania z własnym systemem prowadzenia AI.
+          Masz pytanie o Kodnika, zakup, wymagania sprzętowe albo betę? Napisz.
         </p>
 
-        <ul class="tech-list">
-          <li>Lepsze tworzenie programów z opisu użytkownika</li>
-          <li>Stabilniejsza edycja istniejących plików</li>
-          <li>Skuteczniejsza naprawa błędów w projektach</li>
-          <li>Rozwój Mamuta jako systemu zarządzania lokalnym AI</li>
-          <li>Lepszy workflow w aplikacji desktopowej</li>
-          <li>Rozbudowa gotowych ścieżek i narzędzi do pracy z kodem</li>
-        </ul>
+        <p>
+          <a href="mailto:ujot@interia.pl" class="link-cta">ujot@interia.pl</a>
+        </p>
+
+        <p class="small-note">
+          Strona: <a href="https://kodnik.pl" class="link-cta" target="_blank" rel="noopener">kodnik.pl</a>
+        </p>
       </div>
     </section>
   </main>
 
-  <section id="regulamin" class="section section--alt">
-    <div class="container">
-      <h2>Status projektu i ważne informacje</h2>
-
-      <p class="section-lead">
-        Kodnik startuje jako beta — produkt działający, ale nadal rozwijany.
-      </p>
-
-      <div class="regulamin-grid">
-        <div class="regulamin-block">
-          <h3>1. Aktualny status</h3>
-          <p>
-            Kodnik wchodzi w wersję <strong>BETA</strong>. Premiera wersji beta została zaplanowana na <strong>26.05.2026</strong>.
-          </p>
-        </div>
-
-        <div class="regulamin-block regulamin-block--highlight">
-          <h3>2. Czym jest Mamut</h3>
-          <p>
-            <strong>Mamut</strong> to system Kodnika zarządzający AI. Prowadzi model przez zadania, przygotowuje kontekst pracy i łączy odpowiedzi AI z działaniem na plikach projektu.
-          </p>
-        </div>
-
-        <div class="regulamin-block">
-          <h3>3. Zakres bety</h3>
-          <p>
-            Beta obejmuje przede wszystkim tworzenie programów, edycję plików, naprawę błędów i lokalny workflow pracy z AI.
-          </p>
-        </div>
-
-        <div class="regulamin-block">
-          <h3>4. Charakter wersji beta</h3>
-          <p>
-            Beta jest wersją rozwijaną. Oznacza to, że część funkcji może się zmieniać, a kolejne aktualizacje będą poprawiały stabilność, jakość i możliwości Kodnika.
-          </p>
-        </div>
-
-        <div class="regulamin-block">
-          <h3>5. Kontakt</h3>
-          <p>
-            W sprawie dostępu, informacji o becie lub współpracy można skontaktować się mailowo.
-          </p>
-        </div>
-
-        <div class="regulamin-block">
-          <h3>6. Rozwój produktu</h3>
-          <p>
-            Kodnik będzie rozwijany jako lokalny system AI do pracy z kodem, tworzenia programów i prowadzenia użytkownika przez zadania programistyczne.
-          </p>
-        </div>
-      </div>
-
-      <p class="regulamin-note">
-        Masz pytania? <a href="#kontakt" class="link-cta">Skontaktuj się z nami</a>.
-      </p>
-    </div>
-  </section>
-
-  <section id="kontakt" class="section section--compact">
-    <div class="container">
-      <h2>Kontakt</h2>
-
-      <p class="section-lead">
-        Chcesz zapytać o betę Kodnika, dostęp albo aktualny stan projektu? Napisz.
-      </p>
-
-      <p>
-        <a href="mailto:ujot@interia.pl" class="link-cta">ujot@interia.pl</a>
-      </p>
-    </div>
-  </section>
-
   <footer class="footer">
     <div class="container">
-      <p><strong>Kodnik</strong> – BETA. Premiera 26.05.2026.</p>
+      <p><strong>Kodnik</strong> — BETA-2026.05.27. Lokalny edytor AI do kodu na Windows.</p>
 
       <p class="footer-links">
-        <a href="#regulamin">Informacje</a>
+        <a href="#kup">Kup</a>
+        <span class="footer-sep">·</span>
+        <a href="#wymagania">Wymagania</a>
+        <span class="footer-sep">·</span>
+        <a href="#faq">FAQ</a>
         <span class="footer-sep">·</span>
         <a href="#kontakt">Kontakt</a>
       </p>
