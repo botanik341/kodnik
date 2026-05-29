@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kodnik BETA — lokalne AI tworzy programy na Twoim PC</title>
-  <meta name="description" content="Powiedz, co ma zrobić program. Kodnik zbuduje go u Ciebie na komputerze — bez chmury, bez abonamentu, kod zostaje u Ciebie." />
+  <meta name="description" content="Powiedz, co ma zrobić program. Kodnik zbuduje go u Ciebie na komputerze — bez chmury, bez abonamentu, kod zostaje u Ciebie. Aktualizacje beta są w cenie." />
   <meta name="theme-color" content="#080b12" />
   <link rel="canonical" href="https://kodnik.pl/" />
 
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kodnik" />
   <meta property="og:title" content="Kodnik BETA — lokalne AI tworzy programy na Twoim PC" />
-  <meta property="og:description" content="Powiedz, co ma zrobić program. Kodnik zbuduje go u Ciebie na komputerze — bez chmury, bez abonamentu, kod zostaje u Ciebie." />
+  <meta property="og:description" content="Kup dostęp do Kodnika Beta. Aktualna wersja i aktualizacje beta bez dopłat — lokalnie na Windows, bez abonamentu, kod zostaje u Ciebie." />
   <meta property="og:url" content="https://kodnik.pl/" />
   <meta property="og:image" content="https://kodnik.pl/assets/kodnik-social-preview.png" />
   <meta property="og:image:width" content="1200" />
@@ -24,7 +24,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Kodnik BETA — lokalne AI tworzy programy na Twoim PC" />
-  <meta name="twitter:description" content="Powiedz, co ma zrobić program. Kodnik zbuduje go u Ciebie na komputerze — bez chmury, bez abonamentu, kod zostaje u Ciebie." />
+  <meta name="twitter:description" content="Kup dostęp do Kodnika Beta. Aktualna wersja i aktualizacje beta bez dopłat — lokalnie na Windows, bez abonamentu, kod zostaje u Ciebie." />
   <meta name="twitter:image" content="https://kodnik.pl/assets/kodnik-social-preview.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -269,6 +269,7 @@
     }
     .status { padding: 6px 10px; border-radius: 8px; font-weight: 800; color:#06120f; background: var(--green); }
     .status.online { color:#d9e6ff; background: rgba(116,165,255,.18); border:1px solid rgba(116,165,255,.22); }
+    .status.update { color:#171006; background: linear-gradient(135deg, var(--gold), var(--gold-2)); }
     .status.cpu { margin-left:auto; color:#110a03; background: var(--gold-2); }
 
     section { padding: 70px 0; }
@@ -404,7 +405,7 @@
       <a class="brand" href="#top" aria-label="Kodnik">
         <img src="./assets/kodnik-logo.png" alt="" onerror="this.style.display='none'" />
         <span class="brand-name">Kodnik</span>
-        <span class="brand-build">BETA-2026.05.27</span>
+        <span class="brand-build">BETA-2026.05.29</span>
       </a>
       <nav class="nav" aria-label="Główna nawigacja">
         <a href="#powiedz">Możliwości</a>
@@ -421,22 +422,26 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">KODNIK BETA · DOSTĘPNY BUILD</span>
+          <span class="eyebrow">KODNIK BETA · BETA ACCESS</span>
           <h1>Powiedz, co ma zrobić program. Kodnik zbuduje go u Ciebie na komputerze.</h1>
           <p class="hero-lead">
             <span class="accent">Kodnik</span> tworzy programy, zmienia istniejący kod i naprawia błędy — lokalnie na Windows, bez abonamentu i bez wysyłania projektu do chmury.
           </p>
           <p class="hero-lead">
+            Kupujesz dostęp do wersji beta. <span class="accent">Aktualna wersja i aktualizacje beta są w cenie</span> — bez ponownego płacenia za poprawki w trakcie bety.
+          </p>
+          <p class="hero-lead">
             Pisz naturalnie, <span class="accent">po polsku albo po angielsku</span>. W trybie OFFLINE Kodnik odpowiada lokalnie. W trybie ONLINE może szukać aktualnych informacji w internecie.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup ten build — 39 zł</a>
+            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup dostęp beta — 39 zł</a>
             <a class="btn btn-secondary" href="#powiedz">Zobacz, co możesz napisać</a>
           </div>
           <div class="micro-row" aria-label="Najważniejsze informacje">
             <span class="micro"><span class="dot"></span> Windows 10/11 x64</span>
             <span class="micro"><span class="dot"></span> Bez abonamentu</span>
             <span class="micro"><span class="dot"></span> Kod zostaje u Ciebie</span>
+            <span class="micro"><span class="dot"></span> Aktualizacje beta w cenie</span>
             <span class="micro"><span class="dot"></span> OFFLINE / ONLINE</span>
             <span class="micro"><span class="dot"></span> Lokalne AI bez chmury</span>
           </div>
@@ -466,6 +471,7 @@
           </div>
           <div class="status-bar">
             <span class="status">OFFLINE</span>
+            <span class="status update">AKTUALIZACJE</span>
             <span class="status online">ONLINE</span>
             <span>Mamut odpowiada lokalnie. Internet jest opcjonalny.</span>
             <span class="status cpu">GPU + CPU / CPU only</span>
@@ -499,7 +505,7 @@
               <li><span class="check">✓</span><span><strong>Tworzenie programów:</strong> od prostych narzędzi po praktyczne aplikacje na jednym ekranie.</span></li>
               <li><span class="check">✓</span><span><strong>Praca z istniejącym kodem:</strong> Kodnik może czytać pliki projektu i wprowadzać zmiany tam, gdzie trzeba.</span></li>
               <li><span class="check">✓</span><span><strong>Naprawianie błędów:</strong> gdy program się nie uruchamia albo coś działa źle, Kodnik może przejrzeć projekt i zaproponować poprawkę.</span></li>
-              <li><span class="check">✓</span><span><strong>Zwykły czat:</strong> możesz pytać o kod, pomysły, błędy, technologie albo decyzje projektowe.</span></li>
+              <li><span class="check">✓</span><span><strong>Aktualizacje beta:</strong> Kodnik ma przycisk Aktualizacje i potrafi poinformować o nowszej wersji.</span></li>
               <li><span class="check">✓</span><span><strong>Tryb online:</strong> kiedy potrzebujesz świeżych danych, Kodnik może poszukać informacji w internecie.</span></li>
             </ul>
           </div>
@@ -526,9 +532,9 @@
 
           <article class="info-panel">
             <span class="mode-label online">ONLINE</span>
-            <h3>Aktualne informacje z internetu</h3>
+            <h3>Aktualne informacje i aktualizacje</h3>
             <p>
-              Gdy przełączysz Kodnika w tryb ONLINE, może zbudować zapytanie, wyszukać informacje w sieci i odpowiedzieć z kontekstem. Do internetu idzie zapytanie, nie Twoje pliki projektu.
+              Gdy przełączysz Kodnika w tryb ONLINE, może zbudować zapytanie, wyszukać informacje w sieci i odpowiedzieć z kontekstem. Kodnik może też sprawdzić, czy jest dostępna nowsza wersja aplikacji.
             </p>
           </article>
         </div>
@@ -588,27 +594,28 @@
     <section id="cena">
       <div class="container">
         <span class="section-kicker">Kupno</span>
-        <h2>Jeden build. Jedna cena. Bez abonamentu.</h2>
+        <h2>Jedna cena. Aktualizacje beta w cenie. Bez abonamentu.</h2>
         <div class="pricing-wrap">
           <div class="pricing-panel">
-            <p class="price">39 zł <small>/ build</small></p>
-            <h3>Kodnik BETA — aktualny build</h3>
+            <p class="price">39 zł <small>/ dostęp beta</small></p>
+            <h3>Kodnik BETA — dostęp z aktualizacjami</h3>
             <p>
-              Kupujesz konkretny build Kodnika. Po zakupie dostajesz link do pobrania paczki instalacyjnej. Model AI pobiera się osobno przy pierwszej instalacji.
+              Kupujesz dostęp do Kodnika Beta. W cenie dostajesz aktualną wersję oraz aktualizacje wersji beta bez dopłat. Model AI pobiera się osobno przy pierwszej instalacji.
             </p>
             <ul class="pricing-list">
+              <li>aktualizacje wersji beta bez dopłat</li>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
               <li>bez weryfikacji online przy używaniu aplikacji</li>
-              <li>jednorazowa płatność — koniec</li>
+              <li>jednorazowa płatność za dostęp beta</li>
             </ul>
-            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup dostęp przez 1koszyk — 39 zł</a>
+            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup dostęp beta przez 1koszyk — 39 zł</a>
           </div>
 
           <div class="info-panel">
             <h3>Co dostajesz po zakupie?</h3>
             <p>
-              Dostęp do aktualnej paczki instalacyjnej Kodnika BETA. To wczesny dostęp do lokalnego edytora AI, który możesz uruchomić na swoim komputerze i testować w realnej pracy z małymi projektami.
+              Dostęp do aktualnej paczki instalacyjnej Kodnika BETA oraz aktualizacji beta bez dopłat. Kodnik ma wbudowany przycisk Aktualizacje i może poinformować Cię o nowej wersji po włączeniu trybu ONLINE.
             </p>
             <br />
             <p>
@@ -624,7 +631,7 @@
         <span class="section-kicker">Status</span>
         <h2>BETA — aktywnie rozwijane.</h2>
         <div class="beta-note">
-          Kodnik to działająca wersja beta, aktywnie rozwijana build po buildzie. Najlepsze efekty daje przy mniejszych i średnich programach, edycjach kodu i naprawach.
+          Kodnik to działająca wersja beta, aktywnie rozwijana build po buildzie. Kupując dostęp beta, dostajesz aktualną wersję oraz aktualizacje beta bez dopłat. Warunki wersji finalnej zostaną podane osobno.
         </div>
       </div>
     </section>
@@ -653,7 +660,7 @@
         <div class="faq-grid">
           <div class="faq-item">
             <h3>Czy potrzebuję internetu?</h3>
-            <p>Tak, do pobrania modelu przy pierwszej instalacji i do trybu ONLINE. Do zwykłej pracy lokalnej Kodnik może działać offline.</p>
+            <p>Tak, do pobrania modelu przy pierwszej instalacji, do trybu ONLINE oraz do pobierania aktualizacji. Do zwykłej pracy lokalnej Kodnik może działać offline.</p>
           </div>
           <div class="faq-item">
             <h3>Czy Kodnik działa po angielsku?</h3>
@@ -668,8 +675,8 @@
             <p>Tak, w trybie CPU only. Będzie wolniej, ale działa. Szybszy tryb GPU + CPU wymaga zgodnej karty NVIDIA.</p>
           </div>
           <div class="faq-item">
-            <h3>Czy dostanę przyszłe buildy?</h3>
-            <p>Kupujesz aktualny build. Co znajdzie się w kolejnych buildach i czy będą wydawane osobno, decyduje się na bieżąco.</p>
+            <h3>Czy dostanę aktualizacje?</h3>
+            <p>Tak. Kupując Kodnika Beta, dostajesz aktualną wersję oraz aktualizacje wersji beta bez dopłat. Kodnik ma wbudowany mechanizm aktualizacji — po włączeniu trybu ONLINE albo kliknięciu przycisku Aktualizacje poinformuje Cię, gdy pojawi się nowsza wersja. Aktualizacje bez dopłat dotyczą okresu beta. Warunki wersji finalnej zostaną podane osobno.</p>
           </div>
           <div class="faq-item">
             <h3>Ile czasu zajmuje instalacja?</h3>
