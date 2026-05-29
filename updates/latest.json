@@ -1,0 +1,17 @@
+{
+  "version": "BETA-2026.05.29",
+  "build": "2026-05-29",
+  "title": "Kodnik Beta 2026.05.29",
+  "message": "Dostępna jest nowa wersja Kodnika Beta.",
+  "download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-05-29/KodnikSetup-BETA-2026.05.29.exe",
+  "download_mode": "installer",
+  "sha256": "f7288aebc68d6ed147389d891ea470afd292080fa22c0a899384768f3a173588",
+  "required": false,
+  "changelog": [
+    "Dodano system aktualizacji Kodnika.",
+    "Dodano przycisk Aktualizacje.",
+    "Dodano pobieranie instalatora przez aktualizator.",
+    "Dodano weryfikację SHA-256 pobranego instalatora.",
+    "Poprawiono instalator pod aktualizację w tej samej ścieżce."
+  ]
+}
