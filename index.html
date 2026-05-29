@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kodnik BETA — lokalne AI tworzy programy na Twoim PC</title>
-  <meta name="description" content="Powiedz, co ma zrobić program. Kodnik zbuduje go u Ciebie na komputerze — bez chmury, bez abonamentu, kod zostaje u Ciebie. Aktualizacje beta są w cenie." />
+  <title>Kodnik — lokalny asystent AI do pracy z kodem na Windows</title>
+  <meta name="description" content="Kodnik to aplikacja desktopowa z lokalnym AI do pracy z kodem na Windows. W środku działa System Mamut — autorska warstwa prowadzenia mniejszych modeli AI krok po kroku." />
   <meta name="theme-color" content="#080b12" />
   <link rel="canonical" href="https://kodnik.pl/" />
 
@@ -14,8 +14,8 @@
   <meta property="og:locale" content="pl_PL" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kodnik" />
-  <meta property="og:title" content="Kodnik BETA — lokalne AI tworzy programy na Twoim PC" />
-  <meta property="og:description" content="Kup dostęp do Kodnika Beta. Aktualna wersja i aktualizacje beta bez dopłat — lokalnie na Windows, bez abonamentu, kod zostaje u Ciebie." />
+  <meta property="og:title" content="Kodnik — lokalny asystent AI do pracy z kodem na Windows" />
+  <meta property="og:description" content="Twórz proste programy, zmieniaj istniejące pliki i naprawiaj błędy z pomocą lokalnego AI. Kod zostaje u Ciebie, bez konta w chmurze." />
   <meta property="og:url" content="https://kodnik.pl/" />
   <meta property="og:image" content="https://kodnik.pl/assets/kodnik-social-preview.png" />
   <meta property="og:image:width" content="1200" />
@@ -23,8 +23,8 @@
   <meta property="og:image:alt" content="Kodnik — lokalny system AI do tworzenia programów" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kodnik BETA — lokalne AI tworzy programy na Twoim PC" />
-  <meta name="twitter:description" content="Kup dostęp do Kodnika Beta. Aktualna wersja i aktualizacje beta bez dopłat — lokalnie na Windows, bez abonamentu, kod zostaje u Ciebie." />
+  <meta name="twitter:title" content="Kodnik — lokalny asystent AI do pracy z kodem na Windows" />
+  <meta name="twitter:description" content="Twórz proste programy, zmieniaj istniejące pliki i naprawiaj błędy z pomocą lokalnego AI. Kod zostaje u Ciebie, bez konta w chmurze." />
   <meta name="twitter:image" content="https://kodnik.pl/assets/kodnik-social-preview.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -108,7 +108,13 @@
     }
 
     .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .brand img { width: 34px; height: 34px; object-fit: contain; }
+    .brand img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
     .brand-name { font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem; }
     .brand-build { color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: .75rem; margin-left: 4px; }
 
@@ -122,13 +128,14 @@
     .nav a:hover { color: #fff; }
 
     .nav-cta {
-      padding: 10px 16px;
-      border-radius: 999px;
-      color: #14100a;
-      background: linear-gradient(135deg, var(--gold), var(--gold-2));
-      font-weight: 800;
-      box-shadow: 0 12px 34px rgba(245, 166, 35, .25);
+      padding: 0;
+      border-radius: 0;
+      color: inherit;
+      background: none;
+      font-weight: inherit;
+      box-shadow: none;
     }
+    .nav-cta:hover { color: #fff; }
 
     .hero { padding: 72px 0 34px; }
     .hero-grid {
@@ -188,7 +195,12 @@
       box-shadow: 0 18px 44px rgba(245,166,35,.26);
       border: 0;
     }
-    .btn-secondary { background: rgba(255,255,255,.06); color: #fff; }
+    .btn-secondary {
+      color: #171006;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 18px 44px rgba(245,166,35,.26);
+      border: 0;
+    }
 
     .micro-row {
       display: flex;
@@ -213,9 +225,10 @@
       border: 1px solid rgba(255,255,255,.13);
       background: linear-gradient(180deg, rgba(22,29,45,.94), rgba(9,14,24,.94));
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: 0 34px 90px rgba(0,0,0,.42), 0 16px 38px rgba(245,166,35,.10);
       overflow: hidden;
-      transform: rotate(1deg);
+      transform: perspective(1400px) rotateY(-13deg) rotateX(4deg) rotateZ(1deg);
+      transform-origin: 82% 24%;
     }
     .app-top {
       height: 46px;
@@ -303,9 +316,27 @@
     .prompt-bubble:nth-child(2) { border-color: rgba(255,209,92,.23); background: rgba(255,209,92,.08); }
     .prompt-bubble:nth-child(4) { border-color: rgba(116,165,255,.24); background: rgba(116,165,255,.08); }
     .prompt-note { color: var(--muted); line-height: 1.6; margin: 18px 0 0; }
-    .product-panel { padding: 24px; background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035)); border-radius: var(--radius); border:1px solid var(--line); }
-    .product-list { margin: 0; padding: 0; list-style: none; display:grid; gap: 14px; }
-    .product-list li { display:flex; gap: 12px; align-items:flex-start; color: var(--muted-2); line-height:1.55; }
+    .product-panel {
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      gap: 18px;
+      min-height: 100%;
+    }
+    .product-list { margin: 0; padding: 0; list-style: none; display:grid; gap: 16px; }
+    .product-list li { display:flex; gap: 12px; align-items:flex-start; color: var(--muted-2); line-height:1.58; }
+    .product-note-right {
+      margin: 0;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.045);
+      color: var(--muted-2);
+      line-height: 1.62;
+    }
     .check { flex:0 0 auto; width: 22px; height:22px; display:grid; place-items:center; border-radius:999px; background: rgba(19,201,154,.14); color: var(--green); font-weight:900; margin-top:2px; }
 
     .split { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; margin-top: 28px; }
@@ -336,8 +367,9 @@
 
     .pricing-wrap { display:grid; grid-template-columns: minmax(0,.9fr) minmax(340px,.7fr); gap: 22px; align-items: stretch; margin-top: 28px; }
     .pricing-panel { padding: 30px; background: linear-gradient(180deg, rgba(255,209,92,.14), rgba(255,255,255,.055)); }
-    .price { font-size: clamp(3rem, 7vw, 5.2rem); font-weight: 800; letter-spacing: -.06em; margin: 0 0 4px; color:#fff; }
-    .price small { font-size: 1.1rem; color: var(--muted); letter-spacing: 0; }
+    .price { font-size: clamp(1.25rem, 2.2vw, 1.75rem); font-weight: 800; letter-spacing: -.01em; margin: 6px 0 22px; color: var(--muted-2); }
+    .price strong { color: #fff; }
+    .price small { font-size: 1rem; color: var(--muted); letter-spacing: 0; }
     .pricing-list { margin: 18px 0 26px; padding:0; list-style:none; display:grid; gap: 10px; color: var(--muted-2); }
     .pricing-list li::before { content:"✓"; color:var(--green); font-weight:900; margin-right:8px; }
 
@@ -405,15 +437,14 @@
       <a class="brand" href="#top" aria-label="Kodnik">
         <img src="./assets/kodnik-logo.png" alt="" onerror="this.style.display='none'" />
         <span class="brand-name">Kodnik</span>
-        <span class="brand-build">BETA-2026.05.29</span>
       </a>
       <nav class="nav" aria-label="Główna nawigacja">
         <a href="#powiedz">Możliwości</a>
+        <a href="#mamut">System Mamut</a>
         <a href="#prywatnosc">Prywatność</a>
         <a href="#wymagania">Wymagania</a>
-        <a href="#cena">Cena</a>
         <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup — 39 zł</a>
+        <a class="nav-cta" href="#cena">Wersja beta</a>
       </nav>
     </div>
   </header>
@@ -422,28 +453,24 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">KODNIK BETA · BETA ACCESS</span>
-          <h1>Powiedz, co ma zrobić program. Kodnik zbuduje go u Ciebie na komputerze.</h1>
+          <span class="eyebrow">LOKALNE AI DO KODU NA WINDOWS</span>
+          <h1>Kodnik pomaga tworzyć, zmieniać i naprawiać programy na Twoim komputerze.</h1>
           <p class="hero-lead">
-            <span class="accent">Kodnik</span> tworzy programy, zmienia istniejący kod i naprawia błędy — lokalnie na Windows, bez abonamentu i bez wysyłania projektu do chmury.
+            <span class="accent">Kodnik</span> to aplikacja desktopowa z lokalnym AI. W środku działa <span class="accent">System Mamut</span> — autorska warstwa Kodnika, która prowadzi mniejsze modele AI krok po kroku.
           </p>
           <p class="hero-lead">
-            Kupujesz dostęp do wersji beta. <span class="accent">Aktualna wersja i aktualizacje beta są w cenie</span> — bez ponownego płacenia za poprawki w trakcie bety.
-          </p>
-          <p class="hero-lead">
-            Pisz naturalnie, <span class="accent">po polsku albo po angielsku</span>. W trybie OFFLINE Kodnik odpowiada lokalnie. W trybie ONLINE może szukać aktualnych informacji w internecie.
+            Piszesz normalnym językiem, a Kodnik pomaga przejść od pomysłu do pracy na plikach projektu. W trybie OFFLINE działa lokalnie, a tryb ONLINE służy do aktualnych informacji i aktualizacji.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup dostęp beta — 39 zł</a>
-            <a class="btn btn-secondary" href="#powiedz">Zobacz, co możesz napisać</a>
+            <a class="btn btn-primary" href="#powiedz">Zobacz, co potrafi Kodnik</a>
+            <a class="btn btn-secondary" href="#prywatnosc">Jak działa lokalnie</a>
           </div>
           <div class="micro-row" aria-label="Najważniejsze informacje">
             <span class="micro"><span class="dot"></span> Windows 10/11 x64</span>
             <span class="micro"><span class="dot"></span> Bez abonamentu</span>
             <span class="micro"><span class="dot"></span> Kod zostaje u Ciebie</span>
-            <span class="micro"><span class="dot"></span> Aktualizacje beta w cenie</span>
-            <span class="micro"><span class="dot"></span> OFFLINE / ONLINE</span>
-            <span class="micro"><span class="dot"></span> Lokalne AI bez chmury</span>
+            <span class="micro"><span class="dot"></span> Tworzenie i edycja programów</span>
+            <span class="micro"><span class="dot"></span> Naprawa błędów</span>
           </div>
         </div>
 
@@ -454,7 +481,7 @@
           </div>
           <div class="app-body">
             <div class="chat-area">
-              <div class="chat-title">Nowy czat z Mamutem</div>
+              <div class="chat-title">Mamut — system AI Kodnika</div>
               <div class="bubble bubble-user">Stwórz generator CV</div>
               <div class="bubble bubble-ai">Przygotowuję aplikację i zapisuję pliki projektu.</div>
               <div class="code-window">
@@ -473,7 +500,7 @@
             <span class="status">OFFLINE</span>
             <span class="status update">AKTUALIZACJE</span>
             <span class="status online">ONLINE</span>
-            <span>Mamut odpowiada lokalnie. Internet jest opcjonalny.</span>
+            <span>System Mamut działa lokalnie. Internet jest opcjonalny.</span>
             <span class="status cpu">GPU + CPU / CPU only</span>
           </div>
         </div>
@@ -482,32 +509,77 @@
 
     <section id="powiedz">
       <div class="container">
-        <span class="section-kicker">Możliwości Kodnika</span>
-        <h2>Powiedz, co chcesz zrobić. Kodnik rusza do pracy.</h2>
+        <span class="section-kicker">Co robi Kodnik</span>
+        <h2>Rozmowa, praca z plikami i informacje z internetu.</h2>
         <p class="section-lead">
-          Nie musisz znać nazw trybów ani mechaniki pod spodem. Wpisujesz polecenie tak, jak do asystenta. Kodnik może odpowiedzieć w czacie, przygotować program, wejść w pliki projektu, zmienić kod albo pomóc znaleźć aktualne informacje w internecie.
+          Kodnik nie musi od razu pracować na plikach. Możesz normalnie zadać pytanie, omówić pomysł, poprosić o wyjaśnienie albo porozmawiać także o temacie niezwiązanym bezpośrednio z kodem. Kiedy potrzebujesz świeżych danych, przełączasz tryb ONLINE i Kodnik może korzystać z aktualnych informacji z internetu.
         </p>
 
         <div class="prompt-wall">
           <div class="prompt-panel" aria-label="Przykładowe wiadomości do Kodnika">
-            <div class="prompt-bubble">Stwórz prostą aplikację do notatek.</div>
-            <div class="prompt-bubble">Zmień kolor przycisku Zapisz na zielony.</div>
-            <div class="prompt-bubble">Napraw błąd, przez który program się nie uruchamia.</div>
-            <div class="prompt-bubble">Znajdź w internecie aktualne informacje o Hondzie Civic.</div>
-            <div class="prompt-bubble">Create a small time tracker app with a clean interface.</div>
-            <p class="prompt-note">
-              Kodnik działa po polsku i po angielsku. Najlepsze efekty daje przy jasnych, konkretnych poleceniach: mały program, widoczna zmiana, jeden błąd, jeden cel.
+            <div class="prompt-bubble">Stwórz prostą aplikację do notatek z zapisem wpisów.</div>
+            <div class="prompt-bubble">Zmień wygląd przycisku Zapisz.</div>
+            <div class="prompt-bubble">Sprawdź, dlaczego program się nie uruchamia.</div>
+            <div class="prompt-bubble">Wyjaśnij, co robi ten plik i od czego zacząć.</div>
+            <div class="prompt-bubble">Porozmawiajmy luźno o moim pomyśle.</div>
+            <div class="prompt-bubble">Przełącz na ONLINE i sprawdź aktualne informacje w internecie.</div>
+          </div>
+
+          <div class="product-panel">
+            <ul class="product-list">
+              <li><span class="check">✓</span><span><strong>Zwykła rozmowa:</strong> możesz normalnie rozmawiać z Kodnikiem o pomyśle, nauce, kodzie, problemie albo innym temacie.</span></li>
+              <li><span class="check">✓</span><span><strong>Tworzenie narzędzi:</strong> opisujesz, co chcesz zrobić, a Kodnik przygotowuje pliki projektu na Twoim komputerze.</span></li>
+              <li><span class="check">✓</span><span><strong>Praca z istniejącym projektem:</strong> Kodnik może pomagać analizować pliki, zmieniać fragmenty i prowadzić Cię przez zadanie.</span></li>
+              <li><span class="check">✓</span><span><strong>Wyjaśnianie kodu:</strong> możesz poprosić o opis działania pliku, wskazanie problemu albo plan kolejnego kroku.</span></li>
+              <li><span class="check">✓</span><span><strong>Tryb ONLINE:</strong> po włączeniu trybu ONLINE Kodnik może wyszukać aktualne informacje w internecie i opracować odpowiedź.</span></li>
+            </ul>
+            <p class="product-note-right">
+              Możesz zacząć od zwykłego pytania albo luźnej rozmowy, a później przejść do pracy na projekcie lub do szukania aktualnych informacji w internecie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="mamut">
+      <div class="container">
+        <span class="section-kicker">System Mamut</span>
+        <h2>Autorski system prowadzenia lokalnego AI.</h2>
+        <p class="section-lead">
+          Kodnik to aplikacja, którą widzisz i której używasz. System Mamut to warstwa działająca w środku Kodnika — opracowana przez twórców metoda prowadzenia mniejszych modeli AI tak, żeby mogły wykonywać praktyczną pracę lokalnie na komputerze użytkownika.
+        </p>
+
+        <div class="prompt-wall">
+          <div class="info-panel">
+            <h3>System Mamut prowadzi lokalne AI krok po kroku.</h3>
+            <p>
+              Mamut to autorski system Kodnika do prowadzenia mniejszych modeli AI. Zamiast zostawiać model samemu sobie z jednym długim poleceniem, pomaga mu przechodzić przez zadanie etapami i trzymać się konkretu.
+            </p>
+            <br />
+            <p>
+              Dzięki temu Kodnik nie jest tylko zwykłym czatem z AI. To aplikacja, która łączy rozmowę, pracę na plikach, kontrolę zmian i własny sposób prowadzenia zadania lokalnie na komputerze użytkownika.
             </p>
           </div>
 
           <div class="product-panel">
             <ul class="product-list">
-              <li><span class="check">✓</span><span><strong>Tworzenie programów:</strong> od prostych narzędzi po praktyczne aplikacje na jednym ekranie.</span></li>
-              <li><span class="check">✓</span><span><strong>Praca z istniejącym kodem:</strong> Kodnik może czytać pliki projektu i wprowadzać zmiany tam, gdzie trzeba.</span></li>
-              <li><span class="check">✓</span><span><strong>Naprawianie błędów:</strong> gdy program się nie uruchamia albo coś działa źle, Kodnik może przejrzeć projekt i zaproponować poprawkę.</span></li>
-              <li><span class="check">✓</span><span><strong>Aktualizacje beta:</strong> Kodnik ma przycisk Aktualizacje i potrafi poinformować o nowszej wersji.</span></li>
-              <li><span class="check">✓</span><span><strong>Tryb online:</strong> kiedy potrzebujesz świeżych danych, Kodnik może poszukać informacji w internecie.</span></li>
+              <li><span class="check">✓</span><span><strong>Autorska warstwa Kodnika:</strong> System Mamut jest sercem Kodnika i odpowiada za prowadzenie lokalnego AI.</span></li>
+              <li><span class="check">✓</span><span><strong>Prowadzenie etapami:</strong> pomaga mniejszym modelom pracować konkretniej, zamiast gubić się w jednym długim poleceniu.</span></li>
+              <li><span class="check">✓</span><span><strong>Pętle poprawy i sprawdzanie wyniku:</strong> po wykonaniu pracy Kodnik może sprawdzać wynik i kierować zmianę do poprawki, gdy coś nie wyjdzie.</span></li>
+              <li><span class="check">✓</span><span><strong>Praca na plikach projektu:</strong> Kodnik łączy AI z realną pracą na folderze projektu, a nie tylko z samą rozmową.</span></li>
+              <li><span class="check">✓</span><span><strong>Lokalna kontrola:</strong> projekt zostaje u Ciebie, a System Mamut prowadzi AI po Twojej stronie.</span></li>
             </ul>
+          </div>
+        </div>
+
+        <div class="privacy-box">
+          <div class="shield" aria-hidden="true">↩</div>
+          <div>
+            <h3>Ochrona plików i cofanie zmian</h3>
+            <p class="section-lead">
+              Gdy Kodnik zmienia albo naprawia plik, zachowuje punkt powrotu przed zmianą. Po wykonaniu pracy możesz zobaczyć pod kodem informację o zmianie i użyć opcji <strong>Cofnij zmianę</strong>. Jeśli wynik nie jest taki, jak powinien, plik może wrócić do stanu sprzed edycji lub naprawy.
+            </p>
           </div>
         </div>
       </div>
@@ -516,17 +588,17 @@
     <section id="offline-online">
       <div class="container">
         <span class="section-kicker">OFFLINE / ONLINE</span>
-        <h2>Rozmowa z Kodnikiem działa lokalnie. Internet włączasz tylko wtedy, gdy go potrzebujesz.</h2>
+        <h2>Kodnik działa lokalnie. Tryb ONLINE służy do aktualnych informacji.</h2>
         <p class="section-lead">
-          Kodnik nie jest kolejną webapką SaaS. To aplikacja desktopowa na Windows. Ma lokalny tryb rozmowy i pracy z kodem, a tryb online służy do wyszukiwania aktualnych informacji, nie do wysyłania Twojego projektu na serwer.
+          Kodnik nie jest kolejną webapką SaaS. To aplikacja desktopowa na Windows. W trybie OFFLINE pracujesz lokalnie, a tryb ONLINE włączasz wtedy, gdy potrzebujesz informacji z internetu albo aktualizacji aplikacji.
         </p>
 
         <div class="split">
           <article class="info-panel">
             <span class="mode-label offline">OFFLINE</span>
-            <h3>Lokalny model AI</h3>
+            <h3>Praca lokalna</h3>
             <p>
-              Model AI działa na Twoim komputerze. Możesz rozmawiać, tworzyć programy, edytować pliki i naprawiać błędy bez konta, bez płatnego API i bez stałego połączenia z internetem.
+              Możesz rozmawiać z asystentem Kodnika i pracować na plikach projektu bez konta w chmurze i bez stałego połączenia z internetem.
             </p>
           </article>
 
@@ -534,7 +606,7 @@
             <span class="mode-label online">ONLINE</span>
             <h3>Aktualne informacje i aktualizacje</h3>
             <p>
-              Gdy przełączysz Kodnika w tryb ONLINE, może zbudować zapytanie, wyszukać informacje w sieci i odpowiedzieć z kontekstem. Kodnik może też sprawdzić, czy jest dostępna nowsza wersja aplikacji.
+              Gdy przełączysz Kodnika w tryb ONLINE, może korzystać z aktualnych informacji z internetu i opracować odpowiedź z kontekstem. Kodnik może też sprawdzić, czy jest dostępna nowsza wersja aplikacji.
             </p>
           </article>
         </div>
@@ -549,7 +621,7 @@
           <div class="shield" aria-hidden="true">▣</div>
           <div>
             <p class="section-lead">
-              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE praca AI dzieje się na Twoim komputerze. W trybie ONLINE Kodnik wysyła tylko zapytanie do wyszukiwarki, np. o dokumentację, poradę albo aktualną informację — nie wysyła Twoich plików projektu.
+              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE System Mamut prowadzi lokalne AI na Twoim komputerze. W trybie ONLINE Kodnik wysyła tylko zapytanie potrzebne do wyszukania informacji — nie wysyła całego folderu projektu do zewnętrznej chmury.
             </p>
           </div>
         </div>
@@ -558,10 +630,10 @@
 
     <section id="lokalnie">
       <div class="container">
-        <span class="section-kicker">Lokalny model</span>
-        <h2>Wszystko dzieje się na Twoim komputerze.</h2>
+        <span class="section-kicker">Praca na Twoim komputerze</span>
+        <h2>Instalujesz Kodnika na swoim PC i pracujesz lokalnie.</h2>
         <p class="section-lead">
-          Model AI pobiera się raz przy instalacji. Później Kodnik działa lokalnie, bez abonamentu i bez naliczania kosztów za każde pytanie. Obecny build używa lokalnego modelu <strong>Qwen3.5-9B</strong> na licencji Apache 2.0.
+          Otwierasz folder projektu, piszesz polecenie i widzisz pliki na swoim komputerze. Kodnik ma pomagać w codziennej pracy z kodem: od rozmowy o pomyśle, przez analizę plików, po konkretne zmiany w projekcie.
         </p>
       </div>
     </section>
@@ -577,7 +649,7 @@
         <div class="requirements">
           <div class="req-card">
             <h3>System</h3>
-            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Około 6 GB miejsca na dysku na model i pliki.</p>
+            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Wolne miejsce na dysku na aplikację i pliki projektu.</p>
           </div>
           <div class="req-card">
             <h3>Pamięć RAM</h3>
@@ -593,33 +665,33 @@
 
     <section id="cena">
       <div class="container">
-        <span class="section-kicker">Kupno</span>
-        <h2>Aktualizacje beta w cenie. Bez abonamentu.</h2>
+        <span class="section-kicker">Wersja beta</span>
+        <h2>Pobierz Kodnika i zacznij pracę z lokalnym AI.</h2>
         <div class="pricing-wrap">
           <div class="pricing-panel">
-            <p class="price">39 zł <small>/ dostęp beta</small></p>
-            <h3>Kodnik BETA — dostęp z aktualizacjami</h3>
+            <h3>Kodnik w wersji beta</h3>
             <p>
-              Kupujesz dostęp do Kodnika Beta. W cenie dostajesz aktualną wersję oraz aktualizacje wersji beta bez dopłat. Model AI pobiera się osobno przy pierwszej instalacji.
+              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz aplikację z Systemem Mamut do pracy lokalnej na własnym folderze projektu.
             </p>
             <ul class="pricing-list">
-              <li>aktualizacje wersji beta bez dopłat</li>
+              <li>aplikacja desktopowa na Windows</li>
+              <li>praca z kodem, plikami i projektami</li>
+              <li>aktualizacje beta bez dopłat</li>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
-              <li>bez weryfikacji online przy używaniu aplikacji</li>
-              <li>jednorazowa płatność za dostęp beta</li>
             </ul>
-            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup dostęp beta przez 1koszyk — 39 zł</a>
+            <p class="price">Jednorazowo: <strong>39 zł</strong></p>
+            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Przejdź do koszyka</a>
           </div>
 
           <div class="info-panel">
-            <h3>Co dostajesz po zakupie?</h3>
+            <h3>Jak wygląda zakup?</h3>
             <p>
-              Dostęp do aktualnej paczki instalacyjnej Kodnika BETA oraz aktualizacji beta bez dopłat. Kodnik ma wbudowany przycisk Aktualizacje i może poinformować Cię o nowej wersji po włączeniu trybu ONLINE.
+              Klikasz przycisk i przechodzisz do zewnętrznego koszyka płatności. Po zakupie otrzymujesz link do instalatora Kodnika.
             </p>
             <br />
             <p>
-              Sprzedaż obsługuje 1koszyk. Link po zakupie prowadzi do paczki instalacyjnej. W razie problemów pisz na <a href="mailto:ujot@interia.pl">ujot@interia.pl</a>.
+              Instalujesz aplikację, otwierasz folder projektu i pracujesz lokalnie na swoim komputerze. W razie problemów pisz na <a href="mailto:ujot@interia.pl">ujot@interia.pl</a>.
             </p>
           </div>
         </div>
@@ -629,9 +701,9 @@
     <section id="beta">
       <div class="container">
         <span class="section-kicker">Status</span>
-        <h2>BETA — aktywnie rozwijane.</h2>
+        <h2>Kodnik jest teraz w wersji beta.</h2>
         <div class="beta-note">
-          Kodnik to działająca wersja beta, aktywnie rozwijana build po buildzie. Kupując dostęp beta, dostajesz aktualną wersję oraz aktualizacje beta bez dopłat. Warunki wersji finalnej zostaną podane osobno.
+          To działająca, aktywnie rozwijana wersja aplikacji. W okresie bety dostajesz aktualizacje beta bez dopłat. Warunki wersji finalnej zostaną podane osobno.
         </div>
       </div>
     </section>
@@ -639,16 +711,16 @@
     <section id="roadmap">
       <div class="container">
         <span class="section-kicker">Dokąd idziemy</span>
-        <h2>Większy model, czytanie ekranu, większe projekty — nadal lokalnie.</h2>
+        <h2>Lepsze prowadzenie lokalnego AI i praca z większymi projektami.</h2>
         <p class="section-lead">
-          Kierunek Kodnika jest prosty: lokalny edytor AI ma coraz lepiej rozumieć projekt, ekran użytkownika i większe zadania, bez zamieniania się w chmurową usługę.
+          Kierunek Kodnika jest prosty: System Mamut ma coraz lepiej prowadzić lokalne AI przez większe zadania, większe projekty i bardziej złożoną pracę — bez zamieniania Kodnika w chmurową usługę.
         </p>
         <div class="roadmap-line">
-          <span class="roadmap-pill">tryb 28B dla mocniejszego sprzętu</span>
           <span class="roadmap-pill">czytanie screenów i analiza UI</span>
           <span class="roadmap-pill">lepsza praca z większymi projektami</span>
           <span class="roadmap-pill">rozwój trybu online</span>
-          <span class="roadmap-pill">bardziej stabilne naprawy i edycje</span>
+          <span class="roadmap-pill">lepsze prowadzenie zadań</span>
+          <span class="roadmap-pill">wygodniejsza praca z plikami</span>
         </div>
       </div>
     </section>
@@ -659,8 +731,12 @@
         <h2>Pytania przed zakupem.</h2>
         <div class="faq-grid">
           <div class="faq-item">
+            <h3>Czym jest System Mamut?</h3>
+            <p>System Mamut to autorska warstwa Kodnika do prowadzenia lokalnego AI. Kodnik jest aplikacją, którą instalujesz i używasz, a Mamut jest mechanizmem w środku, który pomaga mniejszym modelom pracować krok po kroku na komputerze użytkownika.</p>
+          </div>
+          <div class="faq-item">
             <h3>Czy potrzebuję internetu?</h3>
-            <p>Tak, do pobrania modelu przy pierwszej instalacji, do trybu ONLINE oraz do pobierania aktualizacji. Do zwykłej pracy lokalnej Kodnik może działać offline.</p>
+            <p>Tak, do pierwszej konfiguracji, trybu ONLINE oraz pobierania aktualizacji. Do zwykłej pracy lokalnej Kodnik może działać offline.</p>
           </div>
           <div class="faq-item">
             <h3>Czy Kodnik działa po angielsku?</h3>
@@ -668,7 +744,7 @@
           </div>
           <div class="faq-item">
             <h3>Czy mój kod jest wysyłany do internetu?</h3>
-            <p>Nie w trybie OFFLINE. W trybie ONLINE wysyłane jest tylko zapytanie potrzebne do wyszukiwania informacji, nie cały projekt.</p>
+            <p>Nie w trybie OFFLINE. W trybie ONLINE Kodnik wysyła tylko zapytanie potrzebne do wyszukania informacji, nie cały folder projektu.</p>
           </div>
           <div class="faq-item">
             <h3>Czy działa bez karty graficznej?</h3>
@@ -676,11 +752,11 @@
           </div>
           <div class="faq-item">
             <h3>Czy dostanę aktualizacje?</h3>
-            <p>Tak. Kupując Kodnika Beta, dostajesz aktualną wersję oraz aktualizacje wersji beta bez dopłat. Kodnik ma wbudowany mechanizm aktualizacji — po włączeniu trybu ONLINE albo kliknięciu przycisku Aktualizacje poinformuje Cię, gdy pojawi się nowsza wersja. Aktualizacje bez dopłat dotyczą okresu beta. Warunki wersji finalnej zostaną podane osobno.</p>
+            <p>Tak. W wersji beta dostajesz aktualną wersję aplikacji oraz aktualizacje beta bez dopłat. Kodnik ma wbudowany mechanizm aktualizacji — po włączeniu trybu ONLINE albo kliknięciu przycisku Aktualizacje poinformuje Cię, gdy pojawi się nowsza wersja. Aktualizacje bez dopłat dotyczą okresu beta. Warunki wersji finalnej zostaną podane osobno.</p>
           </div>
           <div class="faq-item">
             <h3>Ile czasu zajmuje instalacja?</h3>
-            <p>Sama instalacja to kilka minut. Model AI pobiera się raz po instalacji — w zależności od łącza zajmuje od kilkunastu minut do godziny.</p>
+            <p>Sama instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja może potrwać dłużej, zależnie od komputera i połączenia internetowego.</p>
           </div>
         </div>
       </div>
@@ -690,8 +766,8 @@
   <footer class="footer" id="kontakt">
     <div class="container footer-inner">
       <div>
-        <strong>Kodnik BETA</strong><br />
-        Lokalny edytor AI do kodu na Windows.
+        <strong>Kodnik</strong><br />
+        Lokalny asystent AI do pracy z kodem na Windows.
       </div>
       <div>
         Kontakt: <a href="mailto:ujot@interia.pl">ujot@interia.pl</a><br />
