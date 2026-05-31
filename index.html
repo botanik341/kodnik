@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kodnik — lokalny asystent AI do pracy z kodem na Windows</title>
-  <meta name="description" content="Kodnik to aplikacja desktopowa z lokalnym AI do pracy z kodem na Windows. W środku działa System Mamut — autorska warstwa prowadzenia mniejszych modeli AI krok po kroku." />
+  <meta name="description" content="Kodnik to aplikacja desktopowa z lokalnym AI do pracy z kodem na Windows. Działa lokalnie, oferuje tryb modeli ~10B oraz opcjonalny tryb POWER ~30B dla mocniejszych komputerów." />
   <meta name="theme-color" content="#080b12" />
   <link rel="canonical" href="https://kodnik.pl/" />
 
@@ -30,22 +30,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg: #080b12;
       --panel: rgba(16, 22, 34, 0.82);
       --panel-strong: rgba(20, 27, 42, 0.96);
-      --panel-soft: rgba(255, 255, 255, 0.055);
       --text: #f4f7fb;
       --muted: #9facbf;
       --muted-2: #c8d2e3;
-      --line: rgba(255, 255, 255, 0.11);
+      --line: rgba(255,255,255,.11);
       --gold: #ffd15c;
       --gold-2: #f5a623;
       --green: #13c99a;
       --blue: #74a5ff;
-      --red: #ff5a5f;
-      --shadow: 0 24px 90px rgba(0,0,0,.45);
       --radius: 28px;
     }
 
@@ -63,26 +61,28 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 72%);
+        linear-gradient(rgba(255,255,255,.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.075) 1px, transparent 1px),
+        linear-gradient(rgba(255,209,92,.052) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,209,92,.052) 1px, transparent 1px);
+      background-size: 42px 42px, 42px 42px, 168px 168px, 168px 168px;
+      mask-image: radial-gradient(circle at 28% 12%, rgba(0,0,0,.96), rgba(0,0,0,.70) 44%, transparent 86%);
       z-index: -2;
     }
-
     body::after {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,.42));
+      background:
+        radial-gradient(circle at 18% 10%, rgba(255,209,92,.11), transparent 34%),
+        linear-gradient(180deg, transparent, rgba(0,0,0,.24));
       z-index: -1;
     }
 
@@ -98,7 +98,6 @@
       background: rgba(8, 11, 18, 0.78);
       backdrop-filter: blur(18px);
     }
-
     .topbar-inner {
       height: 74px;
       display: flex;
@@ -106,45 +105,15 @@
       justify-content: space-between;
       gap: 20px;
     }
-
     .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .brand img {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-      display: block;
-      flex: 0 0 auto;
-    }
+    .brand img { width: 34px; height: 34px; object-fit: contain; display: block; }
     .brand-name { font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem; }
-    .brand-build { color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: .75rem; margin-left: 4px; }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      color: var(--muted-2);
-      font-size: .94rem;
-    }
+    .nav { display: flex; align-items: center; gap: 18px; color: var(--muted-2); font-size: .94rem; }
     .nav a:hover { color: #fff; }
-
-    .nav-cta {
-      padding: 0;
-      border-radius: 0;
-      color: inherit;
-      background: none;
-      font-weight: inherit;
-      box-shadow: none;
-    }
-    .nav-cta:hover { color: #fff; }
+    .nav-cta { padding: 0; border-radius: 0; color: inherit; background: none; font-weight: inherit; box-shadow: none; }
 
     .hero { padding: 72px 0 34px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
-      gap: 42px;
-      align-items: center;
-    }
-
+    .hero-grid { display: grid; grid-template-columns: minmax(0, .96fr) minmax(520px, 1.12fr); gap: 42px; align-items: center; }
     .eyebrow {
       display: inline-flex;
       gap: 8px;
@@ -158,22 +127,8 @@
       font-size: .78rem;
       font-weight: 700;
     }
-
-    h1 {
-      margin: 20px 0 18px;
-      font-size: clamp(2.2rem, 5.4vw, 4.6rem);
-      line-height: .98;
-      letter-spacing: -0.05em;
-      max-width: 900px;
-    }
-
-    .hero-lead {
-      max-width: 720px;
-      color: var(--muted-2);
-      font-size: clamp(1.15rem, 2vw, 1.42rem);
-      line-height: 1.52;
-    }
-
+    h1 { margin: 20px 0 18px; font-size: clamp(2.2rem, 5.4vw, 4.6rem); line-height: .98; letter-spacing: -0.05em; max-width: 900px; }
+    .hero-lead { max-width: 720px; color: var(--muted-2); font-size: clamp(1.15rem, 2vw, 1.42rem); line-height: 1.52; }
     .hero-lead .accent { color: #fff; font-weight: 800; }
 
     .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 18px; }
@@ -189,25 +144,14 @@
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      color: #171006;
-      background: linear-gradient(135deg, var(--gold), var(--gold-2));
-      box-shadow: 0 18px 44px rgba(245,166,35,.26);
-      border: 0;
-    }
-    .btn-secondary {
+    .btn-primary, .btn-secondary {
       color: #171006;
       background: linear-gradient(135deg, var(--gold), var(--gold-2));
       box-shadow: 0 18px 44px rgba(245,166,35,.26);
       border: 0;
     }
 
-    .micro-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
+    .micro-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
     .micro {
       display: inline-flex;
       align-items: center;
@@ -244,20 +188,27 @@
     }
     .app-dot-row { display:flex; gap:6px; }
     .app-dot { width: 9px; height: 9px; border-radius: 99px; background: rgba(255,255,255,.25); }
-    .app-body { display: grid; grid-template-columns: 1fr 108px; min-height: 405px; }
-    .chat-area { padding: 20px; border-right: 1px solid var(--line); display:flex; flex-direction:column; gap: 13px; }
+    .app-body { display: grid; grid-template-columns: 148px minmax(0, 1fr) 104px; min-height: 405px; }
+    .editor-area { padding: 16px 12px; border-right: 1px solid var(--line); background: rgba(255,255,255,.018); font-family: "JetBrains Mono", monospace; }
+    .editor-head { display:flex; align-items:center; justify-content:space-between; gap:8px; color:var(--muted-2); font-size:.68rem; margin-bottom: 12px; }
+    .editor-save { padding:6px 8px; border-radius:7px; background:rgba(255,255,255,.09); color:#fff; font-family:Outfit,sans-serif; font-weight:800; }
+    .editor-code { color:#d8e5ff; font-size:.62rem; line-height:1.58; white-space:pre-line; }
+    .editor-code .green { color:#4ade80; }
+    .editor-code .gold { color:#ffd15c; }
+    .editor-code .blue { color:#74a5ff; }
+    .chat-area { padding: 20px; border-right: 1px solid var(--line); display:flex; flex-direction:column; gap: 13px; min-width:0; }
     .side-area { background: rgba(255,255,255,.035); padding: 18px 12px; color: var(--muted); font-size: .8rem; }
     .side-pill { height: 28px; border-radius: 8px; background: rgba(116,165,255,.12); margin-top: 14px; }
+    .side-chat { margin-top:14px; padding:10px 9px; border-radius:10px; background:rgba(116,165,255,.14); color:#dfe8ff; border-left:3px solid var(--green); line-height:1.24; }
     .chat-title { font-weight: 800; font-size: 1.05rem; }
-    .bubble {
-      max-width: 92%;
-      border-radius: 18px;
-      padding: 14px 15px;
-      line-height: 1.42;
-      border: 1px solid var(--line);
-    }
+    .bubble { max-width: 96%; border-radius: 18px; padding: 13px 15px; line-height: 1.38; border: 1px solid var(--line); }
     .bubble-user { align-self: flex-end; background: rgba(255,209,92,.12); border-color: rgba(255,209,92,.28); }
     .bubble-ai { align-self: flex-start; background: rgba(255,255,255,.055); }
+    .plan-card { border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(255,255,255,.055); overflow:hidden; }
+    .plan-head { display:flex; justify-content:space-between; gap:10px; padding:10px 12px; color:var(--gold); font-weight:900; background:rgba(255,255,255,.045); }
+    .plan-step { display:flex; gap:10px; align-items:flex-start; padding:9px 12px; color:var(--muted-2); font-size:.84rem; line-height:1.32; }
+    .plan-step .mark { color:var(--green); font-weight:900; }
+    .plan-step .arrow { color:var(--blue); font-weight:900; }
     .code-window {
       margin-top: auto;
       border: 1px solid rgba(116,165,255,.20);
@@ -265,99 +216,47 @@
       overflow: hidden;
       background: #0b111c;
       font-family: "JetBrains Mono", monospace;
-      font-size: .72rem;
+      font-size: .70rem;
       color: #d9e6ff;
     }
     .code-head { padding: 9px 12px; background: rgba(116,165,255,.12); color: var(--muted-2); display:flex; justify-content:space-between; }
     .code-body { padding: 12px; color: #ffd27b; min-height: 82px; white-space: pre-line; }
-    .status-bar {
-      display:flex;
-      gap: 8px;
-      align-items:center;
-      padding: 12px 20px;
-      border-top: 1px solid var(--line);
-      background: rgba(0,0,0,.2);
-      color: var(--muted);
-      font-size: .84rem;
-    }
+    .status-bar { display:flex; gap: 8px; align-items:center; padding: 12px 20px; border-top: 1px solid var(--line); background: rgba(0,0,0,.2); color: var(--muted); font-size: .84rem; }
     .status { padding: 6px 10px; border-radius: 8px; font-weight: 800; color:#06120f; background: var(--green); }
     .status.online { color:#d9e6ff; background: rgba(116,165,255,.18); border:1px solid rgba(116,165,255,.22); }
     .status.update { color:#171006; background: linear-gradient(135deg, var(--gold), var(--gold-2)); }
     .status.cpu { margin-left:auto; color:#110a03; background: var(--gold-2); }
+    .status.model { color:#06120f; background:var(--green); }
+    .status.model-power { color:#d9e6ff; background:rgba(255,255,255,.09); }
+    .status.auto { color:#fff; background:rgba(116,165,255,.86); }
+    .status-note { min-width: 150px; max-width: 210px; line-height: 1.25; }
 
     section { padding: 70px 0; }
     .section-kicker { color: var(--gold); font-family:"JetBrains Mono", monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .11em; font-weight: 800; }
     h2 { margin: 10px 0 16px; font-size: clamp(2rem, 4.2vw, 3.65rem); line-height: 1; letter-spacing: -0.045em; }
     .section-lead { max-width: 820px; color: var(--muted-2); line-height: 1.62; font-size: 1.12rem; }
 
-    .prompt-wall {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(340px, 1.05fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-    .prompt-panel, .info-panel, .pricing-panel, .faq-item {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: 0 18px 60px rgba(0,0,0,.25);
-    }
+    .prompt-wall { margin-top: 32px; display: grid; grid-template-columns: minmax(0, .95fr) minmax(340px, 1.05fr); gap: 22px; align-items: stretch; }
+    .prompt-panel, .info-panel, .pricing-panel, .faq-item { border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); box-shadow: 0 18px 60px rgba(0,0,0,.25); }
     .prompt-panel { padding: 24px; }
-    .prompt-bubble {
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.055);
-      border-radius: 18px;
-      margin-bottom: 12px;
-      color: #f8fbff;
-      font-weight: 650;
-    }
+    .prompt-bubble { padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.055); border-radius: 18px; margin-bottom: 12px; color: #f8fbff; font-weight: 650; }
     .prompt-bubble:nth-child(2) { border-color: rgba(255,209,92,.23); background: rgba(255,209,92,.08); }
     .prompt-bubble:nth-child(4) { border-color: rgba(116,165,255,.24); background: rgba(116,165,255,.08); }
-    .prompt-note { color: var(--muted); line-height: 1.6; margin: 18px 0 0; }
-    .product-panel {
-      padding: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      display:flex;
-      flex-direction:column;
-      gap: 18px;
-      min-height: 100%;
-    }
+    .product-panel { padding: 24px; background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035)); border-radius: var(--radius); border:1px solid var(--line); display:flex; flex-direction:column; gap: 18px; min-height: 100%; }
     .product-list { margin: 0; padding: 0; list-style: none; display:grid; gap: 16px; }
     .product-list li { display:flex; gap: 12px; align-items:flex-start; color: var(--muted-2); line-height:1.58; }
-    .product-note-right {
-      margin: 0;
-      padding: 16px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.045);
-      color: var(--muted-2);
-      line-height: 1.62;
-    }
+    .product-note-right { margin: 0; padding: 16px 18px; border-radius: 18px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.045); color: var(--muted-2); line-height: 1.62; }
     .check { flex:0 0 auto; width: 22px; height:22px; display:grid; place-items:center; border-radius:999px; background: rgba(19,201,154,.14); color: var(--green); font-weight:900; margin-top:2px; }
 
     .split { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; margin-top: 28px; }
-    .info-panel { padding: 26px; }
+    .info-panel, .faq-item { padding: 26px; }
     .info-panel h3, .pricing-panel h3, .faq-item h3 { margin: 0 0 10px; font-size: 1.35rem; }
     .info-panel p, .pricing-panel p, .faq-item p { margin: 0; color: var(--muted-2); line-height: 1.65; }
     .mode-label { display:inline-flex; align-items:center; gap:8px; margin-bottom:14px; color:#fff; font-weight:800; }
     .mode-label.offline::before, .mode-label.online::before { content:""; width:9px; height:9px; border-radius:999px; background:var(--green); box-shadow:0 0 20px rgba(19,201,154,.7); }
     .mode-label.online::before { background: var(--blue); box-shadow:0 0 20px rgba(116,165,255,.7); }
 
-    .privacy-box {
-      margin-top: 28px;
-      border: 1px solid rgba(19,201,154,.28);
-      background: linear-gradient(135deg, rgba(19,201,154,.12), rgba(255,255,255,.045));
-      border-radius: var(--radius);
-      padding: 30px;
-      display:grid;
-      grid-template-columns: 86px 1fr;
-      gap: 22px;
-      align-items:center;
-    }
+    .privacy-box { margin-top: 28px; border: 1px solid rgba(19,201,154,.28); background: linear-gradient(135deg, rgba(19,201,154,.12), rgba(255,255,255,.045)); border-radius: var(--radius); padding: 30px; display:grid; grid-template-columns: 86px 1fr; gap: 22px; align-items:center; }
     .shield { width: 76px; height: 76px; border-radius: 22px; display:grid; place-items:center; background: rgba(19,201,154,.14); color:var(--green); font-size:2rem; }
 
     .requirements { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 28px; }
@@ -369,26 +268,12 @@
     .pricing-panel { padding: 30px; background: linear-gradient(180deg, rgba(255,209,92,.14), rgba(255,255,255,.055)); }
     .price { font-size: clamp(1.25rem, 2.2vw, 1.75rem); font-weight: 800; letter-spacing: -.01em; margin: 6px 0 22px; color: var(--muted-2); }
     .price strong { color: #fff; }
-    .price small { font-size: 1rem; color: var(--muted); letter-spacing: 0; }
     .pricing-list { margin: 18px 0 26px; padding:0; list-style:none; display:grid; gap: 10px; color: var(--muted-2); }
     .pricing-list li::before { content:"✓"; color:var(--green); font-weight:900; margin-right:8px; }
-
-    .beta-note {
-      margin-top: 28px;
-      border: 1px solid rgba(255,209,92,.24);
-      border-radius: var(--radius);
-      background: rgba(255,209,92,.08);
-      padding: 26px;
-      color: var(--muted-2);
-      line-height: 1.65;
-    }
-
+    .beta-note { margin-top: 28px; border: 1px solid rgba(255,209,92,.24); border-radius: var(--radius); background: rgba(255,209,92,.08); padding: 26px; color: var(--muted-2); line-height: 1.65; }
     .roadmap-line { margin-top: 24px; display:flex; flex-wrap:wrap; gap:10px; }
     .roadmap-pill { padding: 10px 13px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.055); color:var(--muted-2); }
-
     .faq-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin-top:28px; }
-    .faq-item { padding: 22px; }
-
     .footer { padding: 38px 0; color: var(--muted); border-top:1px solid var(--line); }
     .footer-inner { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
     .footer a { color:#fff; }
@@ -403,7 +288,7 @@
       .container { width:min(100% - 26px, 1160px); }
       .hero { padding-top: 44px; }
       .app-body { grid-template-columns: 1fr; }
-      .side-area { display:none; }
+      .editor-area, .side-area { display:none; }
       .status-bar { flex-wrap:wrap; }
       .status.cpu { margin-left:0; }
       .cta-row .btn { width: 100%; }
@@ -440,7 +325,8 @@
       </a>
       <nav class="nav" aria-label="Główna nawigacja">
         <a href="#powiedz">Możliwości</a>
-        <a href="#mamut">System Mamut</a>
+        <a href="#system-ai">System AI</a>
+        <a href="#modele">Modele</a>
         <a href="#prywatnosc">Prywatność</a>
         <a href="#wymagania">Wymagania</a>
         <a href="#faq">FAQ</a>
@@ -456,14 +342,14 @@
           <span class="eyebrow">LOKALNE AI DO KODU NA WINDOWS</span>
           <h1>Kodnik pomaga tworzyć, zmieniać i naprawiać programy na Twoim komputerze.</h1>
           <p class="hero-lead">
-            <span class="accent">Kodnik</span> to aplikacja desktopowa z lokalnym AI. W środku działa <span class="accent">System Mamut</span> — autorska warstwa Kodnika, która prowadzi mniejsze modele AI krok po kroku.
+            <span class="accent">Kodnik</span> to aplikacja desktopowa z lokalnym AI. W środku działa <span class="accent">autorski system prowadzenia AI</span>, który prowadzi modele krok po kroku: od rozmowy, przez pracę na plikach, po tworzenie i naprawę programów.
           </p>
           <p class="hero-lead">
-            Piszesz normalnym językiem, a Kodnik pomaga przejść od pomysłu do pracy na plikach projektu. W trybie OFFLINE działa lokalnie, a tryb ONLINE służy do aktualnych informacji i aktualizacji.
+            Kodnik obsługuje tryb modeli <span class="accent">~10B</span> dla większości komputerów oraz opcjonalny tryb <span class="accent">POWER ~30B</span> dla mocniejszego sprzętu. W trybie OFFLINE pracujesz lokalnie, a tryb ONLINE służy do aktualnych informacji i aktualizacji.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#powiedz">Zobacz, co potrafi Kodnik</a>
-            <a class="btn btn-secondary" href="#prywatnosc">Jak działa lokalnie</a>
+            <a class="btn btn-secondary" href="#modele">Modele ~10B / ~30B</a>
           </div>
           <div class="micro-row" aria-label="Najważniejsze informacje">
             <span class="micro"><span class="dot"></span> Windows 10/11 x64</span>
@@ -471,37 +357,69 @@
             <span class="micro"><span class="dot"></span> Kod zostaje u Ciebie</span>
             <span class="micro"><span class="dot"></span> Tworzenie i edycja programów</span>
             <span class="micro"><span class="dot"></span> Naprawa błędów</span>
+            <span class="micro"><span class="dot"></span> Modele ~10B / ~30B</span>
+            <span class="micro"><span class="dot"></span> GPU na wspieranym sprzęcie</span>
           </div>
         </div>
 
         <div class="app-card" aria-label="Podgląd aplikacji Kodnik">
           <div class="app-top">
-            <span>Kodnik — Nowy projekt</span>
+            <span>Kodnik — Nowy czat</span>
             <span class="app-dot-row"><span class="app-dot"></span><span class="app-dot"></span><span class="app-dot"></span></span>
           </div>
           <div class="app-body">
+            <div class="editor-area">
+              <div class="editor-head"><span>Edytor Kodu</span><span class="editor-save">Zapisz</span></div>
+              <div class="editor-code"><span class="green">// Kolory aplikacji</span>
+:root {
+  <span class="gold">--primary</span>: #22c55e;
+  <span class="gold">--surface</span>: #151922;
+  <span class="gold">--text</span>: #e5e7eb;
+}
+
+<span class="blue">.btn-primary</span> {
+  background: var(--primary);
+}
+
+<span class="blue">.table-trainings</span> {
+  width: 100%;
+  border-collapse: collapse;
+}</div>
+            </div>
             <div class="chat-area">
-              <div class="chat-title">Mamut — system AI Kodnika</div>
-              <div class="bubble bubble-user">Stwórz generator CV</div>
-              <div class="bubble bubble-ai">Przygotowuję aplikację i zapisuję pliki projektu.</div>
+              <div class="chat-title">Asystent AI Kodnika</div>
+              <div class="bubble bubble-user">Zmień kolor programu na zielony i dodaj tabelę treningów.</div>
+              <div class="plan-card">
+                <div class="plan-head"><span>Plan pracy (w trakcie)</span><span>1 / 2</span></div>
+                <div class="plan-step"><span class="mark">✓</span><span>Zmienię kolor programu na zielony.</span></div>
+                <div class="plan-step"><span class="arrow">→</span><span>Dodam tabelę ostatnich treningów.</span></div>
+              </div>
+              <div class="bubble bubble-ai">Asystent przygotowuje zmianę w projekcie.</div>
               <div class="code-window">
-                <div class="code-head"><span>HTML</span><span>Projekt gotowy</span></div>
-                <div class="code-body">function renderPreview() {\n  updateCV();\n  autosave();\n}\n\nbutton.addEventListener("click", save);</div>
+                <div class="code-head"><span>CSS / HTML</span><span>Edycja w toku</span></div>
+                <div class="code-body">.panel {
+  border-color: #22c55e;
+}
+
+renderTrainingTable();</div>
               </div>
             </div>
             <div class="side-area">
               Rozmowy
               <div class="side-pill"></div>
-              <div class="side-pill"></div>
+              <div class="side-chat">Edycja<br />treningów</div>
               <div class="side-pill"></div>
             </div>
           </div>
           <div class="status-bar">
             <span class="status">OFFLINE</span>
-            <span class="status update">AKTUALIZACJE</span>
             <span class="status online">ONLINE</span>
-            <span>System Mamut działa lokalnie. Internet jest opcjonalny.</span>
-            <span class="status cpu">GPU + CPU / CPU only</span>
+            <span class="status update">AKTUALIZACJE</span>
+            <span class="status model">~10B</span>
+            <span class="status model-power">~30B</span>
+            <span class="status auto">AUTO</span>
+            <span class="status cpu">CPU only</span>
+            <span class="status-note">Lokalny system AI działa po Twojej stronie.</span>
           </div>
         </div>
       </div>
@@ -541,34 +459,33 @@
       </div>
     </section>
 
-
-    <section id="mamut">
+    <section id="system-ai">
       <div class="container">
-        <span class="section-kicker">System Mamut</span>
+        <span class="section-kicker">System AI Kodnika</span>
         <h2>Autorski system prowadzenia lokalnego AI.</h2>
         <p class="section-lead">
-          Kodnik to aplikacja, którą widzisz i której używasz. System Mamut to warstwa działająca w środku Kodnika — opracowana przez twórców metoda prowadzenia mniejszych modeli AI tak, żeby mogły wykonywać praktyczną pracę lokalnie na komputerze użytkownika.
+          Kodnik to aplikacja, którą widzisz i której używasz. W środku działa autorska warstwa prowadzenia AI — metoda prowadzenia lokalnych modeli krok po kroku, tak aby mogły wykonywać praktyczną pracę na komputerze użytkownika.
         </p>
 
         <div class="prompt-wall">
           <div class="info-panel">
-            <h3>System Mamut prowadzi lokalne AI krok po kroku.</h3>
+            <h3>Kodnik prowadzi lokalne AI etapami.</h3>
             <p>
-              Mamut to autorski system Kodnika do prowadzenia mniejszych modeli AI. Zamiast zostawiać model samemu sobie z jednym długim poleceniem, pomaga mu przechodzić przez zadanie etapami i trzymać się konkretu.
+              Zamiast zostawiać model samemu sobie z jednym długim poleceniem, Kodnik rozdziela zadanie na prostsze kroki: rozpoznanie intencji, wybór trybu pracy, przygotowanie plików, edycję albo naprawę.
             </p>
             <br />
             <p>
-              Dzięki temu Kodnik nie jest tylko zwykłym czatem z AI. To aplikacja, która łączy rozmowę, pracę na plikach, kontrolę zmian i własny sposób prowadzenia zadania lokalnie na komputerze użytkownika.
+              Dzięki temu Kodnik nie jest tylko zwykłym czatem z AI. To aplikacja, która łączy rozmowę, pracę na plikach, kontrolę zmian, aktualizacje oraz wybór modelu dopasowany do sprzętu.
             </p>
           </div>
 
           <div class="product-panel">
             <ul class="product-list">
-              <li><span class="check">✓</span><span><strong>Autorska warstwa Kodnika:</strong> System Mamut jest sercem Kodnika i odpowiada za prowadzenie lokalnego AI.</span></li>
-              <li><span class="check">✓</span><span><strong>Prowadzenie etapami:</strong> pomaga mniejszym modelom pracować konkretniej, zamiast gubić się w jednym długim poleceniu.</span></li>
+              <li><span class="check">✓</span><span><strong>Autorska warstwa Kodnika:</strong> odpowiada za prowadzenie lokalnego AI przez zadanie.</span></li>
+              <li><span class="check">✓</span><span><strong>Prowadzenie etapami:</strong> pomaga modelom pracować konkretniej, zamiast gubić się w jednym długim poleceniu.</span></li>
+              <li><span class="check">✓</span><span><strong>Dwa rozmiary modeli:</strong> tryb modeli ~10B dla większości komputerów oraz opcjonalny tryb POWER ~30B dla mocniejszego sprzętu.</span></li>
               <li><span class="check">✓</span><span><strong>Pętle poprawy i sprawdzanie wyniku:</strong> po wykonaniu pracy Kodnik może sprawdzać wynik i kierować zmianę do poprawki, gdy coś nie wyjdzie.</span></li>
-              <li><span class="check">✓</span><span><strong>Praca na plikach projektu:</strong> Kodnik łączy AI z realną pracą na folderze projektu, a nie tylko z samą rozmową.</span></li>
-              <li><span class="check">✓</span><span><strong>Lokalna kontrola:</strong> projekt zostaje u Ciebie, a System Mamut prowadzi AI po Twojej stronie.</span></li>
+              <li><span class="check">✓</span><span><strong>Lokalna kontrola:</strong> projekt zostaje u Ciebie, a AI pracuje po Twojej stronie.</span></li>
             </ul>
           </div>
         </div>
@@ -581,6 +498,34 @@
               Gdy Kodnik zmienia albo naprawia plik, zachowuje punkt powrotu przed zmianą. Po wykonaniu pracy możesz zobaczyć pod kodem informację o zmianie i użyć opcji <strong>Cofnij zmianę</strong>. Jeśli wynik nie jest taki, jak powinien, plik może wrócić do stanu sprzed edycji lub naprawy.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modele">
+      <div class="container">
+        <span class="section-kicker">Modele ~10B / ~30B</span>
+        <h2>Standard dla większości komputerów i POWER dla mocniejszego sprzętu.</h2>
+        <p class="section-lead">
+          Kodnik ma domyślny tryb modeli ~10B oraz opcjonalny tryb POWER ~30B. Tryb ~10B jest przeznaczony dla większości użytkowników i zwykłych komputerów. Tryb POWER pobierasz osobno i uruchamiasz na mocniejszym komputerze, jeśli potrzebujesz większej jakości pracy AI.
+        </p>
+
+        <div class="split">
+          <article class="info-panel">
+            <span class="mode-label offline">STANDARD ~10B</span>
+            <h3>Domyślny model dla większości komputerów</h3>
+            <p>
+              To bezpieczny tryb startowy Kodnika. Może działać lokalnie także na CPU, choć wtedy będzie wolniejszy. Jest dobrym wyborem dla zwykłych laptopów i komputerów bez mocnej karty graficznej.
+            </p>
+          </article>
+
+          <article class="info-panel">
+            <span class="mode-label online">POWER ~30B</span>
+            <h3>Opcja dla mocniejszych komputerów</h3>
+            <p>
+              Tryb POWER jest opcjonalny i przeznaczony dla mocniejszego sprzętu. Może korzystać z akceleracji Vulkan na wspieranych kartach NVIDIA / AMD / Intel. Jeśli komputer nie da rady, wracasz do trybu modeli ~10B.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -621,7 +566,7 @@
           <div class="shield" aria-hidden="true">▣</div>
           <div>
             <p class="section-lead">
-              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE System Mamut prowadzi lokalne AI na Twoim komputerze. W trybie ONLINE Kodnik wysyła tylko zapytanie potrzebne do wyszukania informacji — nie wysyła całego folderu projektu do zewnętrznej chmury.
+              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE lokalny system AI pracuje na Twoim komputerze. W trybie ONLINE Kodnik wysyła tylko zapytanie potrzebne do wyszukania informacji — nie wysyła całego folderu projektu do zewnętrznej chmury.
             </p>
           </div>
         </div>
@@ -640,24 +585,28 @@
 
     <section id="wymagania">
       <div class="container">
-        <span class="section-kicker">Wymagania</span>
+        <span class="section-kicker">Wymagania sprzętowe</span>
         <h2>Sprawdź sprzęt przed zakupem.</h2>
         <p class="section-lead">
-          Kodnik działa na Windows 10/11 x64. Tryb CPU only uruchomi się na większości nowszych procesorów, ale będzie wolniejszy. Najlepsze wrażenie daje tryb GPU + CPU na karcie NVIDIA.
+          Kodnik działa na Windows 10 i Windows 11. Do instalacji potrzebujesz około <strong>9 GB miejsca</strong> z trybem modeli ~10B albo około <strong>25 GB miejsca</strong>, jeśli dodasz też opcjonalny tryb <strong>POWER ~30B</strong>.
         </p>
 
         <div class="requirements">
           <div class="req-card">
             <h3>System</h3>
-            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Wolne miejsce na dysku na aplikację i pliki projektu.</p>
+            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Wolne miejsce na dysku na aplikację, modele AI i pliki projektu.</p>
           </div>
           <div class="req-card">
-            <h3>Pamięć RAM</h3>
-            <p>Minimum 16 GB RAM. Dla trybu CPU only zalecane 24 GB RAM, szczególnie przy dłuższej pracy.</p>
+            <h3>Tryb modeli ~10B</h3>
+            <p>Do normalnej pracy zalecamy 16 GB RAM oraz kartę graficzną z minimum 6 GB pamięci. Jeśli komputer nie ma karty graficznej i Kodnik ma działać tylko na procesorze, zalecamy minimum 24 GB RAM.</p>
           </div>
           <div class="req-card">
-            <h3>GPU opcjonalnie</h3>
-            <p>NVIDIA RTX 30xx / 40xx z minimum 4 GB VRAM i sterownikami CUDA 12.x dla szybszego trybu GPU + CPU.</p>
+            <h3>Tryb POWER ~30B</h3>
+            <p>Tryb POWER jest przeznaczony dla mocniejszych komputerów. Zalecamy minimum 32 GB RAM oraz mocniejszą kartę graficzną. Na samym procesorze tryb POWER może działać bardzo wolno, dlatego nie polecamy go do codziennej pracy bez GPU.</p>
+          </div>
+          <div class="req-card">
+            <h3>Karta graficzna</h3>
+            <p>Karta graficzna nie jest obowiązkowa dla trybu modeli ~10B, ale znacząco poprawia komfort pracy. Kodnik może korzystać z kart NVIDIA, AMD i Intel, jeśli sprzęt oraz sterowniki obsługują przyspieszenie. Jeśli komputer nie poradzi sobie z trybem POWER, możesz wrócić do trybu modeli ~10B.</p>
           </div>
         </div>
       </div>
@@ -671,11 +620,12 @@
           <div class="pricing-panel">
             <h3>Kodnik w wersji beta</h3>
             <p>
-              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz aplikację z Systemem Mamut do pracy lokalnej na własnym folderze projektu.
+              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz aplikację z lokalnym systemem AI do pracy na własnym folderze projektu.
             </p>
             <ul class="pricing-list">
               <li>aplikacja desktopowa na Windows</li>
               <li>praca z kodem, plikami i projektami</li>
+              <li>tryb modeli ~10B i opcjonalny tryb POWER ~30B</li>
               <li>aktualizacje beta bez dopłat</li>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
@@ -713,7 +663,7 @@
         <span class="section-kicker">Dokąd idziemy</span>
         <h2>Lepsze prowadzenie lokalnego AI i praca z większymi projektami.</h2>
         <p class="section-lead">
-          Kierunek Kodnika jest prosty: System Mamut ma coraz lepiej prowadzić lokalne AI przez większe zadania, większe projekty i bardziej złożoną pracę — bez zamieniania Kodnika w chmurową usługę.
+          Kierunek Kodnika jest prosty: lokalny system AI ma coraz lepiej prowadzić użytkownika przez większe zadania, większe projekty i bardziej złożoną pracę — bez zamieniania Kodnika w chmurową usługę.
         </p>
         <div class="roadmap-line">
           <span class="roadmap-pill">czytanie screenów i analiza UI</span>
@@ -721,6 +671,7 @@
           <span class="roadmap-pill">rozwój trybu online</span>
           <span class="roadmap-pill">lepsze prowadzenie zadań</span>
           <span class="roadmap-pill">wygodniejsza praca z plikami</span>
+          <span class="roadmap-pill">rozwój trybu POWER</span>
         </div>
       </div>
     </section>
@@ -731,12 +682,16 @@
         <h2>Pytania przed zakupem.</h2>
         <div class="faq-grid">
           <div class="faq-item">
-            <h3>Czym jest System Mamut?</h3>
-            <p>System Mamut to autorska warstwa Kodnika do prowadzenia lokalnego AI. Kodnik jest aplikacją, którą instalujesz i używasz, a Mamut jest mechanizmem w środku, który pomaga mniejszym modelom pracować krok po kroku na komputerze użytkownika.</p>
+            <h3>Czym jest system AI Kodnika?</h3>
+            <p>To autorska warstwa Kodnika do prowadzenia lokalnego AI. Kodnik jest aplikacją, którą instalujesz i używasz, a system w środku pomaga modelom pracować krok po kroku na komputerze użytkownika.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Czym różni się model ~10B od ~30B?</h3>
+            <p>Tryb modeli ~10B jest domyślny i przeznaczony dla większości komputerów. Tryb POWER ~30B jest opcjonalny, pobierany osobno i przeznaczony dla mocniejszego sprzętu. Jeśli komputer nie da rady uruchomić dużego modelu, możesz wrócić do trybu modeli ~10B.</p>
           </div>
           <div class="faq-item">
             <h3>Czy potrzebuję internetu?</h3>
-            <p>Tak, do pierwszej konfiguracji, trybu ONLINE oraz pobierania aktualizacji. Do zwykłej pracy lokalnej Kodnik może działać offline.</p>
+            <p>Tak, do pierwszej konfiguracji, trybu ONLINE, pobierania modeli oraz pobierania aktualizacji. Do zwykłej pracy lokalnej Kodnik może działać offline.</p>
           </div>
           <div class="faq-item">
             <h3>Czy Kodnik działa po angielsku?</h3>
@@ -748,7 +703,7 @@
           </div>
           <div class="faq-item">
             <h3>Czy działa bez karty graficznej?</h3>
-            <p>Tak, w trybie CPU only. Będzie wolniej, ale działa. Szybszy tryb GPU + CPU wymaga zgodnej karty NVIDIA.</p>
+            <p>Tak, tryb modeli ~10B może działać tylko na procesorze, ale zalecamy wtedy minimum 24 GB RAM. Karta graficzna nie jest obowiązkowa, jednak znacząco poprawia komfort pracy. Tryb POWER ~30B jest przeznaczony dla mocniejszych komputerów i na samym procesorze może działać bardzo wolno.</p>
           </div>
           <div class="faq-item">
             <h3>Czy dostanę aktualizacje?</h3>
@@ -756,7 +711,7 @@
           </div>
           <div class="faq-item">
             <h3>Ile czasu zajmuje instalacja?</h3>
-            <p>Sama instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja może potrwać dłużej, zależnie od komputera i połączenia internetowego.</p>
+            <p>Sama instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja może potrwać dłużej, zależnie od komputera, połączenia internetowego i wybranego modelu.</p>
           </div>
         </div>
       </div>
