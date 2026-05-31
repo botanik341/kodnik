@@ -1,17 +1,16 @@
 {
-  "version": "BETA-2026.05.29",
-  "build": "2026-05-29",
-  "title": "Kodnik Beta 2026.05.29",
-  "message": "Dostępna jest nowa wersja Kodnika Beta.",
-  "download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-05-29/KodnikSetup-BETA-2026.05.29.exe",
-  "download_mode": "installer",
-  "sha256": "f7288aebc68d6ed147389d891ea470afd292080fa22c0a899384768f3a173588",
-  "required": false,
-  "changelog": [
-    "Dodano system aktualizacji Kodnika.",
-    "Dodano przycisk Aktualizacje.",
-    "Dodano pobieranie instalatora przez aktualizator.",
-    "Dodano weryfikację SHA-256 pobranego instalatora.",
-    "Poprawiono instalator pod aktualizację w tej samej ścieżce."
-  ]
+"version": "BETA-2026.05.31",
+"build": "2026-05-31",
+"title": "Kodnik BETA 2026-05-31",
+"message": "Nowa wersja Kodnika: wybór modelu (~10B / ~30B), opcjonalny model POWER Qwen3.5-27B oraz obsługa akceleracji Vulkan na wspieranych GPU.",
+"download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-05-31/KodnikSetup-BETA-2026.05.31.exe",
+"download_mode": "installer",
+"sha256": "cf0db58d11e74a89659408faa1b3f61f4c4b614cc612c9d0a19af925836f8835",
+"required": false,
+"changelog": [
+"Wybór wielkości modelu w dolnym pasku (~10B / ~30B)",
+"Opcjonalny model POWER Qwen3.5-27B (Apache 2.0)",
+"Obsługa Vulkan dla modelu POWER na wspieranych GPU",
+"Pliki licencyjne (NOTICE/LICENSE) zapisywane obok pobranych modeli"
+]
 }
