@@ -90,6 +90,37 @@
     strong { color: #fff; }
     .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
 
+    .tech-alert {
+      border-bottom: 1px solid rgba(255, 209, 92, .30);
+      background: linear-gradient(135deg, rgba(255, 209, 92, .18), rgba(245, 166, 35, .10), rgba(8, 11, 18, .94));
+      color: #fff3cf;
+    }
+    .tech-alert-inner {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.45;
+    }
+    .tech-alert-badge {
+      flex: 0 0 auto;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255, 209, 92, .20);
+      border: 1px solid rgba(255, 209, 92, .34);
+      color: #ffe7a5;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .tech-alert strong { color: #fff; }
+    .tech-alert a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+
     .topbar {
       position: sticky;
       top: 0;
@@ -144,6 +175,15 @@
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
     .btn:hover { transform: translateY(-1px); }
+    .btn-disabled {
+      color: rgba(244, 247, 251, .62);
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: none;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .btn-disabled:hover { transform: none; }
     .btn-primary, .btn-secondary {
       color: #171006;
       background: linear-gradient(135deg, var(--gold), var(--gold-2));
@@ -317,6 +357,17 @@
   <!-- End Meta Pixel Code -->
 </head>
 <body>
+  <div class="tech-alert" role="status" aria-live="polite">
+    <div class="tech-alert-inner">
+      <span class="tech-alert-badge">Przerwa techniczna</span>
+      <div>
+        <strong>Sprzedaż Kodnika jest chwilowo wstrzymana.</strong>
+        Wykryliśmy błąd w aktualnej wersji i wolimy najpierw przygotować poprawkę, zanim nowe osoby pobiorą aplikację.
+        Po naprawie przywrócimy możliwość zakupu. W razie pytań napisz na
+        <a href="mailto:ujot@interia.pl">ujot@interia.pl</a>.
+      </div>
+    </div>
+  </div>
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#top" aria-label="Kodnik">
@@ -615,12 +666,12 @@ renderTrainingTable();</div>
     <section id="cena">
       <div class="container">
         <span class="section-kicker">Wersja beta</span>
-        <h2>Pobierz Kodnika i zacznij pracę z lokalnym AI.</h2>
+        <h2>Sprzedaż Kodnika jest chwilowo wstrzymana.</h2>
         <div class="pricing-wrap">
           <div class="pricing-panel">
             <h3>Kodnik w wersji beta</h3>
             <p>
-              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz aplikację z lokalnym systemem AI do pracy na własnym folderze projektu.
+              Wykryliśmy błąd w aktualnej wersji Kodnika i tymczasowo wyłączyliśmy zakup. Najpierw przygotujemy poprawkę, a potem ponownie udostępnimy sprzedaż.
             </p>
             <ul class="pricing-list">
               <li>aplikacja desktopowa na Windows</li>
@@ -630,14 +681,14 @@ renderTrainingTable();</div>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
             </ul>
-            <p class="price">Jednorazowo: <strong>39 zł</strong></p>
-            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Przejdź do koszyka</a>
+            <p class="price">Cena po wznowieniu: <strong>39 zł</strong></p>
+            <span class="btn btn-disabled" role="button" aria-disabled="true">Zakup chwilowo wstrzymany</span>
           </div>
 
           <div class="info-panel">
-            <h3>Jak wygląda zakup?</h3>
+            <h3>Status zakupu</h3>
             <p>
-              Klikasz przycisk i przechodzisz do zewnętrznego koszyka płatności. Po zakupie otrzymujesz link do instalatora Kodnika.
+              Zakup jest teraz wyłączony, więc strona nie prowadzi do koszyka płatności. Po usunięciu błędu przywrócimy przycisk zakupu i możliwość pobrania instalatora.
             </p>
             <br />
             <p>
