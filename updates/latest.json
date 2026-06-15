@@ -4,8 +4,8 @@
   "title": "Kodnik BETA 2026.06.15",
   "message": "Dostępna jest nowa wersja beta Kodnika.",
   "download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-06-15/KodnikSetup-BETA-2026.06.15.exe",
-  "download_mode": "direct",
-  "sha256": "77116fe2f951cf16b7e8f3768b4339ba8ad1090075a55caaeed58c0db788fa3e",
+  "download_mode": "installer",
+  "sha256": "e16228aec8cbee72abd130a3a54c1bc838ee7f2321aa677a37a524eb0dd1ddaf",
   "required": false,
   "changelog": [
     "Poprawiono działanie GPU w paczce instalacyjnej.",
