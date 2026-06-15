@@ -8,9 +8,9 @@
   "sha256": "77116fe2f951cf16b7e8f3768b4339ba8ad1090075a55caaeed58c0db788fa3e",
   "required": false,
   "changelog": [
-    "Naprawiono działanie GPU/CUDA w paczce instalacyjnej.",
-    "Przywrócono ochronę promptów przez prompts.vault.",
-    "Wyłączono ciężki automatyczny test backendu przy starcie aplikacji.",
-    "Poprawiono wykrywanie VRAM i dobór warstw GPU."
+    "Poprawiono działanie GPU w paczce instalacyjnej.",
+    "Poprawiono stabilność uruchamiania programu.",
+    "Usprawniono wykrywanie sprzętu i dobór ustawień GPU.",
+    "Poprawiono paczkę instalacyjną."
   ]
 }
