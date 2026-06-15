@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kodnik — lokalny asystent AI do pracy z kodem na Windows</title>
-  <meta name="description" content="Kodnik to aplikacja desktopowa z lokalnym AI do pracy z kodem na Windows. Działa lokalnie, oferuje tryb modeli ~10B oraz opcjonalny tryb POWER ~30B dla mocniejszych komputerów." />
+  <meta name="description" content="Kodnik to aplikacja desktopowa z lokalnym AI do pracy z kodem na Windows. Działa lokalnie na komputerze użytkownika i wymaga minimum 32 GB RAM do normalnej pracy." />
   <meta name="theme-color" content="#080b12" />
   <link rel="canonical" href="https://kodnik.pl/" />
 
@@ -90,37 +90,6 @@
     strong { color: #fff; }
     .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
 
-    .tech-alert {
-      border-bottom: 1px solid rgba(255, 209, 92, .30);
-      background: linear-gradient(135deg, rgba(255, 209, 92, .18), rgba(245, 166, 35, .10), rgba(8, 11, 18, .94));
-      color: #fff3cf;
-    }
-    .tech-alert-inner {
-      width: min(1160px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 14px 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.45;
-    }
-    .tech-alert-badge {
-      flex: 0 0 auto;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: rgba(255, 209, 92, .20);
-      border: 1px solid rgba(255, 209, 92, .34);
-      color: #ffe7a5;
-      font-family: "JetBrains Mono", monospace;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .tech-alert strong { color: #fff; }
-    .tech-alert a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-
-
     .topbar {
       position: sticky;
       top: 0;
@@ -175,15 +144,6 @@
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-disabled {
-      color: rgba(244, 247, 251, .62);
-      background: rgba(255,255,255,.075);
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: none;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-    .btn-disabled:hover { transform: none; }
     .btn-primary, .btn-secondary {
       color: #171006;
       background: linear-gradient(135deg, var(--gold), var(--gold-2));
@@ -357,17 +317,6 @@
   <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <div class="tech-alert" role="status" aria-live="polite">
-    <div class="tech-alert-inner">
-      <span class="tech-alert-badge">Przerwa techniczna</span>
-      <div>
-        <strong>Sprzedaż Kodnika jest chwilowo wstrzymana.</strong>
-        Wykryliśmy błąd w aktualnej wersji i wolimy najpierw przygotować poprawkę, zanim nowe osoby pobiorą aplikację.
-        Po naprawie przywrócimy możliwość zakupu. W razie pytań napisz na
-        <a href="mailto:ujot@interia.pl">ujot@interia.pl</a>.
-      </div>
-    </div>
-  </div>
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#top" aria-label="Kodnik">
@@ -377,7 +326,7 @@
       <nav class="nav" aria-label="Główna nawigacja">
         <a href="#powiedz">Możliwości</a>
         <a href="#system-ai">System AI</a>
-        <a href="#modele">Modele</a>
+        <a href="#modele">Model</a>
         <a href="#prywatnosc">Prywatność</a>
         <a href="#wymagania">Wymagania</a>
         <a href="#faq">FAQ</a>
@@ -396,11 +345,11 @@
             <span class="accent">Kodnik</span> to aplikacja desktopowa z lokalnym AI. W środku działa <span class="accent">autorski system prowadzenia AI</span>, który prowadzi modele krok po kroku: od rozmowy, przez pracę na plikach, po tworzenie i naprawę programów.
           </p>
           <p class="hero-lead">
-            Kodnik obsługuje tryb modeli <span class="accent">~10B</span> dla większości komputerów oraz opcjonalny tryb <span class="accent">POWER ~30B</span> dla mocniejszego sprzętu. W trybie OFFLINE pracujesz lokalnie, a tryb ONLINE służy do aktualnych informacji i aktualizacji.
+            Kodnik działa lokalnie na komputerze użytkownika. Do normalnej pracy wymagane jest <span class="accent">minimum 32 GB RAM</span>. W trybie OFFLINE pracujesz lokalnie, a tryb ONLINE służy do aktualnych informacji i aktualizacji.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#powiedz">Zobacz, co potrafi Kodnik</a>
-            <a class="btn btn-secondary" href="#modele">Modele ~10B / ~30B</a>
+            <a class="btn btn-secondary" href="#wymagania">Sprawdź wymagania</a>
           </div>
           <div class="micro-row" aria-label="Najważniejsze informacje">
             <span class="micro"><span class="dot"></span> Windows 10/11 x64</span>
@@ -408,7 +357,7 @@
             <span class="micro"><span class="dot"></span> Kod zostaje u Ciebie</span>
             <span class="micro"><span class="dot"></span> Tworzenie i edycja programów</span>
             <span class="micro"><span class="dot"></span> Naprawa błędów</span>
-            <span class="micro"><span class="dot"></span> Modele ~10B / ~30B</span>
+            <span class="micro"><span class="dot"></span> Minimum 32 GB RAM</span>
             <span class="micro"><span class="dot"></span> GPU na wspieranym sprzęcie</span>
           </div>
         </div>
@@ -466,8 +415,6 @@ renderTrainingTable();</div>
             <span class="status">OFFLINE</span>
             <span class="status online">ONLINE</span>
             <span class="status update">AKTUALIZACJE</span>
-            <span class="status model">~10B</span>
-            <span class="status model-power">~30B</span>
             <span class="status auto">AUTO</span>
             <span class="status cpu">CPU only</span>
             <span class="status-note">Lokalny system AI działa po Twojej stronie.</span>
@@ -526,7 +473,7 @@ renderTrainingTable();</div>
             </p>
             <br />
             <p>
-              Dzięki temu Kodnik nie jest tylko zwykłym czatem z AI. To aplikacja, która łączy rozmowę, pracę na plikach, kontrolę zmian, aktualizacje oraz wybór modelu dopasowany do sprzętu.
+              Dzięki temu Kodnik nie jest tylko zwykłym czatem z AI. To aplikacja, która łączy rozmowę, pracę na plikach, kontrolę zmian i aktualizacje.
             </p>
           </div>
 
@@ -534,7 +481,7 @@ renderTrainingTable();</div>
             <ul class="product-list">
               <li><span class="check">✓</span><span><strong>Autorska warstwa Kodnika:</strong> odpowiada za prowadzenie lokalnego AI przez zadanie.</span></li>
               <li><span class="check">✓</span><span><strong>Prowadzenie etapami:</strong> pomaga modelom pracować konkretniej, zamiast gubić się w jednym długim poleceniu.</span></li>
-              <li><span class="check">✓</span><span><strong>Dwa rozmiary modeli:</strong> tryb modeli ~10B dla większości komputerów oraz opcjonalny tryb POWER ~30B dla mocniejszego sprzętu.</span></li>
+              <li><span class="check">✓</span><span><strong>Lokalna praca AI:</strong> Kodnik uruchamia model AI na komputerze użytkownika i prowadzi go przez zadanie krok po kroku.</span></li>
               <li><span class="check">✓</span><span><strong>Pętle poprawy i sprawdzanie wyniku:</strong> po wykonaniu pracy Kodnik może sprawdzać wynik i kierować zmianę do poprawki, gdy coś nie wyjdzie.</span></li>
               <li><span class="check">✓</span><span><strong>Lokalna kontrola:</strong> projekt zostaje u Ciebie, a AI pracuje po Twojej stronie.</span></li>
             </ul>
@@ -555,26 +502,26 @@ renderTrainingTable();</div>
 
     <section id="modele">
       <div class="container">
-        <span class="section-kicker">Modele ~10B / ~30B</span>
-        <h2>Standard dla większości komputerów i POWER dla mocniejszego sprzętu.</h2>
+        <span class="section-kicker">Model lokalny</span>
+        <h2>Lokalny model AI do pracy z kodem.</h2>
         <p class="section-lead">
-          Kodnik ma domyślny tryb modeli ~10B oraz opcjonalny tryb POWER ~30B. Tryb ~10B jest przeznaczony dla większości użytkowników i zwykłych komputerów. Tryb POWER pobierasz osobno i uruchamiasz na mocniejszym komputerze, jeśli potrzebujesz większej jakości pracy AI.
+          Kodnik korzysta z lokalnego modelu AI uruchamianego na komputerze użytkownika. Dzięki temu możesz pracować z plikami projektu po swojej stronie, bez wysyłania całego folderu projektu do zewnętrznej chmury.
         </p>
 
         <div class="split">
           <article class="info-panel">
-            <span class="mode-label offline">STANDARD ~10B</span>
-            <h3>Domyślny model dla większości komputerów</h3>
+            <span class="mode-label online">LOKALNIE</span>
+            <h3>Praca na Twoim komputerze</h3>
             <p>
-              To bezpieczny tryb startowy Kodnika. Może działać lokalnie także na CPU, choć wtedy będzie wolniejszy. Jest dobrym wyborem dla zwykłych laptopów i komputerów bez mocnej karty graficznej.
+              Model AI działa po Twojej stronie. Kodnik może pomagać w rozmowie, analizie plików, tworzeniu programów, edycji kodu i naprawianiu błędów w projekcie.
             </p>
           </article>
 
           <article class="info-panel">
-            <span class="mode-label online">POWER ~30B</span>
-            <h3>Opcja dla mocniejszych komputerów</h3>
+            <span class="mode-label offline">32 GB RAM</span>
+            <h3>Wymagania sprzętowe</h3>
             <p>
-              Tryb POWER jest opcjonalny i przeznaczony dla mocniejszego sprzętu. Może korzystać z akceleracji Vulkan na wspieranych kartach NVIDIA / AMD / Intel. Jeśli komputer nie da rady, wracasz do trybu modeli ~10B.
+              Do normalnej pracy z Kodnikiem wymagane jest minimum 32 GB RAM. To wymaganie wynika z lokalnego działania modelu AI na komputerze użytkownika.
             </p>
           </article>
         </div>
@@ -639,25 +586,25 @@ renderTrainingTable();</div>
         <span class="section-kicker">Wymagania sprzętowe</span>
         <h2>Sprawdź sprzęt przed zakupem.</h2>
         <p class="section-lead">
-          Kodnik działa na Windows 10 i Windows 11. Do instalacji potrzebujesz około <strong>9 GB miejsca</strong> z trybem modeli ~10B albo około <strong>25 GB miejsca</strong>, jeśli dodasz też opcjonalny tryb <strong>POWER ~30B</strong>.
+          Kodnik działa na Windows 10 i Windows 11. Do normalnej pracy wymagane jest minimum <strong>32 GB RAM</strong>. Aplikacja działa lokalnie, dlatego potrzebuje mocniejszego komputera do pracy z kodem i plikami projektu.
         </p>
 
         <div class="requirements">
           <div class="req-card">
             <h3>System</h3>
-            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Wolne miejsce na dysku na aplikację, modele AI i pliki projektu.</p>
+            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Wolne miejsce na dysku na aplikację, model AI i pliki projektu.</p>
           </div>
           <div class="req-card">
-            <h3>Tryb modeli ~10B</h3>
-            <p>Do normalnej pracy zalecamy 16 GB RAM oraz kartę graficzną z minimum 6 GB pamięci. Jeśli komputer nie ma karty graficznej i Kodnik ma działać tylko na procesorze, zalecamy minimum 24 GB RAM.</p>
-          </div>
-          <div class="req-card">
-            <h3>Tryb POWER ~30B</h3>
-            <p>Tryb POWER jest przeznaczony dla mocniejszych komputerów. Zalecamy minimum 32 GB RAM oraz mocniejszą kartę graficzną. Na samym procesorze tryb POWER może działać bardzo wolno, dlatego nie polecamy go do codziennej pracy bez GPU.</p>
+            <h3>Pamięć RAM</h3>
+            <p>Minimum 32 GB RAM. Kodnik jest przeznaczony do pracy na mocniejszych komputerach.</p>
           </div>
           <div class="req-card">
             <h3>Karta graficzna</h3>
-            <p>Karta graficzna nie jest obowiązkowa dla trybu modeli ~10B, ale znacząco poprawia komfort pracy. Kodnik może korzystać z kart NVIDIA, AMD i Intel, jeśli sprzęt oraz sterowniki obsługują przyspieszenie. Jeśli komputer nie poradzi sobie z trybem POWER, możesz wrócić do trybu modeli ~10B.</p>
+            <p>Karta graficzna nie jest obowiązkowa, ale może poprawić komfort pracy. Kodnik może korzystać z kart NVIDIA, AMD i Intel.</p>
+          </div>
+          <div class="req-card">
+            <h3>Praca lokalna</h3>
+            <p>Kodnik uruchamia lokalny model AI na komputerze użytkownika. Na słabszym sprzęcie praca może być wolna albo niewystarczająca do codziennego użycia.</p>
           </div>
         </div>
       </div>
@@ -666,29 +613,29 @@ renderTrainingTable();</div>
     <section id="cena">
       <div class="container">
         <span class="section-kicker">Wersja beta</span>
-        <h2>Sprzedaż Kodnika jest chwilowo wstrzymana.</h2>
+        <h2>Pobierz Kodnika i zacznij pracę z lokalnym AI.</h2>
         <div class="pricing-wrap">
           <div class="pricing-panel">
             <h3>Kodnik w wersji beta</h3>
             <p>
-              Wykryliśmy błąd w aktualnej wersji Kodnika i tymczasowo wyłączyliśmy zakup. Najpierw przygotujemy poprawkę, a potem ponownie udostępnimy sprzedaż.
+              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz aplikację z lokalnym systemem AI do pracy na własnym folderze projektu.
             </p>
             <ul class="pricing-list">
               <li>aplikacja desktopowa na Windows</li>
               <li>praca z kodem, plikami i projektami</li>
-              <li>tryb modeli ~10B i opcjonalny tryb POWER ~30B</li>
+              <li>lokalny model AI do pracy na komputerze użytkownika</li>
               <li>aktualizacje beta bez dopłat</li>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
             </ul>
-            <p class="price">Cena po wznowieniu: <strong>39 zł</strong></p>
-            <span class="btn btn-disabled" role="button" aria-disabled="true">Zakup chwilowo wstrzymany</span>
+            <p class="price">Jednorazowo: <strong>19,99 zł</strong></p>
+            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Przejdź do koszyka</a>
           </div>
 
           <div class="info-panel">
-            <h3>Status zakupu</h3>
+            <h3>Jak wygląda zakup?</h3>
             <p>
-              Zakup jest teraz wyłączony, więc strona nie prowadzi do koszyka płatności. Po usunięciu błędu przywrócimy przycisk zakupu i możliwość pobrania instalatora.
+              Przechodzisz do zewnętrznego koszyka płatności. Po zakupie otrzymujesz link do instalatora Kodnika.
             </p>
             <br />
             <p>
@@ -722,7 +669,7 @@ renderTrainingTable();</div>
           <span class="roadmap-pill">rozwój trybu online</span>
           <span class="roadmap-pill">lepsze prowadzenie zadań</span>
           <span class="roadmap-pill">wygodniejsza praca z plikami</span>
-          <span class="roadmap-pill">rozwój trybu POWER</span>
+          <span class="roadmap-pill">lepsza jakość lokalnego modelu</span>
         </div>
       </div>
     </section>
@@ -737,8 +684,8 @@ renderTrainingTable();</div>
             <p>To autorska warstwa Kodnika do prowadzenia lokalnego AI. Kodnik jest aplikacją, którą instalujesz i używasz, a system w środku pomaga modelom pracować krok po kroku na komputerze użytkownika.</p>
           </div>
           <div class="faq-item">
-            <h3>Czym różni się model ~10B od ~30B?</h3>
-            <p>Tryb modeli ~10B jest domyślny i przeznaczony dla większości komputerów. Tryb POWER ~30B jest opcjonalny, pobierany osobno i przeznaczony dla mocniejszego sprzętu. Jeśli komputer nie da rady uruchomić dużego modelu, możesz wrócić do trybu modeli ~10B.</p>
+            <h3>Jakiego komputera potrzebuję?</h3>
+            <p>Do normalnej pracy z Kodnikiem wymagane jest minimum 32 GB RAM. Kodnik działa lokalnie na komputerze użytkownika, dlatego potrzebuje mocniejszego sprzętu.</p>
           </div>
           <div class="faq-item">
             <h3>Czy potrzebuję internetu?</h3>
@@ -754,7 +701,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Czy działa bez karty graficznej?</h3>
-            <p>Tak, tryb modeli ~10B może działać tylko na procesorze, ale zalecamy wtedy minimum 24 GB RAM. Karta graficzna nie jest obowiązkowa, jednak znacząco poprawia komfort pracy. Tryb POWER ~30B jest przeznaczony dla mocniejszych komputerów i na samym procesorze może działać bardzo wolno.</p>
+            <p>Tak, Kodnik może działać bez karty graficznej, ale wymagane jest minimum 32 GB RAM. Karta graficzna nie jest obowiązkowa, jednak może poprawić komfort pracy.</p>
           </div>
           <div class="faq-item">
             <h3>Czy dostanę aktualizacje?</h3>
@@ -762,7 +709,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Ile czasu zajmuje instalacja?</h3>
-            <p>Sama instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja może potrwać dłużej, zależnie od komputera, połączenia internetowego i wybranego modelu.</p>
+            <p>Sama instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja może potrwać dłużej, zależnie od komputera i połączenia internetowego.</p>
           </div>
         </div>
       </div>
