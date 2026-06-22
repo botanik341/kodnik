@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kodnik — lokalny program AI do pracy z kodem i plikami</title>
-  <meta name="description" content="Kodnik to lokalny program AI do pracy z kodem i plikami projektu. Działa na komputerze użytkownika, pomaga tworzyć, edytować i naprawiać programy." />
+  <title>Kodnik — lokalny agent AI do kodu, który działa offline</title>
+  <meta name="description" content="Kodnik to lokalny agent AI do kodu. Opisujesz zadanie, a Kodnik pisze, zmienia i naprawia pliki projektu na Twoim komputerze. Offline, bez konta w chmurze." />
   <meta name="theme-color" content="#080b12" />
   <link rel="canonical" href="https://kodnik.pl/" />
 
@@ -14,17 +14,17 @@
   <meta property="og:locale" content="pl_PL" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kodnik" />
-  <meta property="og:title" content="Kodnik — lokalny program AI do pracy z kodem i plikami" />
-  <meta property="og:description" content="Twórz proste programy, zmieniaj istniejące pliki i naprawiaj błędy z pomocą lokalnego AI. Kod zostaje u Ciebie, bez konta w chmurze." />
+  <meta property="og:title" content="Kodnik — lokalny agent AI do kodu, który działa offline" />
+  <meta property="og:description" content="Opisujesz zadanie, a Kodnik pisze, zmienia i naprawia pliki projektu na Twoim komputerze. Offline, bez konta w chmurze." />
   <meta property="og:url" content="https://kodnik.pl/" />
   <meta property="og:image" content="https://kodnik.pl/assets/kodnik-social-preview.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Kodnik — lokalny program AI do pracy z kodem i plikami" />
+  <meta property="og:image:alt" content="Kodnik — lokalny agent AI do kodu, który działa offline" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kodnik — lokalny program AI do pracy z kodem i plikami" />
-  <meta name="twitter:description" content="Twórz proste programy, zmieniaj istniejące pliki i naprawiaj błędy z pomocą lokalnego AI. Kod zostaje u Ciebie, bez konta w chmurze." />
+  <meta name="twitter:title" content="Kodnik — lokalny agent AI do kodu, który działa offline" />
+  <meta name="twitter:description" content="Opisujesz zadanie, a Kodnik pisze, zmienia i naprawia pliki projektu na Twoim komputerze. Offline, bez konta w chmurze." />
   <meta name="twitter:image" content="https://kodnik.pl/assets/kodnik-social-preview.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -144,11 +144,16 @@
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary, .btn-secondary {
+    .btn-primary {
       color: #171006;
       background: linear-gradient(135deg, var(--gold), var(--gold-2));
       box-shadow: 0 18px 44px rgba(245,166,35,.26);
       border: 0;
+    }
+    .btn-secondary {
+      color: #f4f7fb;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
     }
 
     .micro-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
@@ -339,32 +344,32 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">LOKALNE AI DO KODU I PLIKÓW</span>
-          <h1>Kodnik pomaga tworzyć, zmieniać i naprawiać programy na Twoim komputerze.</h1>
+          <span class="eyebrow">OFFLINE • LOKALNY AGENT AI DO KODU</span>
+          <h1>Kodnik to Twój agent AI. Tworzy, zmienia i naprawia programy — offline, na Twoim komputerze.</h1>
           <p class="hero-lead">
-            <span class="accent">Kodnik</span> to aplikacja desktopowa z lokalnym AI do pracy z kodem i plikami projektu. Pomaga przejść od pomysłu do działającego programu, a potem dalej edytować i poprawiać projekt na Twoim komputerze.
+            Opisujesz, co chcesz zrobić, a <span class="accent">Kodnik</span> pisze i zmienia pliki Twojego projektu na Twoim komputerze. To aplikacja desktopowa z lokalnym modelem AI — <span class="accent">nie kolejne okno czatu</span>, tylko agent, który realnie wykonuje zmiany w plikach.
           </p>
           <p class="hero-lead">
-            Przed zakupem sprawdź wymagania: Windows 10/11 x64, <span class="accent">32 GB RAM</span> oraz około <span class="accent">24,8 GB miejsca na dysku</span>. GPU nie jest wymagane, ale wyraźnie poprawia komfort pracy.
+            Kodnik uruchamia prawdziwy model AI na Twoim sprzęcie, dlatego wymaga mocnej maszyny: Windows 10/11 x64, <span class="accent">32 GB RAM</span> i około <span class="accent">24,8 GB miejsca na dysku</span>. GPU nie jest wymagane, ale wyraźnie przyspiesza pracę.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#powiedz">Zobacz, co potrafi Kodnik</a>
-            <a class="btn btn-secondary" href="#wymagania">Sprawdź wymagania</a>
+            <a class="btn btn-primary" href="#cena">Pobierz Kodnika — 19,99 zł</a>
+            <a class="btn btn-secondary" href="#system-ai">Zobacz, jak zmienia pliki</a>
           </div>
           <div class="micro-row" aria-label="Najważniejsze informacje">
-            <span class="micro"><span class="dot"></span> Windows 10/11 x64</span>
-            <span class="micro"><span class="dot"></span> Bez abonamentu</span>
+            <span class="micro"><span class="dot"></span> Działa offline</span>
             <span class="micro"><span class="dot"></span> Kod zostaje u Ciebie</span>
-            <span class="micro"><span class="dot"></span> Tworzenie i edycja programów</span>
-            <span class="micro"><span class="dot"></span> Naprawa błędów</span>
-            <span class="micro"><span class="dot"></span> Wymagania opisane przed zakupem</span>
-            <span class="micro"><span class="dot"></span> GPU przyspiesza pracę</span>
+            <span class="micro"><span class="dot"></span> Bez konta w chmurze</span>
+            <span class="micro"><span class="dot"></span> Bez abonamentu</span>
+            <span class="micro"><span class="dot"></span> Tworzy i edytuje programy</span>
+            <span class="micro"><span class="dot"></span> Naprawia błędy w kodzie</span>
+            <span class="micro"><span class="dot"></span> Windows 10/11 x64</span>
           </div>
         </div>
 
         <div class="app-card" aria-label="Podgląd aplikacji Kodnik">
           <div class="app-top">
-            <span>Kodnik — Nowy czat</span>
+            <span>Kodnik — Twój projekt</span>
             <span class="app-dot-row"><span class="app-dot"></span><span class="app-dot"></span><span class="app-dot"></span></span>
           </div>
           <div class="app-body">
@@ -387,14 +392,14 @@
 }</div>
             </div>
             <div class="chat-area">
-              <div class="chat-title">Asystent Kodnika</div>
+              <div class="chat-title">Kodnik</div>
               <div class="bubble bubble-user">Zmień kolor programu na zielony i dodaj tabelę treningów.</div>
               <div class="plan-card">
                 <div class="plan-head"><span>Plan pracy (w trakcie)</span><span>1 / 2</span></div>
-                <div class="plan-step"><span class="mark">✓</span><span>Zmienię kolor programu na zielony.</span></div>
-                <div class="plan-step"><span class="arrow">→</span><span>Dodam tabelę ostatnich treningów.</span></div>
+                <div class="plan-step"><span class="mark">✓</span><span>Zmieniam kolor programu na zielony.</span></div>
+                <div class="plan-step"><span class="arrow">→</span><span>Dodaję tabelę ostatnich treningów.</span></div>
               </div>
-              <div class="bubble bubble-ai">Asystent przygotowuje zmianę w projekcie.</div>
+              <div class="bubble bubble-ai">Kodnik zmienia pliki w Twoim projekcie.</div>
               <div class="code-window">
                 <div class="code-head"><span>CSS / HTML</span><span>Edycja w toku</span></div>
                 <div class="code-body">.panel {
@@ -405,7 +410,7 @@ renderTrainingTable();</div>
               </div>
             </div>
             <div class="side-area">
-              Rozmowy
+              Projekty
               <div class="side-pill"></div>
               <div class="side-chat">Edycja<br />treningów</div>
               <div class="side-pill"></div>
@@ -426,31 +431,31 @@ renderTrainingTable();</div>
     <section id="powiedz">
       <div class="container">
         <span class="section-kicker">Co robi Kodnik</span>
-        <h2>Rozmowa, praca z plikami i informacje z internetu.</h2>
+        <h2>Opisujesz zadanie — Kodnik wykonuje je na Twoich plikach.</h2>
         <p class="section-lead">
-          Kodnik nie musi od razu pracować na plikach. Możesz normalnie zadać pytanie, omówić pomysł, poprosić o wyjaśnienie albo porozmawiać także o temacie niezwiązanym bezpośrednio z kodem. Kiedy potrzebujesz świeżych danych, przełączasz tryb ONLINE i Kodnik może korzystać z aktualnych informacji z internetu.
+          Kodnik tworzy nowe programy, edytuje istniejące pliki i naprawia błędy w Twoim projekcie. Możesz też po prostu zadać pytanie albo omówić pomysł, a gdy potrzebujesz świeżych danych, przełączasz tryb ONLINE i Kodnik korzysta z aktualnych informacji z internetu.
         </p>
 
         <div class="prompt-wall">
-          <div class="prompt-panel" aria-label="Przykładowe wiadomości do Kodnika">
+          <div class="prompt-panel" aria-label="Przykładowe polecenia dla Kodnika">
             <div class="prompt-bubble">Stwórz prostą aplikację do notatek z zapisem wpisów.</div>
             <div class="prompt-bubble">Zmień wygląd przycisku Zapisz.</div>
-            <div class="prompt-bubble">Sprawdź, dlaczego program się nie uruchamia.</div>
+            <div class="prompt-bubble">Znajdź i napraw błąd, przez który program się nie uruchamia.</div>
             <div class="prompt-bubble">Wyjaśnij, co robi ten plik i od czego zacząć.</div>
-            <div class="prompt-bubble">Porozmawiajmy luźno o moim pomyśle.</div>
+            <div class="prompt-bubble">Dodaj nową funkcję do mojej aplikacji.</div>
             <div class="prompt-bubble">Przełącz na ONLINE i sprawdź aktualne informacje w internecie.</div>
           </div>
 
           <div class="product-panel">
             <ul class="product-list">
-              <li><span class="check">✓</span><span><strong>Zwykła rozmowa:</strong> możesz normalnie rozmawiać z Kodnikiem o pomyśle, nauce, kodzie, problemie albo innym temacie.</span></li>
-              <li><span class="check">✓</span><span><strong>Tworzenie narzędzi:</strong> opisujesz, co chcesz zrobić, a Kodnik przygotowuje pliki projektu na Twoim komputerze.</span></li>
-              <li><span class="check">✓</span><span><strong>Praca z istniejącym projektem:</strong> Kodnik może pomagać analizować pliki, zmieniać fragmenty i prowadzić Cię przez zadanie.</span></li>
-              <li><span class="check">✓</span><span><strong>Wyjaśnianie kodu:</strong> możesz poprosić o opis działania pliku, wskazanie problemu albo plan kolejnego kroku.</span></li>
-              <li><span class="check">✓</span><span><strong>Tryb ONLINE:</strong> po włączeniu trybu ONLINE Kodnik może wyszukać aktualne informacje w internecie i opracować odpowiedź.</span></li>
+              <li><span class="check">✓</span><span><strong>Tworzy programy:</strong> opisujesz, co chcesz zrobić, a Kodnik przygotowuje gotowe pliki projektu na Twoim komputerze.</span></li>
+              <li><span class="check">✓</span><span><strong>Zmienia istniejący projekt:</strong> Kodnik analizuje pliki i wprowadza konkretne zmiany w kodzie, krok po kroku.</span></li>
+              <li><span class="check">✓</span><span><strong>Naprawia błędy:</strong> znajduje przyczynę problemu i przygotowuje poprawkę w plikach projektu.</span></li>
+              <li><span class="check">✓</span><span><strong>Wyjaśnia kod:</strong> opisuje działanie pliku, wskazuje problem i podaje plan kolejnego kroku.</span></li>
+              <li><span class="check">✓</span><span><strong>Tryb ONLINE:</strong> po włączeniu trybu ONLINE Kodnik wyszuka aktualne informacje w internecie i uwzględni je w odpowiedzi.</span></li>
             </ul>
             <p class="product-note-right">
-              Możesz zacząć od zwykłego pytania albo luźnej rozmowy, a później przejść do pracy na projekcie lub do szukania aktualnych informacji w internecie.
+              Możesz zacząć od krótkiego polecenia albo pytania, a Kodnik poprowadzi Cię od pomysłu aż do działającej zmiany w plikach.
             </p>
           </div>
         </div>
@@ -460,30 +465,30 @@ renderTrainingTable();</div>
     <section id="system-ai">
       <div class="container">
         <span class="section-kicker">Jak działa Kodnik</span>
-        <h2>Od rozmowy do realnych zmian w plikach.</h2>
+        <h2>Od polecenia do realnych zmian w plikach.</h2>
         <p class="section-lead">
-          Kodnik łączy rozmowę z pracą na folderze projektu. Najpierw rozpoznaje, czy chodzi o zwykłą rozmowę, tworzenie programu, edycję istniejącego projektu albo naprawę błędu. Potem pokazuje plan pracy, wykonuje zmiany w plikach i pozwala wrócić do poprzedniego stanu, gdy efekt nie jest właściwy.
+          Kodnik łączy rozmowę z pracą na folderze projektu. Najpierw rozpoznaje, czy chodzi o pytanie, stworzenie programu, edycję istniejącego projektu czy naprawę błędu. Potem pokazuje plan pracy, wykonuje zmiany w plikach i pozwala wrócić do poprzedniego stanu, gdy efekt nie jest właściwy.
         </p>
 
         <div class="prompt-wall">
           <div class="info-panel">
-            <h3>Nie tylko okno czatu.</h3>
+            <h3>To nie jest okno czatu.</h3>
             <p>
-              Kodnik ma prowadzić użytkownika przez zadanie w projekcie: od krótkiego opisu, przez plan, po konkretną zmianę w plikach. Dzięki temu widzisz, co jest robione i możesz dalej zlecać poprawki.
+              Kodnik prowadzi Cię przez zadanie w projekcie: od krótkiego polecenia, przez plan, po konkretną zmianę w plikach. Widzisz, co jest robione, i możesz od razu zlecać kolejne poprawki.
             </p>
             <br />
             <p>
-              To nadal wersja beta, ale kierunek jest praktyczny: praca na folderze projektu, kontrola zmian, cofanie edycji i aktualizacje bez zamieniania Kodnika w chmurową usługę.
+              To wciąż wersja beta, ale kierunek jest praktyczny: praca na folderze projektu, kontrola zmian, cofanie edycji i aktualizacje — bez zamieniania Kodnika w chmurową usługę.
             </p>
           </div>
 
           <div class="product-panel">
             <ul class="product-list">
-              <li><span class="check">✓</span><span><strong>Plan pracy:</strong> Kodnik pokazuje, co zamierza zrobić, zanim przejdzie do zmian.</span></li>
-              <li><span class="check">✓</span><span><strong>Praca na plikach:</strong> pomaga czytać, zmieniać i porządkować pliki projektu na Twoim komputerze.</span></li>
-              <li><span class="check">✓</span><span><strong>Tworzenie i edycja:</strong> możesz zlecić nowy program albo poprawki w istniejącym projekcie.</span></li>
-              <li><span class="check">✓</span><span><strong>Naprawa błędów:</strong> Kodnik może pomagać znaleźć przyczynę błędu i przygotować poprawkę.</span></li>
-              <li><span class="check">✓</span><span><strong>Cofanie zmian:</strong> przed edycją zachowywany jest punkt powrotu, żeby łatwiej odwrócić nieudaną zmianę.</span></li>
+              <li><span class="check">✓</span><span><strong>Plan pracy:</strong> Kodnik pokazuje, co zrobi, zanim przejdzie do zmian.</span></li>
+              <li><span class="check">✓</span><span><strong>Praca na plikach:</strong> czyta, zmienia i porządkuje pliki projektu na Twoim komputerze.</span></li>
+              <li><span class="check">✓</span><span><strong>Tworzenie i edycja:</strong> zlecasz nowy program albo poprawki w istniejącym projekcie.</span></li>
+              <li><span class="check">✓</span><span><strong>Naprawa błędów:</strong> Kodnik znajduje przyczynę błędu i przygotowuje poprawkę.</span></li>
+              <li><span class="check">✓</span><span><strong>Cofanie zmian:</strong> przed edycją zapisuje punkt powrotu, żeby łatwo odwrócić nieudaną zmianę.</span></li>
             </ul>
           </div>
         </div>
@@ -493,7 +498,7 @@ renderTrainingTable();</div>
           <div>
             <h3>Ochrona plików i cofanie zmian</h3>
             <p class="section-lead">
-              Gdy Kodnik zmienia albo naprawia plik, zachowuje punkt powrotu przed zmianą. Po wykonaniu pracy możesz zobaczyć pod kodem informację o zmianie i użyć opcji <strong>Cofnij zmianę</strong>. Jeśli wynik nie jest taki, jak powinien, plik może wrócić do stanu sprzed edycji lub naprawy.
+              Zanim Kodnik zmieni albo naprawi plik, zapisuje punkt powrotu. Po wykonaniu pracy widzisz pod kodem informację o zmianie i możesz użyć opcji <strong>Cofnij zmianę</strong>. Jeśli wynik nie jest taki, jak powinien, plik wraca do stanu sprzed edycji.
             </p>
           </div>
         </div>
@@ -505,7 +510,7 @@ renderTrainingTable();</div>
         <span class="section-kicker">Praca lokalna</span>
         <h2>Model AI działa po Twojej stronie.</h2>
         <p class="section-lead">
-          Kodnik korzysta z lokalnego modelu AI uruchamianego na komputerze użytkownika. Dzięki temu możesz pracować z plikami projektu po swojej stronie, bez wysyłania całego folderu projektu do zewnętrznej chmury.
+          Kodnik uruchamia lokalny model AI na Twoim komputerze. Dzięki temu pracujesz z plikami projektu u siebie, bez wysyłania całego folderu projektu do zewnętrznej chmury.
         </p>
 
         <div class="split">
@@ -513,7 +518,7 @@ renderTrainingTable();</div>
             <span class="mode-label online">LOKALNIE</span>
             <h3>Praca na Twoim komputerze</h3>
             <p>
-              Model AI działa po Twojej stronie. Kodnik może pomagać w rozmowie, analizie plików, tworzeniu programów, edycji kodu i naprawianiu błędów w projekcie.
+              Model AI działa po Twojej stronie. Kodnik rozmawia, analizuje pliki, tworzy programy, edytuje kod i naprawia błędy w projekcie — wszystko lokalnie.
             </p>
           </article>
 
@@ -521,7 +526,7 @@ renderTrainingTable();</div>
             <span class="mode-label offline">WYDAJNOŚĆ</span>
             <h3>Szybkość zależy od sprzętu</h3>
             <p>
-              Kodnik działa lokalnie, więc szybkość odpowiedzi zależy od procesora, pamięci RAM i karty graficznej. GPU nie jest obowiązkowe, ale przyspiesza pracę i poprawia komfort korzystania.
+              Kodnik działa lokalnie, więc szybkość odpowiedzi zależy od procesora, pamięci RAM i karty graficznej. GPU nie jest obowiązkowe, ale przyspiesza pracę i poprawia komfort.
             </p>
           </article>
         </div>
@@ -531,7 +536,7 @@ renderTrainingTable();</div>
     <section id="offline-online">
       <div class="container">
         <span class="section-kicker">OFFLINE / ONLINE</span>
-        <h2>Kodnik działa lokalnie. Tryb ONLINE służy do aktualnych informacji.</h2>
+        <h2>Kodnik działa offline. Tryb ONLINE służy do aktualnych informacji.</h2>
         <p class="section-lead">
           Kodnik nie jest kolejną webapką SaaS. To aplikacja desktopowa na Windows. W trybie OFFLINE pracujesz lokalnie, a tryb ONLINE włączasz wtedy, gdy potrzebujesz informacji z internetu albo aktualizacji aplikacji.
         </p>
@@ -541,7 +546,7 @@ renderTrainingTable();</div>
             <span class="mode-label offline">OFFLINE</span>
             <h3>Praca lokalna</h3>
             <p>
-              Możesz rozmawiać z asystentem Kodnika i pracować na plikach projektu bez konta w chmurze i bez stałego połączenia z internetem.
+              Pracujesz na plikach projektu bez konta w chmurze i bez stałego połączenia z internetem.
             </p>
           </article>
 
@@ -549,7 +554,7 @@ renderTrainingTable();</div>
             <span class="mode-label online">ONLINE</span>
             <h3>Aktualne informacje i aktualizacje</h3>
             <p>
-              Gdy przełączysz Kodnika w tryb ONLINE, może korzystać z aktualnych informacji z internetu i opracować odpowiedź z kontekstem. Kodnik może też sprawdzić, czy jest dostępna nowsza wersja aplikacji.
+              Po przełączeniu w tryb ONLINE Kodnik korzysta z aktualnych informacji z internetu i może sprawdzić, czy jest dostępna nowsza wersja aplikacji.
             </p>
           </article>
         </div>
@@ -564,7 +569,7 @@ renderTrainingTable();</div>
           <div class="shield" aria-hidden="true">▣</div>
           <div>
             <p class="section-lead">
-              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE Kodnik pracuje na Twoim komputerze. W trybie ONLINE wysyła tylko zapytanie potrzebne do wyszukania informacji — nie wysyła całego folderu projektu do zewnętrznej chmury.
+              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE pracuje wyłącznie na Twoim komputerze. W trybie ONLINE wysyła tylko zapytanie potrzebne do wyszukania informacji — nie wysyła całego folderu projektu do zewnętrznej chmury.
             </p>
           </div>
         </div>
@@ -576,7 +581,7 @@ renderTrainingTable();</div>
         <span class="section-kicker">Praca na Twoim komputerze</span>
         <h2>Instalujesz Kodnika na swoim PC i pracujesz lokalnie.</h2>
         <p class="section-lead">
-          Otwierasz folder projektu, piszesz polecenie i widzisz pliki na swoim komputerze. Kodnik ma pomagać w codziennej pracy z kodem: od rozmowy o pomyśle, przez analizę plików, po konkretne zmiany w projekcie.
+          Otwierasz folder projektu, piszesz polecenie i widzisz zmiany w plikach na swoim komputerze. Kodnik prowadzi codzienną pracę z kodem: od pomysłu, przez analizę plików, po konkretne zmiany w projekcie.
         </p>
       </div>
     </section>
@@ -586,7 +591,7 @@ renderTrainingTable();</div>
         <span class="section-kicker">Wymagania sprzętowe</span>
         <h2>Sprawdź sprzęt przed zakupem.</h2>
         <p class="section-lead">
-          Kodnik działa lokalnie na komputerze użytkownika, dlatego wymagania są ważne. Najważniejsze minimum to <strong>32 GB RAM</strong>, Windows 10/11 x64 i procesor z AVX2. Po instalacji i pobraniu modelu Kodnik zajmuje około <strong>24,8 GB</strong> miejsca na dysku.
+          Kodnik uruchamia prawdziwy model AI lokalnie, dlatego wymagania są ważne. Minimum to <strong>32 GB RAM</strong>, Windows 10/11 x64 i procesor z AVX2. Po instalacji i pobraniu modelu Kodnik zajmuje około <strong>24,8 GB</strong> miejsca na dysku.
         </p>
 
         <div class="requirements">
@@ -626,12 +631,12 @@ renderTrainingTable();</div>
           <div class="pricing-panel">
             <h3>Kodnik w wersji beta</h3>
             <p>
-              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz aplikację z lokalnym systemem AI do pracy na własnym folderze projektu.
+              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz agenta z lokalnym modelem AI do pracy na własnym folderze projektu.
             </p>
             <ul class="pricing-list">
               <li>aplikacja desktopowa na Windows</li>
-              <li>praca z kodem, plikami i projektami</li>
-              <li>lokalny model AI do pracy na komputerze użytkownika</li>
+              <li>tworzenie, edycja i naprawa kodu w projektach</li>
+              <li>lokalny model AI uruchamiany na Twoim komputerze</li>
               <li>aktualizacje beta bez dopłat</li>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
@@ -689,7 +694,7 @@ renderTrainingTable();</div>
         <div class="faq-grid">
           <div class="faq-item">
             <h3>Czym Kodnik różni się od zwykłego czatu?</h3>
-            <p>Kodnik jest aplikacją desktopową do pracy na folderze projektu. Może rozmawiać, czytać pliki, przygotowywać plan, tworzyć programy, edytować istniejące pliki i pomagać w naprawie błędów.</p>
+            <p>Czat tylko podpowiada — Kodnik realnie wykonuje pracę na Twoich plikach. To aplikacja desktopowa, która tworzy programy, edytuje istniejące pliki i naprawia błędy w folderze projektu na Twoim komputerze, z planem pracy i cofaniem zmian.</p>
           </div>
           <div class="faq-item">
             <h3>Jakiego komputera potrzebuję?</h3>
@@ -728,7 +733,7 @@ renderTrainingTable();</div>
     <div class="container footer-inner">
       <div>
         <strong>Kodnik</strong><br />
-        Lokalny program AI do pracy z kodem i plikami.
+        Lokalny agent AI do pracy z kodem i plikami.
       </div>
       <div>
         Kontakt: <a href="mailto:kontakt@kodnik.pl">kontakt@kodnik.pl</a><br />
