@@ -1,16 +1,13 @@
 {
-  "version": "BETA-2026.06.20",
-  "build": "2026-06-20",
-  "title": "Kodnik BETA 2026.06.20",
-  "message": "Dostępna jest nowa wersja beta Kodnika.",
-  "download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-06-20/KodnikSetup-BETA-2026.06.20.exe",
-  "download_mode": "installer",
-  "sha256": "6c705f4c4f55a0ba3e73140e2c6019b6536f9c19a92e4c57a42f9dbb9037298f",
-  "required": false,
-  "changelog": [
-    "Zaktualizowano prompty agenta i układ kontekstu (CTX) w pipeline edycji.",
-    "Usprawniono pętlę agenta projektowego (stream, narzędzia plikowe).",
-    "Poprawiono stabilność Mamuta i Backend Managera.",
-    "Aktualizacja paczki instalacyjnej (build 2026.06.20)."
-  ]
+"version": "BETA-2026.06.27",
+"build": "2026-06-27",
+"title": "Kodnik BETA 2026.06.27",
+"message": "Dostępna jest nowa wersja beta Kodnika.",
+"download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-06-20/KodnikSetup-BETA-2026.06.27.exe",
+"download_mode": "installer",
+"sha256": "C3673B47FFA4D6FD5181AA210FFDC939FCF9FDB65EAAB0DF50EE145ED1C5836D",
+"required": false,
+"changelog": [
+"Aktualizacja paczki instalacyjnej do builda 2026.06.27."
+]
 }
