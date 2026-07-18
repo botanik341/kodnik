@@ -111,36 +111,6 @@
     .nav { display: flex; align-items: center; gap: 18px; color: var(--muted-2); font-size: .94rem; }
     .nav a:hover { color: #fff; }
     .nav-cta { padding: 0; border-radius: 0; color: inherit; background: none; font-weight: inherit; box-shadow: none; }
-    .promo-strip {
-      border-bottom: 1px solid rgba(255, 209, 92, .22);
-      background: linear-gradient(90deg, rgba(255,209,92,.12), rgba(116,165,255,.08), rgba(19,201,154,.09));
-      color: #fff4cf;
-      text-align: center;
-      padding: 10px 16px;
-      font-weight: 800;
-      letter-spacing: -.01em;
-    }
-    .promo-strip strong { color: #fff; }
-    .promo-inline {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding: 10px 14px;
-      border: 1px solid rgba(255, 209, 92, .26);
-      background: rgba(255, 209, 92, .08);
-      border-radius: 999px;
-      color: #ffe6a6;
-      font-weight: 800;
-      margin-top: 20px;
-    }
-    .promo-inline .old-price,
-    .price-old {
-      color: rgba(255,255,255,.62);
-      text-decoration: line-through;
-      text-decoration-thickness: 2px;
-    }
-    .promo-inline .new-price { color: #fff; }
 
     .hero { padding: 72px 0 34px; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, .96fr) minmax(520px, 1.12fr); gap: 42px; align-items: center; }
@@ -303,48 +273,6 @@
     .pricing-panel { padding: 30px; background: linear-gradient(180deg, rgba(255,209,92,.14), rgba(255,255,255,.055)); }
     .price { font-size: clamp(1.25rem, 2.2vw, 1.75rem); font-weight: 800; letter-spacing: -.01em; margin: 6px 0 22px; color: var(--muted-2); }
     .price strong { color: #fff; }
-    .promo-badge {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,209,92,.28);
-      background: rgba(255,209,92,.10);
-      color: #ffe5a5;
-      font-family: "JetBrains Mono", monospace;
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .price-box {
-      margin: 22px 0 24px;
-      padding: 20px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,209,92,.22);
-      background: rgba(0,0,0,.16);
-    }
-    .price-main {
-      display: flex;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 10px 14px;
-      margin-bottom: 8px;
-    }
-    .price-new {
-      color: #fff;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 900;
-      line-height: .95;
-      letter-spacing: -.055em;
-    }
-    .price-caption {
-      margin: 0;
-      color: var(--muted-2);
-      line-height: 1.55;
-    }
     .pricing-list { margin: 18px 0 26px; padding:0; list-style:none; display:grid; gap: 10px; color: var(--muted-2); }
     .pricing-list li::before { content:"✓"; color:var(--green); font-weight:900; margin-right:8px; }
     .beta-note { margin-top: 28px; border: 1px solid rgba(255,209,92,.24); border-radius: var(--radius); background: rgba(255,209,92,.08); padding: 26px; color: var(--muted-2); line-height: 1.65; }
@@ -395,7 +323,6 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="promo-strip">Wakacyjna promocja do <strong>15.07.2026</strong> — Kodnik Beta za <strong>9,99 zł</strong> zamiast 19,99 zł</div>
     <div class="container topbar-inner">
       <a class="brand" href="#top" aria-label="Kodnik">
         <img src="./assets/kodnik-logo.png" alt="" onerror="this.style.display='none'" />
@@ -408,7 +335,7 @@
         <a href="#prywatnosc">Prywatność</a>
         <a href="#wymagania">Wymagania</a>
         <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="#cena">Promocja</a>
+        <a class="nav-cta" href="#cena">Wersja beta</a>
       </nav>
     </div>
   </header>
@@ -417,7 +344,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">OFFLINE • LOKALNY AGENT AI DO KODU • PROMOCJA DO 15.07</span>
+          <span class="eyebrow">OFFLINE • LOKALNY AGENT AI DO KODU</span>
           <h1>Kodnik to Twój agent AI. Tworzy, zmienia i naprawia programy — offline, na Twoim komputerze.</h1>
           <p class="hero-lead">
             Opisujesz, co chcesz zrobić, a <span class="accent">Kodnik</span> pisze i zmienia pliki Twojego projektu — bezpośrednio na Twoim komputerze. To aplikacja desktopowa z lokalnym modelem AI, która sama wprowadza zmiany w kodzie.
@@ -425,13 +352,8 @@
           <p class="hero-lead">
             Kodnik uruchamia pełny model AI na Twoim sprzęcie: Windows 10/11 x64, <span class="accent">32 GB RAM</span> i około <span class="accent">24,8 GB miejsca na dysku</span>. GPU nie jest wymagane, ale wyraźnie przyspiesza pracę.
           </p>
-          <div class="promo-inline" aria-label="Promocja cenowa">
-            <span>Promocja do 15.07.2026</span>
-            <span class="old-price">19,99 zł</span>
-            <span class="new-price">9,99 zł</span>
-          </div>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#cena">Pobierz Kodnika — 9,99 zł</a>
+            <a class="btn btn-primary" href="#cena">Pobierz Kodnika — 19,99 zł</a>
             <a class="btn btn-secondary" href="#system-ai">Zobacz, jak zmienia pliki</a>
           </div>
           <div class="micro-row" aria-label="Najważniejsze informacje">
@@ -439,7 +361,6 @@
             <span class="micro"><span class="dot"></span> Kod zostaje u Ciebie</span>
             <span class="micro"><span class="dot"></span> Bez konta w chmurze</span>
             <span class="micro"><span class="dot"></span> Bez abonamentu</span>
-            <span class="micro"><span class="dot"></span> Promocja do 15.07.2026</span>
             <span class="micro"><span class="dot"></span> Tworzy i edytuje programy</span>
             <span class="micro"><span class="dot"></span> Naprawia błędy w kodzie</span>
             <span class="micro"><span class="dot"></span> Polski i angielski</span>
@@ -741,12 +662,11 @@ renderTrainingTable();</div>
 
     <section id="cena">
       <div class="container">
-        <span class="section-kicker">Promocja</span>
-        <h2>Kodnik Beta w promocji do 15.07.2026.</h2>
+        <span class="section-kicker">Wersja beta</span>
+        <h2>Pobierz Kodnika i zacznij pracę z lokalnym AI.</h2>
         <div class="pricing-wrap">
           <div class="pricing-panel">
-            <div class="promo-badge">Wakacyjna promocja do 15.07.2026</div>
-            <h3>Kodnik Beta</h3>
+            <h3>Kodnik w wersji beta</h3>
             <p>
               Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz agenta z lokalnym modelem AI do pracy na własnym folderze projektu.
             </p>
@@ -758,20 +678,14 @@ renderTrainingTable();</div>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
             </ul>
-            <div class="price-box" aria-label="Cena promocyjna">
-              <div class="price-main">
-                <span class="price-old">19,99 zł</span>
-                <span class="price-new">9,99 zł</span>
-              </div>
-              <p class="price-caption">Cena promocyjna obowiązuje do 15.07.2026. Po zakończeniu promocji cena wraca do 19,99 zł.</p>
-            </div>
-            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Kup Kodnika w promocji — 9,99 zł</a>
+            <p class="price">Jednorazowo: <strong>19,99 zł</strong></p>
+            <a class="btn btn-primary" href="https://1ct.eu/5DkWv" target="_blank" rel="noopener">Przejdź do koszyka</a>
           </div>
 
           <div class="info-panel">
             <h3>Jak wygląda zakup?</h3>
             <p>
-              Przechodzisz do koszyka płatności. Po zakupie otrzymujesz link do instalatora Kodnika. Promocyjna cena obowiązuje do 15.07.2026.
+              Przechodzisz do koszyka płatności. Po zakupie otrzymujesz link do instalatora Kodnika.
             </p>
             <br />
             <p>
@@ -837,7 +751,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Czy płacę abonament?</h3>
-            <p>Nie. Płacisz raz — bez abonamentu i bez konta w chmurze. Promocja obniża jednorazową cenę do 9,99 zł do 15.07.2026. W okresie bety aktualizacje są bez dopłat.</p>
+            <p>Nie. Płacisz raz — bez abonamentu i bez konta w chmurze. W okresie bety aktualizacje są bez dopłat.</p>
           </div>
           <div class="faq-item">
             <h3>Czy dostanę aktualizacje?</h3>
