@@ -1,13 +1,18 @@
 {
-"version": "BETA-2026.06.27",
-"build": "2026-06-27",
-"title": "Kodnik BETA 2026.06.27",
-"message": "Dostępna jest nowa wersja beta Kodnika.",
-"download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-06-20/KodnikSetup-BETA-2026.06.27.exe",
-"download_mode": "installer",
-"sha256": "C3673B47FFA4D6FD5181AA210FFDC939FCF9FDB65EAAB0DF50EE145ED1C5836D",
-"required": false,
-"changelog": [
-"Aktualizacja paczki instalacyjnej do builda 2026.06.27."
-]
+  "version": "BETA-2026.07.23",
+  "build": "2026-07-23",
+  "title": "Kodnik BETA 2026.07.23",
+  "message": "Dostępna jest nowa wersja beta Kodnika.",
+  "download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-07-23/KodnikSetup-BETA-2026.07.23.exe",
+  "download_mode": "installer",
+  "sha256": "919BB5DA831639783E5854496893E2A4CF8BF3F14BF61FA004E7FC1313B6490A",
+  "required": false,
+  "changelog": [
+    "Dodano przełącznik Myślenie / Szybkość w dolnym pasku — opcjonalne głębsze rozumowanie modelu, włączane od razu bez przeładowania.",
+    "Ulepszono tryb ONLINE: pewniejsze wyszukiwanie w sieci, odczyt stron i domykanie odpowiedzi asystenta.",
+    "Poprawiono wznawianie pracy po przerwaniu zadania — czytelny komunikat i kontynuacja bez zbędnych szczegółów technicznych.",
+    "Stabilniejsze zachowanie asystenta przy dłuższych odpowiedziach i pracy z kontekstem rozmowy.",
+    "Doprecyzowano wybór trybu WWW — asystent chętniej korzysta z internetu, gdy potrzebne są aktualne informacje.",
+    "Poprawki interfejsu dolnego paska — układ przełączników trybów."
+  ]
 }
