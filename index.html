@@ -362,6 +362,7 @@
             <span class="micro"><span class="dot"></span> Bez konta w chmurze</span>
             <span class="micro"><span class="dot"></span> Bez abonamentu</span>
             <span class="micro"><span class="dot"></span> Tworzy i edytuje programy</span>
+            <span class="micro"><span class="dot"></span> Tryb Myślenie / Szybkość</span>
             <span class="micro"><span class="dot"></span> Naprawia błędy w kodzie</span>
             <span class="micro"><span class="dot"></span> Polski i angielski</span>
           </div>
@@ -452,7 +453,7 @@ renderTrainingTable();</div>
               <li><span class="check">✓</span><span><strong>Zmienia istniejący projekt:</strong> Kodnik analizuje pliki i wprowadza konkretne zmiany w kodzie, krok po kroku.</span></li>
               <li><span class="check">✓</span><span><strong>Naprawia błędy:</strong> znajduje przyczynę problemu i przygotowuje poprawkę w plikach projektu.</span></li>
               <li><span class="check">✓</span><span><strong>Wyjaśnia kod:</strong> opisuje działanie pliku, wskazuje problem i podaje plan kolejnego kroku.</span></li>
-              <li><span class="check">✓</span><span><strong>Tryb ONLINE:</strong> wyszukuje aktualne informacje w internecie i uwzględnia je w odpowiedzi.</span></li>
+              <li><span class="check">✓</span><span><strong>Tryb ONLINE:</strong> daje modelowi narzędzia do wyszukiwania informacji, otwierania stron i pobierania plików z sieci.</span></li>
             </ul>
             <p class="product-note-right">
               Zaczynasz od krótkiego polecenia, a Kodnik prowadzi Cię od pomysłu aż do działającej zmiany w plikach.
@@ -575,7 +576,7 @@ renderTrainingTable();</div>
         <span class="section-kicker">OFFLINE / ONLINE</span>
         <h2>Pracujesz offline. Tryb ONLINE włączasz, gdy go potrzebujesz.</h2>
         <p class="section-lead">
-          Kodnik to aplikacja desktopowa na Windows. W trybie OFFLINE pracujesz lokalnie, a tryb ONLINE włączasz wtedy, gdy potrzebujesz informacji z internetu albo aktualizacji aplikacji.
+          Kodnik to aplikacja desktopowa na Windows. W trybie OFFLINE pracujesz lokalnie, a tryb ONLINE włączasz wtedy, gdy chcesz dać modelowi dostęp do narzędzi internetowych albo sprawdzić aktualizacje aplikacji.
         </p>
 
         <div class="split">
@@ -589,9 +590,9 @@ renderTrainingTable();</div>
 
           <article class="info-panel">
             <span class="mode-label online">ONLINE</span>
-            <h3>Aktualne informacje i aktualizacje</h3>
+            <h3>Narzędzia internetowe i aktualizacje</h3>
             <p>
-              W trybie ONLINE Kodnik korzysta z aktualnych informacji z internetu i sprawdza, czy jest dostępna nowsza wersja aplikacji.
+              Po przełączeniu na ONLINE model ma dostęp do narzędzi internetowych — może wyszukiwać informacje, otwierać strony i pobierać pliki z sieci. Ten tryb służy też do sprawdzania aktualizacji Kodnika.
             </p>
           </article>
         </div>
@@ -606,7 +607,7 @@ renderTrainingTable();</div>
           <div class="shield" aria-hidden="true">▣</div>
           <div>
             <p class="section-lead">
-              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE pracuje wyłącznie na Twoim komputerze. W trybie ONLINE wysyła tylko zapytanie potrzebne do wyszukania informacji — nigdy całego folderu projektu.
+              Kodnik działa lokalnie i nie wymaga konta w chmurze. W trybie OFFLINE pracuje na Twoim komputerze. Po przełączeniu na ONLINE model ma dostęp do narzędzi internetowych — może wyszukiwać informacje, otwierać strony i pobierać pliki z sieci.
             </p>
           </div>
         </div>
@@ -674,6 +675,7 @@ renderTrainingTable();</div>
               <li>aplikacja desktopowa na Windows</li>
               <li>tworzenie, edycja i naprawa kodu w projektach</li>
               <li>lokalny model AI uruchamiany na Twoim komputerze</li>
+              <li>przełącznik Myślenie / Szybkość w interfejsie</li>
               <li>aktualizacje beta bez dopłat</li>
               <li>bez abonamentu</li>
               <li>bez konta w chmurze</li>
@@ -743,7 +745,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Czy mój kod jest bezpieczny?</h3>
-            <p>Tak. W trybie OFFLINE wszystko zostaje na Twoim komputerze. W trybie ONLINE Kodnik wysyła tylko zapytanie potrzebne do wyszukania informacji — nigdy całego folderu projektu.</p>
+            <p>Tak. W trybie OFFLINE Kodnik pracuje lokalnie na Twoim komputerze. Po przełączeniu na ONLINE model ma dostęp do narzędzi internetowych — może wyszukiwać informacje, otwierać strony i pobierać pliki z sieci.</p>
           </div>
           <div class="faq-item">
             <h3>Czy działa bez karty graficznej?</h3>
