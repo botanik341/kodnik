@@ -446,7 +446,7 @@
             <span class="micro"><span class="dot"></span> Bez konta w chmurze</span>
             <span class="micro"><span class="dot"></span> Bez abonamentu</span>
             <span class="micro"><span class="dot"></span> Tworzy i edytuje programy</span>
-            <span class="micro"><span class="dot"></span> Terminal projektu</span>
+            <span class="micro"><span class="dot"></span> Współdzielony terminal</span>
             <span class="micro"><span class="dot"></span> Tryb Myślenie / Szybkość</span>
             <span class="micro"><span class="dot"></span> Naprawia błędy w kodzie</span>
             <span class="micro"><span class="dot"></span> Polski i angielski</span>
@@ -595,10 +595,10 @@ renderTrainingTable();</div>
 
     <section id="terminal">
       <div class="container">
-        <span class="section-kicker">Terminal</span>
-        <h2>Agent uruchamia komendy i czyta ich wynik.</h2>
+        <span class="section-kicker">Współdzielony terminal</span>
+        <h2>Ten sam terminal dla Ciebie i agenta AI.</h2>
         <p class="section-lead">
-          Wbudowany terminal obsługuje PowerShell, CMD i Git Bash. Komendy oraz ich wyniki są widoczne bezpośrednio w Kodniku.
+          Ty i agent AI korzystacie z tej samej sesji terminala projektu. Możesz wpisywać komendy ręcznie, a Kodnik może kontynuować pracę w tym samym PowerShellu, CMD lub Git Bashu — uruchamiać polecenia, odczytywać wyniki i reagować na błędy.
         </p>
 
         <div class="ui-shot" aria-label="Terminal w interfejsie Kodnika">
@@ -607,16 +607,16 @@ renderTrainingTable();</div>
 
         <div class="ui-facts">
           <div class="ui-fact">
-            <strong>PowerShell, CMD i Git Bash</strong>
-            <span>Przełączasz powłokę bez wychodzenia z aplikacji.</span>
+            <strong>Jedna wspólna sesja</strong>
+            <span>Ty i agent pracujecie w tym samym terminalu projektu — bez osobnego, ukrytego okna dla AI.</span>
           </div>
           <div class="ui-fact">
-            <strong>Komendy agenta są widoczne</strong>
-            <span>Widzisz polecenia, wynik działania i komunikaty błędów.</span>
+            <strong>Pełna widoczność komend</strong>
+            <span>Widzisz polecenia agenta, wyniki działania i komunikaty błędów w PowerShellu, CMD lub Git Bashu.</span>
           </div>
           <div class="ui-fact">
-            <strong>Dalsza poprawa kodu</strong>
-            <span>Kodnik może wykorzystać wynik komendy podczas kolejnego kroku pracy.</span>
+            <strong>Wspólna praca na wyniku</strong>
+            <span>Możesz wpisać własną komendę, a Kodnik wykorzysta jej wynik w kolejnym kroku — albo sam uruchomi polecenie i poprawi kod.</span>
           </div>
         </div>
       </div>
@@ -789,33 +789,33 @@ renderTrainingTable();</div>
         <span class="section-kicker">Wymagania i dane</span>
         <h2>Sprawdź sprzęt przed zakupem.</h2>
         <p class="section-lead">
-          Kodnik uruchamia pełny model AI lokalnie. Minimum to <strong>32 GB RAM</strong>, Windows 10/11 x64 i procesor z AVX2. Po instalacji i pobraniu modelu Kodnik zajmuje około <strong>24,8 GB</strong> miejsca na dysku.
+          Kodnik uruchamia lokalne modele AI i rozkłada ich pracę między pamięć RAM oraz pamięć karty graficznej. Sprawdzone konfiguracje to <strong>32 GB RAM</strong> albo <strong>24 GB RAM i karta z 8 GB VRAM</strong>. Wymagany jest Windows 10/11 x64, procesor z AVX2 oraz około <strong>24,8 GB</strong> miejsca na dysku.
         </p>
 
         <div class="requirements">
           <div class="req-card">
             <h3>System</h3>
-            <p>Windows 10 / 11 x64. Procesor x86_64 z AVX2. Aplikacja desktopowa instalowana na Twoim komputerze.</p>
+            <p>Windows 10 / 11 x64 oraz procesor x86_64 z AVX2. Kodnik jest aplikacją desktopową instalowaną na Twoim komputerze.</p>
           </div>
           <div class="req-card">
-            <h3>Pamięć RAM</h3>
-            <p>Minimum 32 GB RAM do płynnej pracy lokalnego modelu.</p>
+            <h3>32 GB RAM</h3>
+            <p>Sprawdzona konfiguracja także bez mocnej karty graficznej. Większa część modelu może wtedy pracować w pamięci RAM.</p>
+          </div>
+          <div class="req-card">
+            <h3>24 GB RAM + 8 GB VRAM</h3>
+            <p>Sprawdzona konfiguracja. Większa część modelu trafia na kartę graficzną, dzięki czemu 24 GB RAM wystarcza do pracy Kodnika.</p>
+          </div>
+          <div class="req-card">
+            <h3>Karta graficzna</h3>
+            <p>Nie jest obowiązkowa przy 32 GB RAM, ale wyraźnie przyspiesza pracę. Kodnik korzysta z kart NVIDIA, AMD i Intel.</p>
           </div>
           <div class="req-card">
             <h3>Miejsce na dysku</h3>
-            <p>Około 24,8 GB na aplikację i model. Zostaw zapas na aktualizacje i własne projekty.</p>
+            <p>Około 24,8 GB na aplikację i modele. Zostaw dodatkowy zapas na aktualizacje oraz własne projekty.</p>
           </div>
           <div class="req-card">
-            <h3>GPU 6 GB VRAM</h3>
-            <p>Niewymagane, ale przy karcie z minimum 6 GB VRAM Kodnik działa wyraźnie wygodniej niż na samym CPU.</p>
-          </div>
-          <div class="req-card">
-            <h3>GPU 8 GB+ VRAM</h3>
-            <p>Przy 8 GB VRAM lub więcej praca jest szybsza. Kodnik korzysta z kart NVIDIA, AMD i Intel.</p>
-          </div>
-          <div class="req-card">
-            <h3>Języki</h3>
-            <p>Piszesz po polsku i po angielsku — Kodnik rozumie oba i pracuje na Twoim projekcie w obu językach.</p>
+            <h3>Inne konfiguracje</h3>
+            <p>Inne proporcje RAM i VRAM również mogą działać, ale nie wszystkie konfiguracje zostały jeszcze sprawdzone.</p>
           </div>
         </div>
       </div>
@@ -834,7 +834,7 @@ renderTrainingTable();</div>
             <ul class="pricing-list">
               <li>aplikacja desktopowa na Windows</li>
               <li>tworzenie, edycja i naprawa kodu w projektach</li>
-              <li>wbudowany terminal: PowerShell, CMD i Git Bash</li>
+              <li>współdzielony terminal projektu: PowerShell, CMD i Git Bash</li>
               <li>wybór kontekstu oraz trybu Myślenie / Pośpiech</li>
               <li>lokalny model AI uruchamiany na Twoim komputerze</li>
               <li>przełącznik Myślenie / Szybkość w interfejsie</li>
@@ -901,7 +901,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Jakiego komputera potrzebuję?</h3>
-            <p>Windows 10/11 x64, procesor z AVX2, 32 GB RAM i około 24,8 GB miejsca na aplikację oraz model. GPU nie jest wymagane; przy 6 GB VRAM praca jest wygodniejsza, a przy 8 GB+ VRAM szybsza.</p>
+            <p>Wymagany jest Windows 10/11 x64, procesor z AVX2 i około 24,8 GB miejsca na aplikację oraz modele. Sprawdzone konfiguracje pamięci to 32 GB RAM albo 24 GB RAM z kartą graficzną wyposażoną w 8 GB VRAM.</p>
           </div>
           <div class="faq-item">
             <h3>Czy potrzebuję internetu?</h3>
@@ -913,7 +913,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Czy działa bez karty graficznej?</h3>
-            <p>Tak, Kodnik działa na samym CPU. Karta graficzna z minimum 6 GB VRAM przyspiesza pracę, a 8 GB+ VRAM daje najlepszy komfort.</p>
+            <p>Tak. Sprawdzona konfiguracja bez mocnej karty graficznej to 32 GB RAM. Przy 24 GB RAM sprawdzona jest konfiguracja z kartą wyposażoną w 8 GB VRAM.</p>
           </div>
           <div class="faq-item">
             <h3>Czy płacę abonament?</h3>
@@ -928,8 +928,8 @@ renderTrainingTable();</div>
             <p>Instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja i pobranie modelu zajmują dłużej, zależnie od łącza.</p>
           </div>
           <div class="faq-item">
-            <h3>Czy Kodnik ma terminal?</h3>
-            <p>Tak. Wbudowany terminal obsługuje PowerShell, CMD i Git Bash. Możesz używać go ręcznie, a agent może uruchamiać komendy i analizować ich wynik podczas pracy nad projektem.</p>
+            <h3>Czy terminal jest współdzielony z agentem AI?</h3>
+            <p>Tak. Ty i agent AI korzystacie z tej samej sesji terminala projektu. Możesz wpisywać komendy ręcznie, a Kodnik może uruchamiać kolejne polecenia, odczytywać wyniki i reagować na błędy. Dostępne są PowerShell, CMD i Git Bash.</p>
           </div>
           <div class="faq-item">
             <h3>Do czego służą kontekst i tryb odpowiedzi?</h3>
@@ -947,8 +947,7 @@ renderTrainingTable();</div>
         Lokalny agent AI do pracy z kodem i plikami.
       </div>
       <div>
-        Kontakt: <a href="mailto:kontakt@kodnik.pl">kontakt@kodnik.pl</a><br />
-        Strona: <a href="https://kodnik.pl">kodnik.pl</a>
+        Kontakt: <a href="mailto:kontakt@kodnik.pl">kontakt@kodnik.pl</a>
       </div>
     </div>
   </footer>
