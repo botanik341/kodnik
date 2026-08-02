@@ -434,10 +434,7 @@
           <span class="eyebrow">OFFLINE • LOKALNY AGENT AI DO KODU</span>
           <h1>Kodnik to Twój agent AI. Tworzy, zmienia i naprawia programy — offline, na Twoim komputerze.</h1>
           <p class="hero-lead">
-            Opisujesz, co chcesz zrobić, a <span class="accent">Kodnik</span> pisze i zmienia pliki Twojego projektu — bezpośrednio na Twoim komputerze. To aplikacja desktopowa z lokalnym modelem AI, która sama wprowadza zmiany w kodzie.
-          </p>
-          <p class="hero-lead">
-            Kodnik uruchamia pełny model AI na Twoim sprzęcie: Windows 10/11 x64, <span class="accent">32 GB RAM</span> i około <span class="accent">24,8 GB miejsca na dysku</span>. GPU nie jest wymagane, ale wyraźnie przyspiesza pracę.
+            Opisujesz, co chcesz zrobić, a <span class="accent">Kodnik</span> pisze i zmienia pliki Twojego projektu — bezpośrednio na Twoim komputerze. To aplikacja desktopowa, w której lokalne AI działa w pętli agenta i korzysta z wielu narzędzi do pracy na plikach, uruchamiania komend i wykonywania kolejnych kroków zadania.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#cena">Pobierz Kodnika — 19,99 zł</a>
@@ -641,7 +638,7 @@ renderTrainingTable();</div>
             <div class="model-control-copy">
               <h3>Kontekst mały, duży albo Auto</h3>
               <p>
-                Mały kontekst przyspiesza pracę, duży daje więcej miejsca na pliki i rozmowę, a Auto dobiera ustawienie automatycznie. Zmiana kontekstu wpływa również na podział warstw modelu między GPU i CPU; wskaźnik przy butelce pokazuje udział GPU.
+                Mały kontekst przyspiesza pracę, duży daje więcej miejsca na pliki i rozmowę, a Auto dobiera ustawienie automatycznie. Butelka pokazuje, jaka część ustawionego kontekstu jest aktualnie wykorzystana — napełnia się wraz ze zużyciem, a procent pod nią podaje bieżący poziom.
               </p>
             </div>
           </article>
@@ -701,28 +698,35 @@ renderTrainingTable();</div>
 
     <section id="modele">
       <div class="container">
-        <span class="section-kicker">Praca lokalna</span>
-        <h2>Model AI działa po Twojej stronie.</h2>
+        <span class="section-kicker">Modele AI</span>
+        <h2>Kodnik sam dobiera model do zadania.</h2>
         <p class="section-lead">
-          Kodnik uruchamia lokalny model AI na Twoim komputerze. Pracujesz z plikami projektu u siebie, bez wysyłania ich do zewnętrznej chmury.
+          W wersji beta Kodnik korzysta z dwóch lokalnych modeli AI. Mniejszy model obsługuje szybsze i lżejsze zadania, a większy jest uruchamiany przy trudniejszej pracy nad kodem. Kodnik sam wybiera odpowiedni model w trakcie działania.
         </p>
 
-        <div class="split">
-          <article class="info-panel">
-            <span class="mode-label online">LOKALNIE</span>
-            <h3>Praca na Twoim komputerze</h3>
-            <p>
-              Model AI działa po Twojej stronie. Kodnik analizuje pliki, tworzy programy, edytuje kod i naprawia błędy w projekcie — wszystko lokalnie.
-            </p>
-          </article>
+        <div class="requirements">
+          <div class="req-card">
+            <h3>Mniejszy model</h3>
+            <p>Służy do szybszych odpowiedzi, rozmowy, prostszej analizy i lżejszych zadań wykonywanych na projekcie.</p>
+          </div>
+          <div class="req-card">
+            <h3>Większy model</h3>
+            <p>Jest uruchamiany przy bardziej wymagających zadaniach, tworzeniu programu i złożonych zmianach w kodzie.</p>
+          </div>
+          <div class="req-card">
+            <h3>Więcej modeli w pełnej wersji</h3>
+            <p>W becie zestaw modeli jest dobierany przez Kodnika. W pełnej wersji planujemy dodać większy wybór lokalnych modeli AI.</p>
+          </div>
+        </div>
 
-          <article class="info-panel">
-            <span class="mode-label offline">WYDAJNOŚĆ</span>
-            <h3>Szybkość zależy od sprzętu</h3>
-            <p>
-              Im mocniejszy procesor, RAM i karta graficzna, tym szybsze odpowiedzi. GPU nie jest obowiązkowe, ale przyspiesza pracę i poprawia komfort.
+        <div class="privacy-box">
+          <div class="shield" aria-hidden="true">AI</div>
+          <div>
+            <h3>Modele działają lokalnie</h3>
+            <p class="section-lead">
+              Oba modele są uruchamiane na Twoim komputerze. Pliki projektu pozostają po Twojej stronie, a szybkość pracy zależy od procesora, pamięci RAM i karty graficznej.
             </p>
-          </article>
+          </div>
         </div>
       </div>
     </section>
