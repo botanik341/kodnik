@@ -701,21 +701,21 @@ renderTrainingTable();</div>
         <span class="section-kicker">Modele AI</span>
         <h2>Kodnik sam dobiera model do zadania.</h2>
         <p class="section-lead">
-          W wersji beta Kodnik korzysta z dwóch lokalnych modeli AI. Mniejszy model obsługuje szybsze i lżejsze zadania, a większy jest uruchamiany przy trudniejszej pracy nad kodem. Kodnik sam wybiera odpowiedni model w trakcie działania.
+          W wersji beta Kodnik korzysta z dwóch sprawdzonych lokalnych modeli AI: Qwen3.5‑9B‑Q6_K_L oraz Qwen3.6‑27B‑Q3_K_L. Oba modele są dostępne na licencji Apache 2.0, a używane przez Kodnika pliki GGUF w tych kwantyzacjach przygotował Bartowski. Kodnik sam wybiera model odpowiedni do rodzaju zadania.
         </p>
 
         <div class="requirements">
           <div class="req-card">
-            <h3>Mniejszy model</h3>
-            <p>Służy do szybszych odpowiedzi, rozmowy, prostszej analizy i lżejszych zadań wykonywanych na projekcie.</p>
+            <h3>Qwen3.5‑9B Q6_K_L</h3>
+            <p>Kodnik używa go w zwykłej rozmowie oraz przy prostych zadaniach, prostszej analizie i lżejszych zmianach w projekcie. Mniejszy model odpowiada szybciej.</p>
           </div>
           <div class="req-card">
-            <h3>Większy model</h3>
-            <p>Jest uruchamiany przy bardziej wymagających zadaniach, tworzeniu programu i złożonych zmianach w kodzie.</p>
+            <h3>Qwen3.6‑27B Q3_K_L</h3>
+            <p>Gdy Kodnik wchodzi w bardziej skomplikowany tryb lub zadanie wymaga trudniejszej pracy nad kodem, automatycznie przełącza się na model 27B.</p>
           </div>
           <div class="req-card">
-            <h3>Więcej modeli w pełnej wersji</h3>
-            <p>W becie zestaw modeli jest dobierany przez Kodnika. W pełnej wersji planujemy dodać większy wybór lokalnych modeli AI.</p>
+            <h3>Więcej modeli do wyboru</h3>
+            <p>W becie udostępniamy tylko modele, które zostały sprawdzone i dobrze radzą sobie w Kodniku. Z czasem dodamy więcej sprawdzonych modeli do wyboru.</p>
           </div>
         </div>
 
@@ -829,14 +829,14 @@ renderTrainingTable();</div>
           <div class="pricing-panel">
             <h3>Kodnik w wersji beta</h3>
             <p>
-              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz agenta z lokalnym modelem AI do pracy na własnym folderze projektu.
+              Otrzymujesz instalator aktualnej wersji aplikacji na Windows, dostęp do aktualizacji beta bez dopłat oraz agenta z dwoma lokalnymi modelami AI do pracy na własnym folderze projektu.
             </p>
             <ul class="pricing-list">
               <li>aplikacja desktopowa na Windows</li>
               <li>tworzenie, edycja i naprawa kodu w projektach</li>
               <li>współdzielony terminal projektu: PowerShell, CMD i Git Bash</li>
               <li>wybór kontekstu oraz trybu Myślenie / Pośpiech</li>
-              <li>lokalny model AI uruchamiany na Twoim komputerze</li>
+              <li>dwa lokalne modele AI uruchamiane na Twoim komputerze</li>
               <li>przełącznik Myślenie / Szybkość w interfejsie</li>
               <li>aktualizacje beta bez dopłat</li>
               <li>bez abonamentu</li>
@@ -875,7 +875,7 @@ renderTrainingTable();</div>
         <span class="section-kicker">Dokąd idziemy</span>
         <h2>Lepsza praca z większymi projektami.</h2>
         <p class="section-lead">
-          Kierunek jest prosty: coraz lepsza praca na plikach projektu, większa kontrola nad zmianami i wygodniejsze prowadzenie zadań.
+          Kierunek jest prosty: coraz lepsza praca na plikach projektu, większa kontrola nad zmianami, wygodniejsze prowadzenie zadań oraz większy wybór sprawdzonych lokalnych modeli AI.
         </p>
         <div class="roadmap-line">
           <span class="roadmap-pill">czytanie screenów i analiza UI</span>
@@ -886,6 +886,7 @@ renderTrainingTable();</div>
           <span class="roadmap-pill">szybsze działanie na słabszych PC</span>
           <span class="roadmap-pill">naprawa błędów i stabilność</span>
           <span class="roadmap-pill">więcej narzędzi dla modelu AI</span>
+          <span class="roadmap-pill">więcej sprawdzonych modeli do wyboru</span>
         </div>
       </div>
     </section>
@@ -905,7 +906,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Czy potrzebuję internetu?</h3>
-            <p>Internet jest potrzebny do pierwszej konfiguracji, trybu ONLINE, pobrania modelu i aktualizacji. Codzienną pracę lokalną prowadzisz offline.</p>
+            <p>Internet jest potrzebny do pierwszej konfiguracji, trybu ONLINE, pobrania modeli i aktualizacji. Codzienną pracę lokalną prowadzisz offline.</p>
           </div>
           <div class="faq-item">
             <h3>Czy mój kod jest bezpieczny?</h3>
@@ -925,7 +926,7 @@ renderTrainingTable();</div>
           </div>
           <div class="faq-item">
             <h3>Ile czasu zajmuje instalacja?</h3>
-            <p>Instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja i pobranie modelu zajmują dłużej, zależnie od łącza.</p>
+            <p>Instalacja aplikacji trwa kilka minut. Pierwsza konfiguracja i pobranie modeli zajmują dłużej, zależnie od łącza.</p>
           </div>
           <div class="faq-item">
             <h3>Czy terminal jest współdzielony z agentem AI?</h3>
