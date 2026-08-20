@@ -474,7 +474,105 @@
       h1 { font-size: clamp(2.1rem, 9vw, 3.8rem); }
     }
   </style>
-</head>
+<style data-kodnik-analytics="consent-style">
+#kodnik-consent {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 99999;
+  display: none;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 16px 18px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  background: rgba(12,17,27,.97);
+  box-shadow: 0 20px 70px rgba(0,0,0,.45);
+  backdrop-filter: blur(16px);
+  color: #f4f7fb;
+}
+#kodnik-consent.is-visible { display: block; }
+#kodnik-consent .consent-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+#kodnik-consent .consent-copy {
+  min-width: 0;
+  color: #c8d2e3;
+  font-size: .92rem;
+  line-height: 1.5;
+}
+#kodnik-consent .consent-copy strong { color: #fff; }
+#kodnik-consent .consent-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 9px;
+}
+#kodnik-consent button {
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  padding: 10px 15px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+#kodnik-consent .consent-accept {
+  border: 0;
+  color: #171006;
+  background: linear-gradient(135deg, #ffd15c, #f5a623);
+}
+#kodnik-consent .consent-reject {
+  color: #f4f7fb;
+  background: rgba(255,255,255,.06);
+}
+@media (max-width: 680px) {
+  #kodnik-consent .consent-row { align-items: stretch; flex-direction: column; }
+  #kodnik-consent .consent-actions { width: 100%; }
+  #kodnik-consent button { flex: 1; }
+}
+</style><script data-kodnik-analytics="clarity">
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "y55hqht4wk");
+
+(function(){
+  var KEY = "kodnik_analytics_consent";
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch(e) {}
+
+  function sendConsent(value) {
+    window.clarity("consentv2", {
+      ad_Storage: "denied",
+      analytics_Storage: value === "granted" ? "granted" : "denied"
+    });
+  }
+
+  if (saved === "granted") sendConsent("granted");
+  else sendConsent("denied");
+
+  window.KodnikAnalyticsConsent = {
+    key: KEY,
+    get: function() { return saved; },
+    grant: function() {
+      saved = "granted";
+      try { localStorage.setItem(KEY, saved); } catch(e) {}
+      sendConsent(saved);
+      window.clarity("event", "analytics_consent_granted");
+    },
+    deny: function() {
+      saved = "denied";
+      try { localStorage.setItem(KEY, saved); } catch(e) {}
+      sendConsent(saved);
+      window.clarity("event", "analytics_consent_denied");
+    }
+  };
+})();
+</script></head>
 <body>
 <header class="topbar">
 <div class="container topbar-inner">
@@ -1032,5 +1130,119 @@ renderTrainingTable();</div>
       });
     })();
   </script>
-</body>
+<div aria-label="Ustawienia analityki" data-kodnik-analytics="consent-banner" id="kodnik-consent" role="dialog">
+<div class="consent-row">
+<div class="consent-copy">
+<strong>Analityka strony</strong><br/>
+    Microsoft Clarity pomaga nam sprawdzić, które elementy strony są używane i gdzie warto ją poprawić.
+    Możesz zgodzić się na pełną analitykę albo pozostać przy trybie bez cookies analitycznych.
+  </div>
+<div class="consent-actions">
+<button class="consent-reject" id="kodnik-consent-reject" type="button">Tylko niezbędne</button>
+<button class="consent-accept" id="kodnik-consent-accept" type="button">Akceptuję analitykę</button>
+</div>
+</div>
+</div><script data-kodnik-analytics="events">
+(function(){
+  function clarityEvent(name) {
+    try { window.clarity("event", name); } catch(e) {}
+  }
+  function claritySet(key, value) {
+    try { window.clarity("set", key, value); } catch(e) {}
+  }
+
+  // Useful filters in Clarity.
+  claritySet("site", "kodnik.pl");
+  claritySet("language", "pl");
+  claritySet("page_type", "landing");
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var consentBox = document.getElementById("kodnik-consent");
+    var accept = document.getElementById("kodnik-consent-accept");
+    var reject = document.getElementById("kodnik-consent-reject");
+    var saved = window.KodnikAnalyticsConsent && window.KodnikAnalyticsConsent.get();
+
+    if (!saved && consentBox) consentBox.classList.add("is-visible");
+
+    if (accept) accept.addEventListener("click", function(){
+      window.KodnikAnalyticsConsent.grant();
+      consentBox.classList.remove("is-visible");
+    });
+    if (reject) reject.addEventListener("click", function(){
+      window.KodnikAnalyticsConsent.deny();
+      consentBox.classList.remove("is-visible");
+    });
+
+    // Exact business actions.
+    document.querySelectorAll('a[href="https://1ct.eu/5DkWv"]').forEach(function(a){
+      a.addEventListener("click", function(){
+        clarityEvent("click_buy");
+        if ((a.textContent || "").toLowerCase().includes("koszyk")) {
+          clarityEvent("click_checkout");
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href*="Kodnik_DEMO_Setup.exe"]').forEach(function(a){
+      a.addEventListener("click", function(){ clarityEvent("click_demo_download"); });
+    });
+
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+      a.addEventListener("click", function(){ clarityEvent("click_email"); });
+    });
+
+    document.querySelectorAll('a[href="https://kodnik.1ct.eu/pl/about"]').forEach(function(a){
+      a.addEventListener("click", function(){ clarityEvent("click_seller_info"); });
+    });
+
+    // Navigation / in-page links.
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener("click", function(){
+        var id = (a.getAttribute("href") || "").slice(1);
+        if (id) clarityEvent("nav_" + id.replace(/[^a-zA-Z0-9_-]/g, "_"));
+      });
+    });
+
+    // Section views - one event per section per page load.
+    var seenSections = new Set();
+    var sectionObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        if (!id || seenSections.has(id)) return;
+        seenSections.add(id);
+        clarityEvent("view_" + id.replace(/[^a-zA-Z0-9_-]/g, "_"));
+      });
+    }, { threshold: 0.35 });
+
+    document.querySelectorAll("main section[id], footer[id]").forEach(function(section){
+      sectionObserver.observe(section);
+    });
+
+    // Scroll depth - each threshold once.
+    var scrollMarks = [25, 50, 75, 90, 100];
+    var firedScroll = {};
+    function onScroll(){
+      var doc = document.documentElement;
+      var max = Math.max(1, doc.scrollHeight - window.innerHeight);
+      var pct = Math.min(100, Math.round((window.scrollY / max) * 100));
+      scrollMarks.forEach(function(mark){
+        if (!firedScroll[mark] && pct >= mark) {
+          firedScroll[mark] = true;
+          clarityEvent("scroll_" + mark);
+        }
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Engagement milestones.
+    [15, 30, 60, 120].forEach(function(seconds){
+      setTimeout(function(){ clarityEvent("engaged_" + seconds + "s"); }, seconds * 1000);
+    });
+
+    clarityEvent("page_loaded");
+  });
+})();
+</script></body>
 </html>
