@@ -25,6 +25,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <style>
     :root {
       --bg: #080b12;
@@ -604,7 +605,7 @@
 <span class="accent">Kodnik</span> pracuje bezpośrednio na plikach projektu, uruchamia komendy i prowadzi zadanie od opisu do gotowej zmiany. Działa na Windows — lokalnie, na Twoim komputerze.
           </p>
 <div class="cta-row">
-<a class="btn btn-primary" href="https://1ct.eu/5DkWv" rel="noopener" target="_blank">Kup Kodnika — 19,99 zł</a>
+<a class="btn btn-primary" data-paddle-buy href="#cena">Kup Kodnika — 19,99 zł</a>
 <a class="btn btn-secondary" href="https://github.com/botanik341/kodnik/releases/download/demo-2026-08-19/Kodnik_DEMO_Setup.exe" rel="noopener" target="_blank">Pobierz DEMO — 2 godziny</a>
 </div>
 <p class="hero-note">
@@ -1026,12 +1027,12 @@ renderTrainingTable();</div>
 <li>bez konta w chmurze</li>
 </ul>
 <p class="price">Jednorazowo: <strong>19,99 zł</strong></p>
-<a class="btn btn-primary" href="https://1ct.eu/5DkWv" rel="noopener" target="_blank">Przejdź do koszyka</a>
+<a class="btn btn-primary" data-paddle-buy href="#cena">Przejdź do bezpiecznej płatności</a>
 </div>
 <div class="info-panel">
 <h3>Jak wygląda zakup?</h3>
 <p>
-              Przechodzisz do koszyka płatności. Po zakupie otrzymujesz link do instalatora Kodnika.
+              Bezpieczna płatność jest obsługiwana przez Paddle. Po potwierdzeniu zakupu otrzymujesz prywatny, czasowy link do instalatora Kodnika.
             </p>
 <br/>
 <p>
@@ -1104,11 +1105,57 @@ renderTrainingTable();</div>
 <div><strong>Kodnik</strong></div>
 <div class="footer-meta">
 <a href="mailto:kontakt@kodnik.pl">kontakt@kodnik.pl</a>
-<a href="https://kodnik.1ct.eu/pl/about" rel="noopener" target="_blank">Dane sprzedawcy</a>
 <a href="#prywatnosc">Prywatność w Kodniku</a>
 </div>
 </div>
 </footer>
+<script data-kodnik-checkout="paddle-live">
+  (() => {
+    const PADDLE_CLIENT_TOKEN = "live_dada761572fa0be55fad551f100";
+    const PADDLE_PRICE_ID = "pri_01kw4nz3mmxf4kj50qj9tf3yj1";
+
+    function openKodnikCheckout(event) {
+      event.preventDefault();
+
+      if (!window.Paddle || !window.Paddle.Checkout) {
+        console.error("Paddle.js nie jest dostępny.");
+        alert("Nie udało się otworzyć płatności. Odśwież stronę i spróbuj ponownie.");
+        return;
+      }
+
+      window.Paddle.Checkout.open({
+        items: [
+          {
+            priceId: PADDLE_PRICE_ID,
+            quantity: 1
+          }
+        ],
+        settings: {
+          displayMode: "overlay",
+          theme: "dark",
+          locale: "pl",
+          variant: "one-page",
+          successUrl: "https://kodnik.com/download.html?purchase=complete"
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.Paddle) {
+        console.error("Paddle.js nie został załadowany.");
+        return;
+      }
+
+      window.Paddle.Initialize({
+        token: PADDLE_CLIENT_TOKEN
+      });
+
+      document.querySelectorAll("[data-paddle-buy]").forEach((button) => {
+        button.addEventListener("click", openKodnikCheckout);
+      });
+    });
+  })();
+</script>
 <script>
     (() => {
       const menuButton = document.querySelector('.menu-toggle');
@@ -1174,12 +1221,10 @@ renderTrainingTable();</div>
     });
 
     // Exact business actions.
-    document.querySelectorAll('a[href="https://1ct.eu/5DkWv"]').forEach(function(a){
+    document.querySelectorAll('[data-paddle-buy]').forEach(function(a){
       a.addEventListener("click", function(){
         clarityEvent("click_buy");
-        if ((a.textContent || "").toLowerCase().includes("koszyk")) {
-          clarityEvent("click_checkout");
-        }
+        clarityEvent("click_checkout");
       });
     });
 
@@ -1189,10 +1234,6 @@ renderTrainingTable();</div>
 
     document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
       a.addEventListener("click", function(){ clarityEvent("click_email"); });
-    });
-
-    document.querySelectorAll('a[href="https://kodnik.1ct.eu/pl/about"]').forEach(function(a){
-      a.addEventListener("click", function(){ clarityEvent("click_seller_info"); });
     });
 
     // Navigation / in-page links.
