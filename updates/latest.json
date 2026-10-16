@@ -1,19 +1,15 @@
 {
-  "version": "BETA-2026.07.30",
-  "build": "2026-07-30",
-  "title": "Kodnik BETA 2026.07.30",
-  "message": "Dostępna jest nowa wersja beta Kodnika.",
-  "download_url": "https://github.com/botanik341/kodnik/releases/download/beta-2026-07-30/KodnikSetup-BETA-2026.07.30.exe",
+  "version": "2026.10.16",
+  "build": "2026-10-16",
+  "title": "Kodnik FULL",
+  "message": "Dostępna jest nowa wersja Kodnika.",
+  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.10.16",
   "download_mode": "installer",
-  "sha256": "BD900DF5FFFE3F530F090CBF14B950F9ABDB98C7AC09B8EAC6F1F5712A91366F",
+  "sha256": "2b3cc9f607b84c63fe99d7734e018d15bb89047dcd4e8549301c3deb663e4e62",
   "required": false,
   "changelog": [
-    "Wspólny terminal PowerShell dla modelu i użytkownika.",
-    "Odświeżony, nowocześniejszy wygląd interfejsu.",
-    "Ustawienia kontekstu i wskaźnik w prawym dolnym rogu.",
-    "Widoczna butelka pokazująca zużycie kontekstu.",
-    "Ulepszony tryb ONLINE.",
-    "Stabilniejsze dłuższe odpowiedzi asystenta.",
-    "Dalsze usprawnienia pracy z kontekstem rozmowy."
+    "Zabezpieczone konta, aktywacja i aktualizacje FULL.",
+    "Obsługa rocznych licencji i zachowanie wcześniejszych uprawnień BETA.",
+    "Poprawione pobieranie modeli i tytuł okna bez daty."
   ]
 }
