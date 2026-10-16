@@ -106,6 +106,8 @@
     .brand-name { font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem; }
     .nav { display: flex; align-items: center; gap: 16px; color: var(--muted-2); font-size: .92rem; }
     .nav a:hover { color: #fff; }
+    .nav .account-link { font-weight:800; color:#ffd15c; border:1px solid rgba(255,209,92,.4); border-radius:12px; padding:10px 14px; background:rgba(255,209,92,.08); }
+    .nav .account-link:hover { background:rgba(255,209,92,.16); }
     .header-actions { display: none; align-items: center; gap: 8px; }
     .menu-toggle {
       border-radius: 999px;
@@ -590,7 +592,7 @@
 <a href="#wymagania">Wymagania</a>
 <a href="#demo">DEMO</a>
 <a href="#faq">FAQ</a>
-<a href="/account.html">Moje konto</a>
+<a class="account-link" href="/account.html">Zaloguj się / Zarejestruj</a>
 </nav>
 <div class="header-actions">
 <button aria-controls="primary-nav" aria-expanded="false" class="menu-toggle" type="button">Menu</button>
