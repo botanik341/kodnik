@@ -8,7 +8,7 @@
   "sha256": "2b3cc9f607b84c63fe99d7734e018d15bb89047dcd4e8549301c3deb663e4e62",
   "required": false,
   "changelog": [
-    "Zabezpieczone konta, aktywacja i aktualizacje Kodnik.",
+    "Zabezpieczone konta, aktywacja i aktualizacje Kodnika.",
     "Obsługa rocznych licencji i zachowanie wcześniejszych uprawnień.",
     "Poprawione pobieranie modeli i tytuł okna bez daty."
   ]
