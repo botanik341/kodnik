@@ -1,15 +1,15 @@
 {
   "version": "2026.10.16",
   "build": "2026-10-16",
-  "title": "Kodnik FULL",
+  "title": "Kodnik",
   "message": "Dostępna jest nowa wersja Kodnika.",
   "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.10.16",
   "download_mode": "installer",
   "sha256": "2b3cc9f607b84c63fe99d7734e018d15bb89047dcd4e8549301c3deb663e4e62",
   "required": false,
   "changelog": [
-    "Zabezpieczone konta, aktywacja i aktualizacje FULL.",
-    "Obsługa rocznych licencji i zachowanie wcześniejszych uprawnień BETA.",
+    "Zabezpieczone konta, aktywacja i aktualizacje Kodnik.",
+    "Obsługa rocznych licencji i zachowanie wcześniejszych uprawnień.",
     "Poprawione pobieranie modeli i tytuł okna bez daty."
   ]
 }

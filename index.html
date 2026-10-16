@@ -275,7 +275,7 @@
     .price strong { color: #fff; }
     .pricing-list { margin: 18px 0 26px; padding:0; list-style:none; display:grid; gap: 10px; color: var(--muted-2); }
     .pricing-list li::before { content:"✓"; color:var(--green); font-weight:900; margin-right:8px; }
-    .beta-note { margin-top: 28px; border: 1px solid rgba(255,209,92,.24); border-radius: var(--radius); background: rgba(255,209,92,.08); padding: 26px; color: var(--muted-2); line-height: 1.65; }
+    .license-note { margin-top: 28px; border: 1px solid rgba(255,209,92,.24); border-radius: var(--radius); background: rgba(255,209,92,.08); padding: 26px; color: var(--muted-2); line-height: 1.65; }
     .demo-callout { margin-top: 28px; border: 1px solid rgba(116,165,255,.28); border-radius: var(--radius); background: linear-gradient(135deg, rgba(116,165,255,.13), rgba(19,201,154,.07), rgba(255,255,255,.04)); padding: 30px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 26px; align-items: center; box-shadow: 0 18px 60px rgba(0,0,0,.22); }
     .demo-callout h3 { margin: 0 0 10px; font-size: 1.55rem; }
     .demo-callout p { margin: 0; color: var(--muted-2); line-height: 1.65; }
@@ -882,7 +882,7 @@ renderTrainingTable();</div>
 <span class="mode-label offline">OFFLINE</span>
 <h3>Praca lokalna</h3>
 <p>
-              Pracujesz na lokalnych plikach projektu bez stałego połączenia. Konto służy do aktywacji FULL; projekty pozostają na komputerze.
+              Pracujesz na lokalnych plikach projektu bez stałego połączenia. Konto służy do aktywacji Kodnik; projekty pozostają na komputerze.
             </p>
 </article>
 <article class="info-panel">
@@ -903,7 +903,7 @@ renderTrainingTable();</div>
 <div aria-hidden="true" class="shield">▣</div>
 <div>
 <p class="section-lead">
-              FULL wymaga konta Kodnik do aktywacji licencji. Nie wymaga konta u dostawcy zewnętrznego modelu AI. W trybie OFFLINE model działa na Twoim komputerze, a projekt nie jest wysyłany do zewnętrznego modelu AI. Tryb ONLINE uruchamiasz świadomie, gdy chcesz skorzystać z narzędzi internetowych.
+              Aktywacja płatnej licencji wymaga konta Kodnik. DEMO nie wymaga konta. Nie wymaga konta u dostawcy zewnętrznego modelu AI. W trybie OFFLINE model działa na Twoim komputerze, a projekt nie jest wysyłany do zewnętrznego modelu AI. Tryb ONLINE uruchamiasz świadomie, gdy chcesz skorzystać z narzędzi internetowych.
             </p>
 </div>
 </div>
@@ -989,7 +989,7 @@ renderTrainingTable();</div>
 <div>
 <h3>Kodnik DEMO — 2 godziny działania</h3>
 <p>
-              Czas jest liczony tylko wtedy, gdy Kodnik DEMO jest uruchomiony. Po zamknięciu programu licznik się zatrzymuje i kontynuuje przy następnym uruchomieniu. Funkcja <strong>Myślenie</strong> jest dostępna w pełnej wersji Kodnika.
+              Czas jest liczony tylko wtedy, gdy Kodnik DEMO jest uruchomiony. Po zamknięciu programu licznik się zatrzymuje i kontynuuje przy następnym uruchomieniu. Funkcja <strong>Myślenie</strong> jest dostępna w Kodniku z płatną licencją.
             </p>
 <div class="demo-badges">
 <span class="demo-badge">lokalne modele AI</span>
@@ -1008,13 +1008,13 @@ renderTrainingTable();</div>
 </section>
 <section id="cena">
 <div class="container">
-<span class="section-kicker">Pełna wersja</span>
-<h2>Kodnik FULL na 12 miesięcy.</h2>
+<span class="section-kicker">Licencja Kodnik</span>
+<h2>Kodnik — licencja na 12 miesięcy.</h2>
 <div class="pricing-wrap">
 <div class="pricing-panel">
-<h3>Kodnik FULL — licencja roczna</h3>
+<h3>Kodnik — licencja roczna</h3>
 <p>
-              Otrzymujesz 12 miesięcy dostępu do Kodnika FULL na Windows i aktualizacji w opłaconym okresie. Z poziomu panelu Modele AI wybierasz modele, które chcesz pobrać i wykorzystywać lokalnie.
+              Otrzymujesz 12 miesięcy dostępu do Kodnika na Windows i aktualizacji w opłaconym okresie. Z poziomu panelu Modele AI wybierasz modele, które chcesz pobrać i wykorzystywać lokalnie.
             </p>
 <ul class="pricing-list">
 <li>aplikacja desktopowa na Windows</li>
@@ -1035,7 +1035,7 @@ renderTrainingTable();</div>
 <div class="info-panel">
 <h3>Jak wygląda zakup?</h3>
 <p>
-              Bezpieczna płatność jest obsługiwana przez Paddle. Po potwierdzeniu zakupu utwórz konto lub zaloguj się adresem e-mail użytym przy płatności. W panelu pobierzesz instalator FULL i aktywujesz opłacony okres.
+              Bezpieczna płatność jest obsługiwana przez Paddle. Po potwierdzeniu zakupu utwórz konto lub zaloguj się adresem e-mail użytym przy płatności. W panelu pobierzesz instalator Kodnika i aktywujesz opłacony okres.
             </p>
 <br/>
 <p>
@@ -1045,12 +1045,12 @@ renderTrainingTable();</div>
 </div>
 </div>
 </section>
-<section id="beta">
+<section id="licencja">
 <div class="container">
 <span class="section-kicker">Status</span>
 <h2>Licencja roczna i wcześniejsze zakupy.</h2>
-<div class="beta-note">
-          Nowa oferta FULL obejmuje 12 miesięcy od aktywacji opłaconego okresu. Wcześniejsze zakupy BETA zachowują swoje pierwotne warunki.
+<div class="license-note">
+          Nowa oferta Kodnika obejmuje 12 miesięcy od aktywacji opłaconego okresu. Wcześniejsze zakupy zachowują swoje pierwotne warunki.
         </div>
 </div>
 </section>
@@ -1081,11 +1081,11 @@ renderTrainingTable();</div>
 </div>
 <div class="faq-item">
 <h3>Czy płacę abonament?</h3>
-<p>Płacisz jednorazowo za 12 miesięcy od aktywacji okresu. Nie ma automatycznego odnawiania ani pobierania pieniędzy. Przedłużenie wymaga kolejnego zakupu na ten sam adres e-mail. Po upływie okresu FULL wymaga przedłużenia. Konto jest potrzebne do aktywacji; OFFLINE działa bez regularnego łączenia z serwerem przez ważny okres licencji.</p>
+<p>Płacisz jednorazowo za 12 miesięcy od aktywacji okresu. Nie ma automatycznego odnawiania ani pobierania pieniędzy. Przedłużenie wymaga kolejnego zakupu na ten sam adres e-mail. Po upływie 12 miesięcy licencja wymaga przedłużenia. Konto jest potrzebne do aktywacji; OFFLINE działa bez regularnego łączenia z serwerem przez ważny okres licencji.</p>
 </div>
 <div class="faq-item">
 <h3>Czy dostanę aktualizacje?</h3>
-<p>Tak. Kodnik ma wbudowany mechanizm aktualizacji i informuje Cię, gdy pojawi się nowsza wersja. Aktualizacje są dostępne w opłaconym okresie. Wcześniejsze zakupy BETA zachowują swoje warunki.</p>
+<p>Tak. Kodnik ma wbudowany mechanizm aktualizacji i informuje Cię, gdy pojawi się nowsza wersja. Aktualizacje są dostępne w opłaconym okresie. Wcześniejsze zakupy zachowują swoje warunki.</p>
 </div>
 <div class="faq-item">
 <h3>Ile czasu zajmuje instalacja?</h3>
