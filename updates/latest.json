@@ -1,15 +1,15 @@
 {
-  "version": "2026.10.16",
-  "build": "2026-10-16",
+  "version": "2026.10.23",
+  "build": "2026-10-23",
   "title": "Kodnik",
   "message": "Dostępna jest nowa wersja Kodnika.",
-  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.10.16",
+  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.10.23",
   "download_mode": "installer",
-  "sha256": "2b3cc9f607b84c63fe99d7734e018d15bb89047dcd4e8549301c3deb663e4e62",
+  "sha256": "b1c780d9a778ccac4adc675251af95eb9b9b1123dc630c38f8b628159481d75a",
   "required": false,
   "changelog": [
-    "Zabezpieczone konta, aktywacja i aktualizacje Kodnika.",
-    "Obsługa rocznych licencji i zachowanie wcześniejszych uprawnień.",
-    "Poprawione pobieranie modeli i tytuł okna bez daty."
+    "Myślenie domyślnie włączone przy pierwszym starcie (Myślenie / Pośpiech).",
+    "Przeglądarka w czacie projektu oraz poprawki sesji i UI.",
+    "Aktualizacje FULL przez zabezpieczony Cloudflare (konto/licencja)."
   ]
 }
