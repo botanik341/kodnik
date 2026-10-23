@@ -8,8 +8,8 @@
   "sha256": "b1c780d9a778ccac4adc675251af95eb9b9b1123dc630c38f8b628159481d75a",
   "required": false,
   "changelog": [
-    "Myślenie domyślnie włączone przy pierwszym starcie (Myślenie / Pośpiech).",
-    "Przeglądarka w czacie projektu oraz poprawki sesji i UI.",
-    "Aktualizacje FULL przez zabezpieczony Cloudflare (konto/licencja)."
+    "Przeglądarka dostępna także w czacie projektu.",
+    "Poprawki sesji rozmów oraz wyglądu interfejsu.",
+    "Usprawnienia stabilności i wygody pracy."
   ]
 }
