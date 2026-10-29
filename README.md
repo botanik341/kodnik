@@ -1,31 +1,25 @@
-# Strona Kodnika
+# Kodnik — lokalny agent AI do programowania na Windows
 
-Prosta strona informacyjna o **Kodniku** – edytorze z AI (Python, tkinter, Ollama) oraz o rozróżnieniu: produkt dla klienta vs wersja studia.
+Kodnik pracuje na lokalnych modelach AI i plikach projektu na Twoim komputerze. Pozwala tworzyć programy, edytować istniejący kod, analizować pliki, naprawiać błędy i wykonywać polecenia w terminalu.
 
-## Zawartość
+## Możliwości
 
-- **Czym jest Kodnik** – edytor z AI, zwierzaki, ZAP.NAUK; produkt na wzór Kodnika BETA, ale bez treningu
-- **Cztery zwierzaki** – Mamut, Małpa, Gepard, Lis (role i opisy)
-- **Kodnik dla klienta** – co dostaje klient: edytor, persony, ZAP.NAUK, Ollama – bez pipeline’u treningu
-- **Kodnik BETA – wersja studia** – wewnętrzna wersja z pełnym pipeline’em treningu neuronowego (przemiał, psucie, pary zadań, run 1/2); tylko dla studia
+- Tworzenie, edycja i naprawa kodu.
+- Wspólny terminal projektu: PowerShell, CMD i Git Bash.
+- Pobieranie i wybór lokalnych modeli z poziomu aplikacji.
+- Automatyczne dostosowanie ustawień pracy modelu do CPU, RAM i VRAM.
+- Punkty powrotu i cofanie zmian.
+- Praca OFFLINE oraz opcjonalny tryb ONLINE z narzędziami internetowymi.
 
-Treść jest zsynchronizowana z dokumentacją z projektu **Kodnik BETA** (`C:\Kodnik BETA`), m.in. `docs/CURSOR-PROJEKT-KODNIK-JAK-OGARNAC.md` i `role_zwierzakow.py`.
+## Dostępność
 
-## Uruchomienie
+Windows 10 i 11, 64-bit. Wymagania pamięci zależą od wybranego modelu.
 
-Otwórz plik `index.html` w przeglądarce (podwójne kliknięcie lub „Otwórz w przeglądarce”). Strona działa offline; fonty są ładowane z Google Fonts (Outfit, JetBrains Mono).
+DEMO pozwala sprawdzić aplikację przez 2 godziny łącznego czasu działania.
 
-Alternatywnie z terminala (jeśli masz Pythona):
+Polska oferta: 99 zł za 12 miesięcy, bez automatycznego odnawiania. Aktywacja płatnej licencji wymaga konta i połączenia z internetem.
 
-```bash
-cd "c:\Users\ujot\OneDrive\Pulpit\Strona Kodnika"
-python -m http.server 8080
-```
+## Oficjalne strony
 
-Potem wejdź na: http://localhost:8080
-
-## Pliki
-
-- `index.html` – struktura strony
-- `style.css` – styl (ciemny motyw, responsywny layout)
-- `README.md` – ten plik
+- Polska strona, wymagania i pobieranie DEMO: https://kodnik.pl/
+- English website: https://kodnik.com/
