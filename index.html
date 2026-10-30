@@ -245,6 +245,16 @@
     .product-list { margin: 0; padding: 0; list-style: none; display:grid; gap: 16px; }
     .product-list li { display:flex; gap: 12px; align-items:flex-start; color: var(--muted-2); line-height:1.58; }
     .product-note-right { margin: 0; padding: 16px 18px; border-radius: 18px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.045); color: var(--muted-2); line-height: 1.62; }
+
+    /* Przeglądarki Kodnika: krótki opis funkcji bez zmiany podglądu aplikacji. */
+    .browser-overview { margin-top: 30px; }
+    .browser-overview h3 { margin: 0 0 17px; color: #fff; font-size: clamp(1.4rem, 2.6vw, 2rem); letter-spacing: -.025em; }
+    .browser-feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .browser-feature { padding: 23px 24px; border: 1px solid var(--line); border-radius: 22px; background: rgba(16, 22, 34, .82); min-width: 0; }
+    .browser-feature h4 { margin: 0 0 12px; color: #fff; font-size: 1.12rem; line-height: 1.35; }
+    .browser-feature p { margin: 0; color: var(--muted-2); line-height: 1.65; }
+    @media (max-width: 980px) { .browser-feature-grid { grid-template-columns: 1fr; } }
+
     .check { flex:0 0 auto; width: 22px; height:22px; display:grid; place-items:center; border-radius:999px; background: rgba(19,201,154,.14); color: var(--green); font-weight:900; margin-top:2px; }
 
     .split { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; margin-top: 28px; }
@@ -942,30 +952,45 @@ syncPanes();
 <section id="powiedz">
 <div class="container">
 <span class="section-kicker">Co robi Kodnik</span>
-<h2>Opisujesz zadanie — Kodnik prowadzi pracę na Twoich plikach.</h2>
+<h2>Od pomysłu do zmian w projekcie — Kodnik pracuje na Twoich plikach.</h2>
 <p class="section-lead">
-          Kodnik uruchamia lokalne modele AI i daje im narzędzia do pracy z projektem. Z poziomu programu zlecasz tworzenie nowych plików, edycję istniejących, analizę kodu i naprawę błędów.
-        </p>
+  Kodnik to lokalny agent AI do programowania. Analizuje strukturę projektu, czyta i modyfikuje pliki, uruchamia polecenia oraz pomaga rozwiązywać problemy. Możesz zlecić mu zarówno stworzenie aplikacji, jak i rozwój istniejącego programu.
+</p>
 <div class="prompt-wall">
 <div class="prompt-panel">
-<div class="prompt-bubble">Stwórz prostą aplikację do notatek z zapisem wpisów.</div>
-<div class="prompt-bubble">Zmień wygląd przycisku Zapisz.</div>
-<div class="prompt-bubble">Znajdź i napraw błąd, przez który program się nie uruchamia.</div>
-<div class="prompt-bubble">Wyjaśnij, co robi ten plik i od czego zacząć.</div>
-<div class="prompt-bubble">Dodaj nową funkcję do mojej aplikacji.</div>
-<div class="prompt-bubble">Przełącz na ONLINE, otwórz dokumentację biblioteki i zastosuj ją w projekcie.</div>
+<div class="prompt-bubble">Zbuduj aplikację desktopową do zarządzania projektami. Dodaj interfejs, bazę danych, wyszukiwarkę i zapisywanie zmian.</div>
+<div class="prompt-bubble">Program przestał się uruchamiać. Przeanalizuj projekt, znajdź przyczynę, popraw błędy i sprawdź działanie.</div>
+<div class="prompt-bubble">Dodaj do tej aplikacji historię operacji oraz możliwość cofnięcia ostatniej zmiany.</div>
+<div class="prompt-bubble">Przeanalizuj strukturę całego projektu. Znajdź powielony kod i uprość go, zachowując dotychczasowe funkcje.</div>
+<div class="prompt-bubble">Sprawdź, jak działa komunikacja między modułami, wskaż potencjalne problemy i zaproponuj konkretne usprawnienia.</div>
+<div class="prompt-bubble">Przełącz na ONLINE, znajdź oficjalną dokumentację biblioteki i wykorzystaj ją do dodania nowej funkcjonalności.</div>
 </div>
 <div class="product-panel">
 <ul class="product-list">
-<li><span class="check">✓</span><span><strong>Tworzenie programów:</strong> opisujesz, co chcesz zrobić, a Kodnik prowadzi pracę nad plikami projektu na Twoim komputerze.</span></li>
-<li><span class="check">✓</span><span><strong>Zmienia istniejący projekt:</strong> Kodnik analizuje pliki i wprowadza konkretne zmiany w kodzie, krok po kroku.</span></li>
-<li><span class="check">✓</span><span><strong>Naprawa błędów:</strong> analizuje przyczynę problemu i przygotowuje poprawkę w plikach projektu.</span></li>
-<li><span class="check">✓</span><span><strong>Rozmawia i analizuje:</strong> wyjaśnia kod, odpowiada na pytania i pomaga zaplanować kolejne kroki.</span></li>
-<li><span class="check">✓</span><span><strong>Narzędzia internetowe:</strong> w trybie ONLINE przeszukuje WWW, otwiera i czyta strony oraz dokumentację, a także pobiera pliki potrzebne podczas pracy.</span></li>
+<li><span class="check">✓</span><span><strong>Tworzy programy:</strong> od struktury projektu i plików źródłowych po implementację funkcji.</span></li>
+<li><span class="check">✓</span><span><strong>Rozbudowuje projekty:</strong> analizuje istniejący kod i wprowadza zmiany w wielu plikach.</span></li>
+<li><span class="check">✓</span><span><strong>Diagnozuje i naprawia błędy:</strong> sprawdza kod, uruchamia polecenia i wykorzystuje wyniki do dalszej pracy.</span></li>
+<li><span class="check">✓</span><span><strong>Rozumie kontekst projektu:</strong> przegląda pliki, wyszukuje zależności i pomaga podejmować decyzje techniczne.</span></li>
+<li><span class="check">✓</span><span><strong>Pracuje lokalnie:</strong> korzysta z modelu AI uruchomionego na komputerze użytkownika, również bez internetu.</span></li>
+<li><span class="check">✓</span><span><strong>Korzysta z WWW w trybie ONLINE:</strong> wyszukuje informacje, przegląda dokumentację oraz może pobierać potrzebne materiały.</span></li>
 </ul>
-<p class="product-note-right">
-              Zaczynasz od krótkiego polecenia, a Kodnik prowadzi Cię od pomysłu aż do działającej zmiany w plikach.
-            </p>
+</div>
+</div>
+<div class="browser-overview">
+<h3>Dwie przeglądarki. Jeden agent AI.</h3>
+<div class="browser-feature-grid">
+<div class="browser-feature">
+<h4>Szybka przeglądarka AI</h4>
+<p>Pozwala modelowi wyszukiwać informacje, analizować strony i korzystać z dokumentacji bez uruchamiania graficznego interfejsu.</p>
+</div>
+<div class="browser-feature">
+<h4>Współdzielona przeglądarka graficzna</h4>
+<p>Model i użytkownik pracują na tej samej stronie. Możesz obserwować działania agenta, samodzielnie sterować przeglądarką i kontynuować pracę wspólnie z AI.</p>
+</div>
+<div class="browser-feature">
+<h4>Elastyczny podgląd</h4>
+<p>Wyświetl stronę w osobnym panelu, włącz jej przyciemniony podgląd bezpośrednio w rozmowie albo korzystaj z obu widoków jednocześnie. Sam decydujesz, jak chcesz pracować.</p>
+</div>
 </div>
 </div>
 </div>
