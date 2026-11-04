@@ -1,15 +1,16 @@
+
 {
-  "version": "2026.10.23",
-  "build": "2026-10-23",
+  "version": "2026.11.04",
+  "build": "2026-11-04",
   "title": "Kodnik",
   "message": "Dostępna jest nowa wersja Kodnika.",
-  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.10.23",
+  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.04",
   "download_mode": "installer",
-  "sha256": "b1c780d9a778ccac4adc675251af95eb9b9b1123dc630c38f8b628159481d75a",
+  "sha256": "f6d6a1e8c3655246dc85bf49b0dab527c0f85357edac0ddd0a12167e238f96b3",
   "required": false,
   "changelog": [
-    "Przeglądarka dostępna także w czacie projektu.",
-    "Poprawki sesji rozmów oraz wyglądu interfejsu.",
-    "Usprawnienia stabilności i wygody pracy."
+    "Nowy, płynniejszy interfejs rozmowy oparty na WebView2.",
+    "Ulepszone wyświetlanie planów pracy, kodu i działań agenta.",
+    "Poprawki wyglądu i wydajności interfejsu."
   ]
 }
