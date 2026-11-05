@@ -1,18 +1,15 @@
 {
-  "version": "2026.11.05",
-  "build": "2026-11-05",
+  "version": "2026.11.06",
+  "build": "2026-11-06",
   "title": "Kodnik",
   "message": "Dostępna jest nowa wersja Kodnika.",
-  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.05",
+  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.06",
   "download_mode": "installer",
-  "sha256": "66dedf4a04542b48d12686bbea6e743325845df925ee6554b95f4bb543d775f7",
+  "sha256": "7e17692fb5c1801a7508bf04dc951d0328b552ce8814361157360cb3a95dce43",
   "required": false,
   "changelog": [
-    "Czat WebView2: płynne przewijanie, karty planu/kodu/narzędzi, Myśli, podgląd współdzielonej przeglądarki.",
-    "Composer: fokus klawiatury po Nowym czacie i po kliknięciu w pole.",
-    "Stream kodu bez skakania historii; rozwijanie i przewijanie plików w trakcie pracy AI.",
-    "Kontrakt planu nie trafia do UI — widać karty, nie surową meta.",
-    "Edycja/kopiowanie baniek użytkownika; cieńsze paski przewijania drzewa i edytora.",
-    "Poprawka paczki: pliki czatu WebView2 (HTML/CSS/JS) są w instalatorze."
+    "Poprawki czatu: kolorowanie kodu, kolejka wiadomości podczas generacji.",
+    "Stabilniejsze ikony statusu przy composerze.",
+    "Po utworzeniu programu bez fałszywego komunikatu „Brak odpowiedzi modelu.”"
   ]
 }
