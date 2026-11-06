@@ -1,15 +1,13 @@
 {
-  "version": "2026.11.06",
-  "build": "2026-11-06",
+  "version": "2026.11.07",
+  "build": "2026-11-07",
   "title": "Kodnik",
   "message": "Dostępna jest nowa wersja Kodnika.",
-  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.06",
+  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.07",
   "download_mode": "installer",
-  "sha256": "7e17692fb5c1801a7508bf04dc951d0328b552ce8814361157360cb3a95dce43",
+  "sha256": "95bf4d92b730c80780d99f3858ad86ec15d361134e71a9a02a2b1138ca07d7f2",
   "required": false,
   "changelog": [
-    "Poprawki czatu: kolorowanie kodu, kolejka wiadomości podczas generacji.",
-    "Stabilniejsze ikony statusu przy composerze.",
-    "Po utworzeniu programu bez fałszywego komunikatu „Brak odpowiedzi modelu.”"
+    "Aktualizacja Kodnika FULL — build 2026.11.07."
   ]
 }
