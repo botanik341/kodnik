@@ -1,13 +1,15 @@
 {
-  "version": "2026.11.07",
-  "build": "2026-11-07",
+  "version": "2026.11.08",
+  "build": "2026-11-08",
   "title": "Kodnik",
   "message": "Dostępna jest nowa wersja Kodnika.",
-  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.07",
+  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.08",
   "download_mode": "installer",
-  "sha256": "95bf4d92b730c80780d99f3858ad86ec15d361134e71a9a02a2b1138ca07d7f2",
+  "sha256": "9c06e6078f861af4e02d95076d4ed1fdbdd364284a91571cac46943f048eee17",
   "required": false,
   "changelog": [
-    "Aktualizacja Kodnika FULL — build 2026.11.07."
+    "Backend GPU: HIP (AMD ROCm) oraz SYCL (Intel oneAPI) obok CUDA / Vulkan / CPU — auto-wybór po karcie.",
+    "Jedna wspólna llama-cpp-python 0.3.36 dla CUDA, HIP, SYCL, Vulkan i CPU.",
+    "Liczenie warstw GPU ostrożniej (MoE); bieg 1 kontekstu MoE = 26k."
   ]
 }
