@@ -1182,10 +1182,9 @@ syncPanes();
     <div class="model-control-visual">
       <div class="kodnik-control-demo kodnik-ctx-demo" data-control-demo="ctx">
         <div class="kodnik-demo-menu" id="ctx-demo-list" role="group" aria-label="Rozmiar okna kontekstu">
-          <button type="button" class="kodnik-demo-option" data-ctx-value="33k">Kontekst mały (szybciej) · 33k</button>
-          <button type="button" class="kodnik-demo-option" data-ctx-value="41k">Kontekst duży (wolniej) · 41k</button>
-          <button type="button" class="kodnik-demo-option" data-ctx-value="53k">Kontekst max · 53k</button>
-          <button type="button" class="kodnik-demo-option" data-ctx-value="66k">Kontekst XL · 66k</button>
+          <button type="button" class="kodnik-demo-option" data-ctx-value="100k">Kontekst mały (szybciej) · 100k</button>
+          <button type="button" class="kodnik-demo-option" data-ctx-value="150k">Kontekst duży (wolniej) · 150k</button>
+          <button type="button" class="kodnik-demo-option" data-ctx-value="256k">Kontekst max · 256k</button>
           <button type="button" class="kodnik-demo-option is-active" data-ctx-value="Auto" aria-pressed="true">Auto <span class="kodnik-demo-check" aria-hidden="true">✓</span></button>
         </div>
         <button type="button" class="kodnik-ctx-trigger" aria-expanded="true" aria-controls="ctx-demo-list" aria-label="Kontekst — otwórz lub zamknij wybór rozmiaru">
@@ -1195,7 +1194,7 @@ syncPanes();
     </div>
     <div class="model-control-copy">
       <h3>Kontekst mały, duży albo Auto</h3>
-      <p>Możesz sam wybrać mały, duży, Max lub XL kontekst albo włączyć <strong>Auto</strong>. W Auto Kodnik zaczyna od mniejszego CTX, gdy większy nie jest potrzebny. <strong>To nie jest zwykły offload polegający na zapychaniu GPU maksymalną liczbą warstw.</strong> Kodnik matematycznie oblicza ich podział między GPU i CPU/RAM, zostawiając bezpieczny zapas VRAM. Mniejszy CTX może dzięki temu pozwolić na więcej warstw na GPU i szybszą pracę. Kiedy projekt potrzebuje większego kontekstu, Kodnik zwiększa CTX, przeładowuje model i <strong>od nowa przelicza liczbę warstw</strong> — w razie potrzeby przenosi część z GPU do RAM, zamiast przeciążać kartę. Okrągły wskaźnik pokazuje wykorzystanie CTX. Wielkości okien zależą od modelu.</p>
+      <p>Możesz sam wybrać mały, duży lub Max kontekst albo włączyć <strong>Auto</strong>. W Auto Kodnik zaczyna od mniejszego CTX, gdy większy nie jest potrzebny. <strong>To nie jest zwykły offload polegający na zapychaniu GPU maksymalną liczbą warstw.</strong> Kodnik matematycznie oblicza ich podział między GPU i CPU/RAM, zostawiając bezpieczny zapas VRAM. Mniejszy CTX może dzięki temu pozwolić na więcej warstw na GPU i szybszą pracę. Kiedy projekt potrzebuje większego kontekstu, Kodnik zwiększa CTX, przeładowuje model i <strong>od nowa przelicza liczbę warstw</strong> — w razie potrzeby przenosi część z GPU do RAM, zamiast przeciążać kartę. Okrągły wskaźnik pokazuje wykorzystanie CTX. Te same rozmiary kontekstu są dostępne dla każdego modelu.</p>
     </div>
   </article>
   <article class="model-control-card">
@@ -1229,7 +1228,7 @@ syncPanes();
 </div>
 <div class="req-card">
 <h3>Dobiera sposób obliczeń</h3>
-<p>Automatycznie wybiera właściwy silnik akceleracji GPU — CUDA lub Vulkan — albo pracę na CPU, gdy karta nie jest dostępna.</p>
+<p>Automatycznie wybiera właściwy silnik akceleracji GPU — CUDA, Vulkan, HIP/ROCm (AMD) lub SYCL/oneAPI (Intel) — albo pracę na CPU, gdy karta nie jest dostępna.</p>
 </div>
 <div class="req-card">
 <h3>Liczy rozłożenie modelu</h3>
