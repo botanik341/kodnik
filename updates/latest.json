@@ -1,13 +1,11 @@
 {
-  "version": "2026.11.16",
-  "build": "2026-11-16",
+  "version": "2026.11.20",
+  "build": "2026-11-20",
   "title": "Kodnik",
   "message": "Dostępna jest nowa wersja Kodnika.",
-  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.16",
+  "download_url": "https://kodnik-fulfillment.ujot.workers.dev/updates/download/2026.11.20",
   "download_mode": "installer",
-  "sha256": "7b451de08c1e2d7f5da0a226258672877a5170ef0a2dfd2c88dab96b3a59858c",
+  "sha256": "b4e657a19953da86ebeed3459ec447fd895ce70a10ea197ddf4c7eef37c06a83",
   "required": false,
-  "changelog": [
-    "Wydanie Kodnika z 16 listopada 2026."
-  ]
+  "changelog": [ ...4 pozycje... ]
 }
