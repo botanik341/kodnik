@@ -7,5 +7,10 @@
   "download_mode": "installer",
   "sha256": "b4e657a19953da86ebeed3459ec447fd895ce70a10ea197ddf4c7eef37c06a83",
   "required": false,
-  "changelog": [ ...4 pozycje... ]
+  "changelog": [
+    "Agent edycji i naprawy błędów: stabilniejsze pętle etapów, krótsze operacje liniowe i spójne prompty etapów PL/EN.",
+    "Myślenie (Thinking) i szkic specyfikacji: poprawki przepływu i opisu etapów pracy.",
+    "Czat: poprawki stylów WebChat i kolejności kart etapów.",
+    "Decyzja po patchu oraz narzędzia ONLINE: poprawki zachowania i komunikatów."
+  ]
 }
